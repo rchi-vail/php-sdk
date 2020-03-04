@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **action_url** | **string** |  | [optional] 
 **grammar_type** | **int** |  | [optional] 
 **grammar_file** | **string** |  | [optional] 

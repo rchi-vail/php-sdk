@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **action_url** | **string** |  | [optional] 
 **digit_timeout_ms** | **int** |  | [optional] 
 **finish_on_key** | **string** |  | [optional] 

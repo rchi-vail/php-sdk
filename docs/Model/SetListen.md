@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **call_id** | **string** |  | [optional] 
 **listen** | **bool** |  | [optional] 
 

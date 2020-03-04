@@ -28,6 +28,8 @@
  */
 
 namespace OpenAPI\Client\Model;
+
+use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
@@ -38,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class TerminateConference extends PerCLCommand 
+class TerminateConference implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -55,6 +57,7 @@ class TerminateConference extends PerCLCommand
       * @var string[]
       */
     protected static $openAPITypes = [
+        'command' => 'string',
         'conference_id' => 'string'
     ];
 
@@ -64,6 +67,7 @@ class TerminateConference extends PerCLCommand
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'command' => null,
         'conference_id' => null
     ];
 
@@ -74,7 +78,7 @@ class TerminateConference extends PerCLCommand
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -84,7 +88,7 @@ class TerminateConference extends PerCLCommand
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -94,6 +98,7 @@ class TerminateConference extends PerCLCommand
      * @var string[]
      */
     protected static $attributeMap = [
+        'command' => 'command',
         'conference_id' => 'conferenceId'
     ];
 
@@ -103,6 +108,7 @@ class TerminateConference extends PerCLCommand
      * @var string[]
      */
     protected static $setters = [
+        'command' => 'setCommand',
         'conference_id' => 'setConferenceId'
     ];
 
@@ -112,6 +118,7 @@ class TerminateConference extends PerCLCommand
      * @var string[]
      */
     protected static $getters = [
+        'command' => 'getCommand',
         'conference_id' => 'getConferenceId'
     ];
 
@@ -123,7 +130,7 @@ class TerminateConference extends PerCLCommand
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -133,7 +140,7 @@ class TerminateConference extends PerCLCommand
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -143,7 +150,7 @@ class TerminateConference extends PerCLCommand
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -160,6 +167,12 @@ class TerminateConference extends PerCLCommand
 
     
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -169,8 +182,7 @@ class TerminateConference extends PerCLCommand
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
+        $this->container['command'] = isset($data['command']) ? $data['command'] : null;
         $this->container['conference_id'] = isset($data['conference_id']) ? $data['conference_id'] : null;
     }
 
@@ -181,7 +193,7 @@ class TerminateConference extends PerCLCommand
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
         return $invalidProperties;
     }
@@ -197,6 +209,30 @@ class TerminateConference extends PerCLCommand
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets command
+     *
+     * @return string|null
+     */
+    public function getCommand()
+    {
+        return $this->container['command'];
+    }
+
+    /**
+     * Sets command
+     *
+     * @param string|null $command command
+     *
+     * @return $this
+     */
+    public function setCommand($command)
+    {
+        $this->container['command'] = $command;
+
+        return $this;
+    }
 
     /**
      * Gets conference_id

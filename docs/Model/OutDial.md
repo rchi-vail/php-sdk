@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **action_url** | **string** |  | [optional] 
 **call_connect_url** | **string** |  | [optional] 
 **calling_number** | **float** |  | [optional] 

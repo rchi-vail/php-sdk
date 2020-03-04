@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **allow_call_control** | **bool** |  | [optional] 
 **call_control_sequence** | **string** |  | [optional] 
 **call_control_url** | **string** |  | [optional] 

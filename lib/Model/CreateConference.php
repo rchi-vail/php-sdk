@@ -28,6 +28,8 @@
  */
 
 namespace OpenAPI\Client\Model;
+
+use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
@@ -38,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class CreateConference extends PerCLCommand 
+class CreateConference implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -55,6 +57,7 @@ class CreateConference extends PerCLCommand
       * @var string[]
       */
     protected static $openAPITypes = [
+        'command' => 'string',
         'action_url' => 'string',
         'alias' => 'bool',
         'play_beep' => 'string',
@@ -69,6 +72,7 @@ class CreateConference extends PerCLCommand
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'command' => null,
         'action_url' => null,
         'alias' => null,
         'play_beep' => null,
@@ -84,7 +88,7 @@ class CreateConference extends PerCLCommand
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -94,7 +98,7 @@ class CreateConference extends PerCLCommand
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -104,6 +108,7 @@ class CreateConference extends PerCLCommand
      * @var string[]
      */
     protected static $attributeMap = [
+        'command' => 'command',
         'action_url' => 'actionUrl',
         'alias' => 'alias',
         'play_beep' => 'playBeep',
@@ -118,6 +123,7 @@ class CreateConference extends PerCLCommand
      * @var string[]
      */
     protected static $setters = [
+        'command' => 'setCommand',
         'action_url' => 'setActionUrl',
         'alias' => 'setAlias',
         'play_beep' => 'setPlayBeep',
@@ -132,6 +138,7 @@ class CreateConference extends PerCLCommand
      * @var string[]
      */
     protected static $getters = [
+        'command' => 'getCommand',
         'action_url' => 'getActionUrl',
         'alias' => 'getAlias',
         'play_beep' => 'getPlayBeep',
@@ -148,7 +155,7 @@ class CreateConference extends PerCLCommand
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -158,7 +165,7 @@ class CreateConference extends PerCLCommand
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -168,7 +175,7 @@ class CreateConference extends PerCLCommand
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -185,6 +192,12 @@ class CreateConference extends PerCLCommand
 
     
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -194,8 +207,7 @@ class CreateConference extends PerCLCommand
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
+        $this->container['command'] = isset($data['command']) ? $data['command'] : null;
         $this->container['action_url'] = isset($data['action_url']) ? $data['action_url'] : null;
         $this->container['alias'] = isset($data['alias']) ? $data['alias'] : null;
         $this->container['play_beep'] = isset($data['play_beep']) ? $data['play_beep'] : null;
@@ -211,7 +223,7 @@ class CreateConference extends PerCLCommand
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
         return $invalidProperties;
     }
@@ -227,6 +239,30 @@ class CreateConference extends PerCLCommand
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets command
+     *
+     * @return string|null
+     */
+    public function getCommand()
+    {
+        return $this->container['command'];
+    }
+
+    /**
+     * Sets command
+     *
+     * @param string|null $command command
+     *
+     * @return $this
+     */
+    public function setCommand($command)
+    {
+        $this->container['command'] = $command;
+
+        return $this;
+    }
 
     /**
      * Gets action_url

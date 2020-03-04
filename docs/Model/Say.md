@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **text** | **string** |  | [optional] 
 **language** | **string** |  | [optional] 
 **loop** | **int** |  | [optional] 

@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **file** | **string** |  | [optional] 
 **loop** | **int** |  | [optional] 
 **conference_id** | **string** |  | [optional] 

@@ -28,6 +28,8 @@
  */
 
 namespace OpenAPI\Client\Model;
+
+use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
@@ -38,7 +40,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class AddToConference extends PerCLCommand 
+class AddToConference implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -55,6 +57,7 @@ class AddToConference extends PerCLCommand
       * @var string[]
       */
     protected static $openAPITypes = [
+        'command' => 'string',
         'allow_call_control' => 'bool',
         'call_control_sequence' => 'string',
         'call_control_url' => 'string',
@@ -73,6 +76,7 @@ class AddToConference extends PerCLCommand
       * @var string[]
       */
     protected static $openAPIFormats = [
+        'command' => null,
         'allow_call_control' => null,
         'call_control_sequence' => null,
         'call_control_url' => null,
@@ -92,7 +96,7 @@ class AddToConference extends PerCLCommand
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -102,7 +106,7 @@ class AddToConference extends PerCLCommand
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -112,6 +116,7 @@ class AddToConference extends PerCLCommand
      * @var string[]
      */
     protected static $attributeMap = [
+        'command' => 'command',
         'allow_call_control' => 'allowCallControl',
         'call_control_sequence' => 'callControlSequence',
         'call_control_url' => 'callControlUrl',
@@ -130,6 +135,7 @@ class AddToConference extends PerCLCommand
      * @var string[]
      */
     protected static $setters = [
+        'command' => 'setCommand',
         'allow_call_control' => 'setAllowCallControl',
         'call_control_sequence' => 'setCallControlSequence',
         'call_control_url' => 'setCallControlUrl',
@@ -148,6 +154,7 @@ class AddToConference extends PerCLCommand
      * @var string[]
      */
     protected static $getters = [
+        'command' => 'getCommand',
         'allow_call_control' => 'getAllowCallControl',
         'call_control_sequence' => 'getCallControlSequence',
         'call_control_url' => 'getCallControlUrl',
@@ -168,7 +175,7 @@ class AddToConference extends PerCLCommand
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -178,7 +185,7 @@ class AddToConference extends PerCLCommand
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -188,7 +195,7 @@ class AddToConference extends PerCLCommand
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -205,6 +212,12 @@ class AddToConference extends PerCLCommand
 
     
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -214,8 +227,7 @@ class AddToConference extends PerCLCommand
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
+        $this->container['command'] = isset($data['command']) ? $data['command'] : null;
         $this->container['allow_call_control'] = isset($data['allow_call_control']) ? $data['allow_call_control'] : null;
         $this->container['call_control_sequence'] = isset($data['call_control_sequence']) ? $data['call_control_sequence'] : null;
         $this->container['call_control_url'] = isset($data['call_control_url']) ? $data['call_control_url'] : null;
@@ -235,7 +247,7 @@ class AddToConference extends PerCLCommand
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
         return $invalidProperties;
     }
@@ -251,6 +263,30 @@ class AddToConference extends PerCLCommand
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets command
+     *
+     * @return string|null
+     */
+    public function getCommand()
+    {
+        return $this->container['command'];
+    }
+
+    /**
+     * Sets command
+     *
+     * @param string|null $command command
+     *
+     * @return $this
+     */
+    public function setCommand($command)
+    {
+        $this->container['command'] = $command;
+
+        return $this;
+    }
 
     /**
      * Gets allow_call_control

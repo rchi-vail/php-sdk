@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **digits** | **string** |  | [optional] 
 **pause_ms** | **int** |  | [optional] 
 

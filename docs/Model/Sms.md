@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **to** | **string** |  | [optional] 
 **from** | **string** |  | [optional] 
 **text** | **string** |  | [optional] 

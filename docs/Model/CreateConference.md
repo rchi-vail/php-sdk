@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**command** | **string** |  | [optional] 
 **action_url** | **string** |  | [optional] 
 **alias** | **bool** |  | [optional] 
 **play_beep** | **string** |  | [optional] 
