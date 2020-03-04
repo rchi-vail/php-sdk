@@ -1,9 +1,10 @@
-# FreeClimb\DefaultApi
+# OpenAPI\Client\DefaultApi
 
 All URIs are relative to *https://www.freeclimb.com/apiserver*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getAnAccount**](DefaultApi.md#getAnAccount) | **GET** /Accounts/{accountId} | Get an Account
 [**buyAPhoneNumber**](DefaultApi.md#buyAPhoneNumber) | **POST** /Accounts/{accountId}/IncomingPhoneNumbers | Buy a Phone Number
 [**createAConference**](DefaultApi.md#createAConference) | **POST** /Accounts/{accountId}/Conferences | Create a Conference
 [**createAQueue**](DefaultApi.md#createAQueue) | **POST** /Accounts/{accountId}/Queues | Create a Queue
@@ -21,7 +22,6 @@ Method | HTTP request | Description
 [**getAParticipant**](DefaultApi.md#getAParticipant) | **GET** /Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId} | Get a Participant
 [**getAQueue**](DefaultApi.md#getAQueue) | **GET** /Accounts/{accountId}/Queues/{queueId} | Get a Queue
 [**getARecording**](DefaultApi.md#getARecording) | **GET** /Accounts/{accountId}/Recordings/{recordingId} | Get a Recording
-[**getAnAccount**](DefaultApi.md#getAnAccount) | **GET** /Accounts/{accountId} | Get an Account
 [**getAnApplication**](DefaultApi.md#getAnApplication) | **GET** /Accounts/{accountId}/Applications/{applicationId} | Get an Application
 [**getAnIncomingNumber**](DefaultApi.md#getAnIncomingNumber) | **GET** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId} | Get an Incoming Number
 [**getAnSmsMessage**](DefaultApi.md#getAnSmsMessage) | **GET** /Accounts/{accountId}/Messages/{messageId} | Get an SMS Message
@@ -53,9 +53,70 @@ Method | HTTP request | Description
 
 
 
+## getAnAccount
+
+> \OpenAPI\Client\Model\AccountResult getAnAccount($account_id)
+
+Get an Account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: fc
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$account_id = 'account_id_example'; // string | String that uniquely identifies this account resource.
+
+try {
+    $result = $apiInstance->getAnAccount($account_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getAnAccount: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **account_id** | **string**| String that uniquely identifies this account resource. |
+
+### Return type
+
+[**\OpenAPI\Client\Model\AccountResult**](../Model/AccountResult.md)
+
+### Authorization
+
+[fc](../../README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## buyAPhoneNumber
 
-> \FreeClimb\PerCL\IncomingNumberResult buyAPhoneNumber($account_id, $buy_incoming_number_request)
+> \OpenAPI\Client\Model\IncomingNumberResult buyAPhoneNumber($account_id, $buy_incoming_number_request)
 
 Buy a Phone Number
 
@@ -67,19 +128,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account that owns this phone number.
-$buy_incoming_number_request = new \FreeClimb\PerCL\BuyIncomingNumberRequest(); // \FreeClimb\PerCL\BuyIncomingNumberRequest | Incoming Number transaction details
+$buy_incoming_number_request = new \OpenAPI\Client\Model\BuyIncomingNumberRequest(); // \OpenAPI\Client\Model\BuyIncomingNumberRequest | Incoming Number transaction details
 
 try {
     $result = $apiInstance->buyAPhoneNumber($account_id, $buy_incoming_number_request);
@@ -96,11 +157,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that owns this phone number. |
- **buy_incoming_number_request** | [**\FreeClimb\PerCL\BuyIncomingNumberRequest**](../Model/BuyIncomingNumberRequest.md)| Incoming Number transaction details | [optional]
+ **buy_incoming_number_request** | [**\OpenAPI\Client\Model\BuyIncomingNumberRequest**](../Model/BuyIncomingNumberRequest.md)| Incoming Number transaction details | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\IncomingNumberResult**](../Model/IncomingNumberResult.md)
+[**\OpenAPI\Client\Model\IncomingNumberResult**](../Model/IncomingNumberResult.md)
 
 ### Authorization
 
@@ -118,7 +179,7 @@ Name | Type | Description  | Notes
 
 ## createAConference
 
-> \FreeClimb\PerCL\ConferenceResult createAConference($account_id, $create_conference_request)
+> \OpenAPI\Client\Model\ConferenceResult createAConference($account_id, $create_conference_request)
 
 Create a Conference
 
@@ -130,19 +191,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this Conference.
-$create_conference_request = new \FreeClimb\PerCL\CreateConferenceRequest(); // \FreeClimb\PerCL\CreateConferenceRequest | Conference to create
+$create_conference_request = new \OpenAPI\Client\Model\CreateConferenceRequest(); // \OpenAPI\Client\Model\CreateConferenceRequest | Conference to create
 
 try {
     $result = $apiInstance->createAConference($account_id, $create_conference_request);
@@ -159,11 +220,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this Conference. |
- **create_conference_request** | [**\FreeClimb\PerCL\CreateConferenceRequest**](../Model/CreateConferenceRequest.md)| Conference to create | [optional]
+ **create_conference_request** | [**\OpenAPI\Client\Model\CreateConferenceRequest**](../Model/CreateConferenceRequest.md)| Conference to create | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\ConferenceResult**](../Model/ConferenceResult.md)
+[**\OpenAPI\Client\Model\ConferenceResult**](../Model/ConferenceResult.md)
 
 ### Authorization
 
@@ -181,7 +242,7 @@ Name | Type | Description  | Notes
 
 ## createAQueue
 
-> \FreeClimb\PerCL\QueueResult createAQueue($account_id, $queue_request)
+> \OpenAPI\Client\Model\QueueResult createAQueue($account_id, $queue_request)
 
 Create a Queue
 
@@ -193,19 +254,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this Queue.
-$queue_request = new \FreeClimb\PerCL\QueueRequest(); // \FreeClimb\PerCL\QueueRequest | Queue details used to create a queue
+$queue_request = new \OpenAPI\Client\Model\QueueRequest(); // \OpenAPI\Client\Model\QueueRequest | Queue details used to create a queue
 
 try {
     $result = $apiInstance->createAQueue($account_id, $queue_request);
@@ -222,11 +283,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this Queue. |
- **queue_request** | [**\FreeClimb\PerCL\QueueRequest**](../Model/QueueRequest.md)| Queue details used to create a queue | [optional]
+ **queue_request** | [**\OpenAPI\Client\Model\QueueRequest**](../Model/QueueRequest.md)| Queue details used to create a queue | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueResult**](../Model/QueueResult.md)
+[**\OpenAPI\Client\Model\QueueResult**](../Model/QueueResult.md)
 
 ### Authorization
 
@@ -244,7 +305,7 @@ Name | Type | Description  | Notes
 
 ## createAnApplication
 
-> \FreeClimb\PerCL\ApplicationResult createAnApplication($account_id, $application_request)
+> \OpenAPI\Client\Model\ApplicationResult createAnApplication($account_id, $application_request)
 
 Create an application
 
@@ -256,19 +317,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this application.
-$application_request = new \FreeClimb\PerCL\ApplicationRequest(); // \FreeClimb\PerCL\ApplicationRequest | Application Details
+$application_request = new \OpenAPI\Client\Model\ApplicationRequest(); // \OpenAPI\Client\Model\ApplicationRequest | Application Details
 
 try {
     $result = $apiInstance->createAnApplication($account_id, $application_request);
@@ -285,11 +346,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this application. |
- **application_request** | [**\FreeClimb\PerCL\ApplicationRequest**](../Model/ApplicationRequest.md)| Application Details | [optional]
+ **application_request** | [**\OpenAPI\Client\Model\ApplicationRequest**](../Model/ApplicationRequest.md)| Application Details | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\ApplicationResult**](../Model/ApplicationResult.md)
+[**\OpenAPI\Client\Model\ApplicationResult**](../Model/ApplicationResult.md)
 
 ### Authorization
 
@@ -319,12 +380,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -381,12 +442,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -443,12 +504,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -493,7 +554,7 @@ void (empty response body)
 
 ## dequeueAMember
 
-> \FreeClimb\PerCL\QueueMember dequeueAMember($account_id, $queue_id, $call_id, $dequeue_member_request)
+> \OpenAPI\Client\Model\QueueMember dequeueAMember($account_id, $queue_id, $call_id, $dequeue_member_request)
 
 Dequeue a Member
 
@@ -505,12 +566,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -519,7 +580,7 @@ $apiInstance = new FreeClimb\Api\DefaultApi(
 $account_id = 'account_id_example'; // string | ID of the account that created the Queue
 $queue_id = 'queue_id_example'; // string | String that uniquely identifies the Queue that the Member belongs to.
 $call_id = 'call_id_example'; // string | ID if the Call that the Member belongs to
-$dequeue_member_request = new \FreeClimb\PerCL\DequeueMemberRequest(); // \FreeClimb\PerCL\DequeueMemberRequest | Dequeue member request details
+$dequeue_member_request = new \OpenAPI\Client\Model\DequeueMemberRequest(); // \OpenAPI\Client\Model\DequeueMemberRequest | Dequeue member request details
 
 try {
     $result = $apiInstance->dequeueAMember($account_id, $queue_id, $call_id, $dequeue_member_request);
@@ -538,11 +599,11 @@ Name | Type | Description  | Notes
  **account_id** | **string**| ID of the account that created the Queue |
  **queue_id** | **string**| String that uniquely identifies the Queue that the Member belongs to. |
  **call_id** | **string**| ID if the Call that the Member belongs to |
- **dequeue_member_request** | [**\FreeClimb\PerCL\DequeueMemberRequest**](../Model/DequeueMemberRequest.md)| Dequeue member request details | [optional]
+ **dequeue_member_request** | [**\OpenAPI\Client\Model\DequeueMemberRequest**](../Model/DequeueMemberRequest.md)| Dequeue member request details | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueMember**](../Model/QueueMember.md)
+[**\OpenAPI\Client\Model\QueueMember**](../Model/QueueMember.md)
 
 ### Authorization
 
@@ -560,7 +621,7 @@ Name | Type | Description  | Notes
 
 ## dequeueHeadMember
 
-> \FreeClimb\PerCL\QueueMember dequeueHeadMember($account_id, $queue_id, $dequeue_member_request)
+> \OpenAPI\Client\Model\QueueMember dequeueHeadMember($account_id, $queue_id, $dequeue_member_request)
 
 Dequeue Head Member
 
@@ -572,12 +633,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -585,7 +646,7 @@ $apiInstance = new FreeClimb\Api\DefaultApi(
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this queue.
 $queue_id = 'queue_id_example'; // string | String that uniquely identifies this queue resource.
-$dequeue_member_request = new \FreeClimb\PerCL\DequeueMemberRequest(); // \FreeClimb\PerCL\DequeueMemberRequest | Dequeue head member request details
+$dequeue_member_request = new \OpenAPI\Client\Model\DequeueMemberRequest(); // \OpenAPI\Client\Model\DequeueMemberRequest | Dequeue head member request details
 
 try {
     $result = $apiInstance->dequeueHeadMember($account_id, $queue_id, $dequeue_member_request);
@@ -603,11 +664,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this queue. |
  **queue_id** | **string**| String that uniquely identifies this queue resource. |
- **dequeue_member_request** | [**\FreeClimb\PerCL\DequeueMemberRequest**](../Model/DequeueMemberRequest.md)| Dequeue head member request details | [optional]
+ **dequeue_member_request** | [**\OpenAPI\Client\Model\DequeueMemberRequest**](../Model/DequeueMemberRequest.md)| Dequeue head member request details | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueMember**](../Model/QueueMember.md)
+[**\OpenAPI\Client\Model\QueueMember**](../Model/QueueMember.md)
 
 ### Authorization
 
@@ -637,12 +698,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -688,7 +749,7 @@ Name | Type | Description  | Notes
 
 ## filterLogs
 
-> \FreeClimb\PerCL\LogList filterLogs($account_id, $filter_logs_request)
+> \OpenAPI\Client\Model\LogList filterLogs($account_id, $filter_logs_request)
 
 Filter Logs
 
@@ -700,19 +761,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account that this log was generated under.
-$filter_logs_request = new \FreeClimb\PerCL\FilterLogsRequest(); // \FreeClimb\PerCL\FilterLogsRequest | Filter logs request paramters
+$filter_logs_request = new \OpenAPI\Client\Model\FilterLogsRequest(); // \OpenAPI\Client\Model\FilterLogsRequest | Filter logs request paramters
 
 try {
     $result = $apiInstance->filterLogs($account_id, $filter_logs_request);
@@ -729,11 +790,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that this log was generated under. |
- **filter_logs_request** | [**\FreeClimb\PerCL\FilterLogsRequest**](../Model/FilterLogsRequest.md)| Filter logs request paramters | [optional]
+ **filter_logs_request** | [**\OpenAPI\Client\Model\FilterLogsRequest**](../Model/FilterLogsRequest.md)| Filter logs request paramters | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\LogList**](../Model/LogList.md)
+[**\OpenAPI\Client\Model\LogList**](../Model/LogList.md)
 
 ### Authorization
 
@@ -751,7 +812,7 @@ Name | Type | Description  | Notes
 
 ## getACall
 
-> \FreeClimb\PerCL\CallResult getACall($account_id, $call_id)
+> \OpenAPI\Client\Model\CallResult getACall($account_id, $call_id)
 
 Get a Call
 
@@ -763,12 +824,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -796,7 +857,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\CallResult**](../Model/CallResult.md)
+[**\OpenAPI\Client\Model\CallResult**](../Model/CallResult.md)
 
 ### Authorization
 
@@ -814,7 +875,7 @@ Name | Type | Description  | Notes
 
 ## getAConference
 
-> \FreeClimb\PerCL\ConferenceResult getAConference($account_id, $conference_id)
+> \OpenAPI\Client\Model\ConferenceResult getAConference($account_id, $conference_id)
 
 Get a Conference
 
@@ -826,12 +887,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -859,7 +920,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\ConferenceResult**](../Model/ConferenceResult.md)
+[**\OpenAPI\Client\Model\ConferenceResult**](../Model/ConferenceResult.md)
 
 ### Authorization
 
@@ -877,7 +938,7 @@ Name | Type | Description  | Notes
 
 ## getAMember
 
-> \FreeClimb\PerCL\QueueMember getAMember($account_id, $queue_id, $call_id)
+> \OpenAPI\Client\Model\QueueMember getAMember($account_id, $queue_id, $call_id)
 
 Get a Member
 
@@ -889,12 +950,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -924,7 +985,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueMember**](../Model/QueueMember.md)
+[**\OpenAPI\Client\Model\QueueMember**](../Model/QueueMember.md)
 
 ### Authorization
 
@@ -942,7 +1003,7 @@ Name | Type | Description  | Notes
 
 ## getAParticipant
 
-> \FreeClimb\PerCL\ConferenceParticipantResult getAParticipant($account_id, $conference_id, $call_id)
+> \OpenAPI\Client\Model\ConferenceParticipantResult getAParticipant($account_id, $conference_id, $call_id)
 
 Get a Participant
 
@@ -954,12 +1015,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -989,7 +1050,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\ConferenceParticipantResult**](../Model/ConferenceParticipantResult.md)
+[**\OpenAPI\Client\Model\ConferenceParticipantResult**](../Model/ConferenceParticipantResult.md)
 
 ### Authorization
 
@@ -1007,7 +1068,7 @@ Name | Type | Description  | Notes
 
 ## getAQueue
 
-> \FreeClimb\PerCL\QueueResult getAQueue($account_id, $queue_id)
+> \OpenAPI\Client\Model\QueueResult getAQueue($account_id, $queue_id)
 
 Get a Queue
 
@@ -1019,12 +1080,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1052,7 +1113,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueResult**](../Model/QueueResult.md)
+[**\OpenAPI\Client\Model\QueueResult**](../Model/QueueResult.md)
 
 ### Authorization
 
@@ -1070,7 +1131,7 @@ Name | Type | Description  | Notes
 
 ## getARecording
 
-> \FreeClimb\PerCL\RecordingResult getARecording($account_id, $recording_id)
+> \OpenAPI\Client\Model\RecordingResult getARecording($account_id, $recording_id)
 
 Get a Recording
 
@@ -1082,12 +1143,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1115,68 +1176,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\RecordingResult**](../Model/RecordingResult.md)
-
-### Authorization
-
-[fc](../../README.md#fc)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
-
-
-## getAnAccount
-
-> \FreeClimb\PerCL\AccountResult getAnAccount($account_id)
-
-Get an Account
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
-
-$apiInstance = new FreeClimb\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$account_id = 'account_id_example'; // string | String that uniquely identifies this account resource.
-
-try {
-    $result = $apiInstance->getAnAccount($account_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getAnAccount: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **account_id** | **string**| String that uniquely identifies this account resource. |
-
-### Return type
-
-[**\FreeClimb\PerCL\AccountResult**](../Model/AccountResult.md)
+[**\OpenAPI\Client\Model\RecordingResult**](../Model/RecordingResult.md)
 
 ### Authorization
 
@@ -1194,7 +1194,7 @@ Name | Type | Description  | Notes
 
 ## getAnApplication
 
-> \FreeClimb\PerCL\ApplicationResult getAnApplication($account_id, $application_id)
+> \OpenAPI\Client\Model\ApplicationResult getAnApplication($account_id, $application_id)
 
 Get an Application
 
@@ -1206,12 +1206,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1239,7 +1239,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\ApplicationResult**](../Model/ApplicationResult.md)
+[**\OpenAPI\Client\Model\ApplicationResult**](../Model/ApplicationResult.md)
 
 ### Authorization
 
@@ -1257,7 +1257,7 @@ Name | Type | Description  | Notes
 
 ## getAnIncomingNumber
 
-> \FreeClimb\PerCL\IncomingNumberResult getAnIncomingNumber($account_id, $phone_number_id)
+> \OpenAPI\Client\Model\IncomingNumberResult getAnIncomingNumber($account_id, $phone_number_id)
 
 Get an Incoming Number
 
@@ -1269,12 +1269,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1302,7 +1302,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\IncomingNumberResult**](../Model/IncomingNumberResult.md)
+[**\OpenAPI\Client\Model\IncomingNumberResult**](../Model/IncomingNumberResult.md)
 
 ### Authorization
 
@@ -1320,7 +1320,7 @@ Name | Type | Description  | Notes
 
 ## getAnSmsMessage
 
-> \FreeClimb\PerCL\MessageResult getAnSmsMessage($account_id, $message_id)
+> \OpenAPI\Client\Model\MessageResult getAnSmsMessage($account_id, $message_id)
 
 Get an SMS Message
 
@@ -1332,12 +1332,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1365,7 +1365,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\MessageResult**](../Model/MessageResult.md)
+[**\OpenAPI\Client\Model\MessageResult**](../Model/MessageResult.md)
 
 ### Authorization
 
@@ -1383,7 +1383,7 @@ Name | Type | Description  | Notes
 
 ## getHeadMember
 
-> \FreeClimb\PerCL\QueueMember getHeadMember($account_id, $queue_id)
+> \OpenAPI\Client\Model\QueueMember getHeadMember($account_id, $queue_id)
 
 Get Head Member
 
@@ -1395,12 +1395,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1428,7 +1428,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueMember**](../Model/QueueMember.md)
+[**\OpenAPI\Client\Model\QueueMember**](../Model/QueueMember.md)
 
 ### Authorization
 
@@ -1446,7 +1446,7 @@ Name | Type | Description  | Notes
 
 ## listActiveQueues
 
-> \FreeClimb\PerCL\QueueList listActiveQueues($account_id, $alias)
+> \OpenAPI\Client\Model\QueueList listActiveQueues($account_id, $alias)
 
 List Active Queues
 
@@ -1458,12 +1458,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1491,7 +1491,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueList**](../Model/QueueList.md)
+[**\OpenAPI\Client\Model\QueueList**](../Model/QueueList.md)
 
 ### Authorization
 
@@ -1509,7 +1509,7 @@ Name | Type | Description  | Notes
 
 ## listAllAccountLogs
 
-> \FreeClimb\PerCL\LogList listAllAccountLogs($account_id)
+> \OpenAPI\Client\Model\LogList listAllAccountLogs($account_id)
 
 List All Account Logs
 
@@ -1521,12 +1521,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1552,7 +1552,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\LogList**](../Model/LogList.md)
+[**\OpenAPI\Client\Model\LogList**](../Model/LogList.md)
 
 ### Authorization
 
@@ -1570,7 +1570,7 @@ Name | Type | Description  | Notes
 
 ## listAnApplication
 
-> \FreeClimb\PerCL\ApplicationList listAnApplication($account_id, $alias)
+> \OpenAPI\Client\Model\ApplicationList listAnApplication($account_id, $alias)
 
 List applications
 
@@ -1582,12 +1582,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1615,7 +1615,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\ApplicationList**](../Model/ApplicationList.md)
+[**\OpenAPI\Client\Model\ApplicationList**](../Model/ApplicationList.md)
 
 ### Authorization
 
@@ -1633,7 +1633,7 @@ Name | Type | Description  | Notes
 
 ## listAvailableNumbers
 
-> \FreeClimb\PerCL\AvailableNumberList listAvailableNumbers($alias, $phone_number)
+> \OpenAPI\Client\Model\AvailableNumberList listAvailableNumbers($alias, $phone_number)
 
 List available numbers
 
@@ -1645,12 +1645,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1678,7 +1678,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\AvailableNumberList**](../Model/AvailableNumberList.md)
+[**\OpenAPI\Client\Model\AvailableNumberList**](../Model/AvailableNumberList.md)
 
 ### Authorization
 
@@ -1696,7 +1696,7 @@ Name | Type | Description  | Notes
 
 ## listCallLogs
 
-> \FreeClimb\PerCL\LogList listCallLogs($account_id, $call_id)
+> \OpenAPI\Client\Model\LogList listCallLogs($account_id, $call_id)
 
 List Call Logs
 
@@ -1708,12 +1708,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1741,7 +1741,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\LogList**](../Model/LogList.md)
+[**\OpenAPI\Client\Model\LogList**](../Model/LogList.md)
 
 ### Authorization
 
@@ -1759,7 +1759,7 @@ Name | Type | Description  | Notes
 
 ## listCallRecordings
 
-> \FreeClimb\PerCL\RecordingList listCallRecordings($account_id, $call_id, $date_created)
+> \OpenAPI\Client\Model\RecordingList listCallRecordings($account_id, $call_id, $date_created)
 
 List Call Recordings
 
@@ -1771,12 +1771,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1806,7 +1806,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\RecordingList**](../Model/RecordingList.md)
+[**\OpenAPI\Client\Model\RecordingList**](../Model/RecordingList.md)
 
 ### Authorization
 
@@ -1824,7 +1824,7 @@ Name | Type | Description  | Notes
 
 ## listCalls
 
-> \FreeClimb\PerCL\CallList listCalls($account_id, $to, $from, $status, $start_time, $end_time, $parent_call_id)
+> \OpenAPI\Client\Model\CallList listCalls($account_id, $to, $from, $status, $start_time, $end_time, $parent_call_id)
 
 List Calls
 
@@ -1836,12 +1836,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1879,7 +1879,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\CallList**](../Model/CallList.md)
+[**\OpenAPI\Client\Model\CallList**](../Model/CallList.md)
 
 ### Authorization
 
@@ -1897,7 +1897,7 @@ Name | Type | Description  | Notes
 
 ## listConferences
 
-> \FreeClimb\PerCL\ConferenceList listConferences($account_id, $status, $alias, $date_created, $date_updated)
+> \OpenAPI\Client\Model\ConferenceList listConferences($account_id, $status, $alias, $date_created, $date_updated)
 
 List Conferences
 
@@ -1909,12 +1909,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -1948,7 +1948,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\ConferenceList**](../Model/ConferenceList.md)
+[**\OpenAPI\Client\Model\ConferenceList**](../Model/ConferenceList.md)
 
 ### Authorization
 
@@ -1966,7 +1966,7 @@ Name | Type | Description  | Notes
 
 ## listIncomingNumbers
 
-> \FreeClimb\PerCL\IncomingNumberList listIncomingNumbers($account_id, $phone_number, $alias)
+> \OpenAPI\Client\Model\IncomingNumberList listIncomingNumbers($account_id, $phone_number, $alias)
 
 List Incoming Numbers
 
@@ -1978,12 +1978,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2013,7 +2013,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\IncomingNumberList**](../Model/IncomingNumberList.md)
+[**\OpenAPI\Client\Model\IncomingNumberList**](../Model/IncomingNumberList.md)
 
 ### Authorization
 
@@ -2031,7 +2031,7 @@ Name | Type | Description  | Notes
 
 ## listMembers
 
-> \FreeClimb\PerCL\QueueMemberList listMembers($account_id, $queue_id)
+> \OpenAPI\Client\Model\QueueMemberList listMembers($account_id, $queue_id)
 
 List Members
 
@@ -2043,12 +2043,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2076,7 +2076,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueMemberList**](../Model/QueueMemberList.md)
+[**\OpenAPI\Client\Model\QueueMemberList**](../Model/QueueMemberList.md)
 
 ### Authorization
 
@@ -2094,7 +2094,7 @@ Name | Type | Description  | Notes
 
 ## listParticipants
 
-> \FreeClimb\PerCL\ConferenceParticipantList listParticipants($account_id, $conference_id, $talk, $listen)
+> \OpenAPI\Client\Model\ConferenceParticipantList listParticipants($account_id, $conference_id, $talk, $listen)
 
 List Participants
 
@@ -2106,12 +2106,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2143,7 +2143,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\ConferenceParticipantList**](../Model/ConferenceParticipantList.md)
+[**\OpenAPI\Client\Model\ConferenceParticipantList**](../Model/ConferenceParticipantList.md)
 
 ### Authorization
 
@@ -2161,7 +2161,7 @@ Name | Type | Description  | Notes
 
 ## listRecordings
 
-> \FreeClimb\PerCL\RecordingList listRecordings($account_id, $call_id, $conference_id, $date_created)
+> \OpenAPI\Client\Model\RecordingList listRecordings($account_id, $call_id, $conference_id, $date_created)
 
 List Recordings
 
@@ -2173,12 +2173,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2210,7 +2210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\RecordingList**](../Model/RecordingList.md)
+[**\OpenAPI\Client\Model\RecordingList**](../Model/RecordingList.md)
 
 ### Authorization
 
@@ -2228,7 +2228,7 @@ Name | Type | Description  | Notes
 
 ## listSmsMessages
 
-> \FreeClimb\PerCL\MessagesList listSmsMessages($account_id2, $to, $from, $begin_time, $end_time, $direction, $account_id)
+> \OpenAPI\Client\Model\MessagesList listSmsMessages($account_id, $to, $from, $begin_time, $end_time, $direction, $account_id)
 
 List SMS Messages
 
@@ -2240,18 +2240,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
-$account_id2 = 'account_id_example'; // string | ID of the account that sent this message.
+$account_id = 'account_id_example'; // string | ID of the account that sent this message.
 $to = 'to_example'; // string | Only show Messages to this phone number.
 $from = 'from_example'; // string | Only show Messages from this phone number.
 $begin_time = 'begin_time_example'; // string | Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*.
@@ -2260,7 +2260,7 @@ $direction = 'direction_example'; // string | Either `inbound` or `outbound`. On
 $account_id = 'account_id_example'; // string | String that uniquely identifies this account resource.
 
 try {
-    $result = $apiInstance->listSmsMessages($account_id2, $to, $from, $begin_time, $end_time, $direction, $account_id);
+    $result = $apiInstance->listSmsMessages($account_id, $to, $from, $begin_time, $end_time, $direction, $account_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->listSmsMessages: ', $e->getMessage(), PHP_EOL;
@@ -2273,7 +2273,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **account_id2** | **string**| ID of the account that sent this message. |
+ **account_id** | **string**| ID of the account that sent this message. |
  **to** | **string**| Only show Messages to this phone number. | [optional]
  **from** | **string**| Only show Messages from this phone number. | [optional]
  **begin_time** | **string**| Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. | [optional]
@@ -2283,7 +2283,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\FreeClimb\PerCL\MessagesList**](../Model/MessagesList.md)
+[**\OpenAPI\Client\Model\MessagesList**](../Model/MessagesList.md)
 
 ### Authorization
 
@@ -2301,7 +2301,7 @@ Name | Type | Description  | Notes
 
 ## makeACall
 
-> \FreeClimb\PerCL\CallResult makeACall($account_id, $make_call_request)
+> \OpenAPI\Client\Model\CallResult makeACall($account_id, $make_call_request)
 
 Make a Call
 
@@ -2313,19 +2313,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this call.
-$make_call_request = new \FreeClimb\PerCL\MakeCallRequest(); // \FreeClimb\PerCL\MakeCallRequest | Call details for making a call
+$make_call_request = new \OpenAPI\Client\Model\MakeCallRequest(); // \OpenAPI\Client\Model\MakeCallRequest | Call details for making a call
 
 try {
     $result = $apiInstance->makeACall($account_id, $make_call_request);
@@ -2342,11 +2342,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this call. |
- **make_call_request** | [**\FreeClimb\PerCL\MakeCallRequest**](../Model/MakeCallRequest.md)| Call details for making a call | [optional]
+ **make_call_request** | [**\OpenAPI\Client\Model\MakeCallRequest**](../Model/MakeCallRequest.md)| Call details for making a call | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\CallResult**](../Model/CallResult.md)
+[**\OpenAPI\Client\Model\CallResult**](../Model/CallResult.md)
 
 ### Authorization
 
@@ -2376,12 +2376,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2428,7 +2428,7 @@ void (empty response body)
 
 ## sendAnSmsMessage
 
-> \FreeClimb\PerCL\MessageResult sendAnSmsMessage($account_id, $message_request)
+> \OpenAPI\Client\Model\MessageResult sendAnSmsMessage($account_id, $message_request)
 
 Send an SMS Message
 
@@ -2440,19 +2440,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | ID of the account that sent this message.
-$message_request = new \FreeClimb\PerCL\MessageRequest(); // \FreeClimb\PerCL\MessageRequest | Details to create a message
+$message_request = new \OpenAPI\Client\Model\MessageRequest(); // \OpenAPI\Client\Model\MessageRequest | Details to create a message
 
 try {
     $result = $apiInstance->sendAnSmsMessage($account_id, $message_request);
@@ -2469,11 +2469,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that sent this message. |
- **message_request** | [**\FreeClimb\PerCL\MessageRequest**](../Model/MessageRequest.md)| Details to create a message | [optional]
+ **message_request** | [**\OpenAPI\Client\Model\MessageRequest**](../Model/MessageRequest.md)| Details to create a message | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\MessageResult**](../Model/MessageResult.md)
+[**\OpenAPI\Client\Model\MessageResult**](../Model/MessageResult.md)
 
 ### Authorization
 
@@ -2503,12 +2503,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2554,7 +2554,7 @@ Name | Type | Description  | Notes
 
 ## updateAConference
 
-> \FreeClimb\PerCL\ConferenceResult updateAConference($account_id, $conference_id, $update_conference_request)
+> \OpenAPI\Client\Model\ConferenceResult updateAConference($account_id, $conference_id, $update_conference_request)
 
 Update a Conference
 
@@ -2566,12 +2566,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2579,7 +2579,7 @@ $apiInstance = new FreeClimb\Api\DefaultApi(
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this conference.
 $conference_id = 'conference_id_example'; // string | String that uniquely identifies this conference resource.
-$update_conference_request = new \FreeClimb\PerCL\UpdateConferenceRequest(); // \FreeClimb\PerCL\UpdateConferenceRequest | Conference Details to update
+$update_conference_request = new \OpenAPI\Client\Model\UpdateConferenceRequest(); // \OpenAPI\Client\Model\UpdateConferenceRequest | Conference Details to update
 
 try {
     $result = $apiInstance->updateAConference($account_id, $conference_id, $update_conference_request);
@@ -2597,11 +2597,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this conference. |
  **conference_id** | **string**| String that uniquely identifies this conference resource. |
- **update_conference_request** | [**\FreeClimb\PerCL\UpdateConferenceRequest**](../Model/UpdateConferenceRequest.md)| Conference Details to update | [optional]
+ **update_conference_request** | [**\OpenAPI\Client\Model\UpdateConferenceRequest**](../Model/UpdateConferenceRequest.md)| Conference Details to update | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\ConferenceResult**](../Model/ConferenceResult.md)
+[**\OpenAPI\Client\Model\ConferenceResult**](../Model/ConferenceResult.md)
 
 ### Authorization
 
@@ -2631,12 +2631,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2644,7 +2644,7 @@ $apiInstance = new FreeClimb\Api\DefaultApi(
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this call.
 $call_id = 'call_id_example'; // string | String that uniquely identifies this call resource.
-$update_call_request = new \FreeClimb\PerCL\UpdateCallRequest(); // \FreeClimb\PerCL\UpdateCallRequest | Call details to update
+$update_call_request = new \OpenAPI\Client\Model\UpdateCallRequest(); // \OpenAPI\Client\Model\UpdateCallRequest | Call details to update
 
 try {
     $apiInstance->updateALiveCall($account_id, $call_id, $update_call_request);
@@ -2661,7 +2661,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this call. |
  **call_id** | **string**| String that uniquely identifies this call resource. |
- **update_call_request** | [**\FreeClimb\PerCL\UpdateCallRequest**](../Model/UpdateCallRequest.md)| Call details to update | [optional]
+ **update_call_request** | [**\OpenAPI\Client\Model\UpdateCallRequest**](../Model/UpdateCallRequest.md)| Call details to update | [optional]
 
 ### Return type
 
@@ -2683,7 +2683,7 @@ void (empty response body)
 
 ## updateAParticipant
 
-> \FreeClimb\PerCL\ConferenceParticipantResult updateAParticipant($account_id, $conference_id, $call_id, $update_conference_participant_request)
+> \OpenAPI\Client\Model\ConferenceParticipantResult updateAParticipant($account_id, $conference_id, $call_id, $update_conference_participant_request)
 
 Update a Participant
 
@@ -2695,12 +2695,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2709,7 +2709,7 @@ $apiInstance = new FreeClimb\Api\DefaultApi(
 $account_id = 'account_id_example'; // string | ID of the account that created this participant.
 $conference_id = 'conference_id_example'; // string | ID of the conference this participant is in.
 $call_id = 'call_id_example'; // string | ID of the Call associated with this participant.
-$update_conference_participant_request = new \FreeClimb\PerCL\UpdateConferenceParticipantRequest(); // \FreeClimb\PerCL\UpdateConferenceParticipantRequest | Conference participant details to update
+$update_conference_participant_request = new \OpenAPI\Client\Model\UpdateConferenceParticipantRequest(); // \OpenAPI\Client\Model\UpdateConferenceParticipantRequest | Conference participant details to update
 
 try {
     $result = $apiInstance->updateAParticipant($account_id, $conference_id, $call_id, $update_conference_participant_request);
@@ -2728,11 +2728,11 @@ Name | Type | Description  | Notes
  **account_id** | **string**| ID of the account that created this participant. |
  **conference_id** | **string**| ID of the conference this participant is in. |
  **call_id** | **string**| ID of the Call associated with this participant. |
- **update_conference_participant_request** | [**\FreeClimb\PerCL\UpdateConferenceParticipantRequest**](../Model/UpdateConferenceParticipantRequest.md)| Conference participant details to update | [optional]
+ **update_conference_participant_request** | [**\OpenAPI\Client\Model\UpdateConferenceParticipantRequest**](../Model/UpdateConferenceParticipantRequest.md)| Conference participant details to update | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\ConferenceParticipantResult**](../Model/ConferenceParticipantResult.md)
+[**\OpenAPI\Client\Model\ConferenceParticipantResult**](../Model/ConferenceParticipantResult.md)
 
 ### Authorization
 
@@ -2750,7 +2750,7 @@ Name | Type | Description  | Notes
 
 ## updateAQueue
 
-> \FreeClimb\PerCL\QueueResult updateAQueue($account_id, $queue_id, $queue_request)
+> \OpenAPI\Client\Model\QueueResult updateAQueue($account_id, $queue_id, $queue_request)
 
 Update a Queue
 
@@ -2762,12 +2762,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2775,7 +2775,7 @@ $apiInstance = new FreeClimb\Api\DefaultApi(
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this queue.
 $queue_id = 'queue_id_example'; // string | A string that uniquely identifies this Queue resource.
-$queue_request = new \FreeClimb\PerCL\QueueRequest(); // \FreeClimb\PerCL\QueueRequest | Queue Details to update
+$queue_request = new \OpenAPI\Client\Model\QueueRequest(); // \OpenAPI\Client\Model\QueueRequest | Queue Details to update
 
 try {
     $result = $apiInstance->updateAQueue($account_id, $queue_id, $queue_request);
@@ -2793,11 +2793,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this queue. |
  **queue_id** | **string**| A string that uniquely identifies this Queue resource. |
- **queue_request** | [**\FreeClimb\PerCL\QueueRequest**](../Model/QueueRequest.md)| Queue Details to update | [optional]
+ **queue_request** | [**\OpenAPI\Client\Model\QueueRequest**](../Model/QueueRequest.md)| Queue Details to update | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\QueueResult**](../Model/QueueResult.md)
+[**\OpenAPI\Client\Model\QueueResult**](../Model/QueueResult.md)
 
 ### Authorization
 
@@ -2827,19 +2827,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
     $config
 );
 $account_id = 'account_id_example'; // string | String that uniquely identifies this account resource.
-$account_request = new \FreeClimb\PerCL\AccountRequest(); // \FreeClimb\PerCL\AccountRequest | Account details to update
+$account_request = new \OpenAPI\Client\Model\AccountRequest(); // \OpenAPI\Client\Model\AccountRequest | Account details to update
 
 try {
     $apiInstance->updateAnAccount($account_id, $account_request);
@@ -2855,7 +2855,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| String that uniquely identifies this account resource. |
- **account_request** | [**\FreeClimb\PerCL\AccountRequest**](../Model/AccountRequest.md)| Account details to update | [optional]
+ **account_request** | [**\OpenAPI\Client\Model\AccountRequest**](../Model/AccountRequest.md)| Account details to update | [optional]
 
 ### Return type
 
@@ -2877,7 +2877,7 @@ void (empty response body)
 
 ## updateAnApplication
 
-> \FreeClimb\PerCL\ApplicationResult updateAnApplication($account_id, $application_id, $application_request)
+> \OpenAPI\Client\Model\ApplicationResult updateAnApplication($account_id, $application_id, $application_request)
 
 Update an application
 
@@ -2889,12 +2889,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2902,7 +2902,7 @@ $apiInstance = new FreeClimb\Api\DefaultApi(
 );
 $account_id = 'account_id_example'; // string | ID of the account that created this application.
 $application_id = 'application_id_example'; // string | A string that uniquely identifies this application resource.
-$application_request = new \FreeClimb\PerCL\ApplicationRequest(); // \FreeClimb\PerCL\ApplicationRequest | Application details to update.
+$application_request = new \OpenAPI\Client\Model\ApplicationRequest(); // \OpenAPI\Client\Model\ApplicationRequest | Application details to update.
 
 try {
     $result = $apiInstance->updateAnApplication($account_id, $application_id, $application_request);
@@ -2920,11 +2920,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that created this application. |
  **application_id** | **string**| A string that uniquely identifies this application resource. |
- **application_request** | [**\FreeClimb\PerCL\ApplicationRequest**](../Model/ApplicationRequest.md)| Application details to update. | [optional]
+ **application_request** | [**\OpenAPI\Client\Model\ApplicationRequest**](../Model/ApplicationRequest.md)| Application details to update. | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\ApplicationResult**](../Model/ApplicationResult.md)
+[**\OpenAPI\Client\Model\ApplicationResult**](../Model/ApplicationResult.md)
 
 ### Authorization
 
@@ -2942,7 +2942,7 @@ Name | Type | Description  | Notes
 
 ## updateAnIncomingNumber
 
-> \FreeClimb\PerCL\IncomingNumberResult updateAnIncomingNumber($account_id, $phone_number_id, $incoming_number_request)
+> \OpenAPI\Client\Model\IncomingNumberResult updateAnIncomingNumber($account_id, $phone_number_id, $incoming_number_request)
 
 Update an Incoming Number
 
@@ -2954,12 +2954,12 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 
 // Configure HTTP basic authorization: fc
-$config = FreeClimb\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
-$apiInstance = new FreeClimb\Api\DefaultApi(
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -2967,7 +2967,7 @@ $apiInstance = new FreeClimb\Api\DefaultApi(
 );
 $account_id = 'account_id_example'; // string | ID of the account that owns this phone number.
 $phone_number_id = 'phone_number_id_example'; // string | String that uniquely identifies this phone number resource.
-$incoming_number_request = new \FreeClimb\PerCL\IncomingNumberRequest(); // \FreeClimb\PerCL\IncomingNumberRequest | Incoming Number details to update
+$incoming_number_request = new \OpenAPI\Client\Model\IncomingNumberRequest(); // \OpenAPI\Client\Model\IncomingNumberRequest | Incoming Number details to update
 
 try {
     $result = $apiInstance->updateAnIncomingNumber($account_id, $phone_number_id, $incoming_number_request);
@@ -2985,11 +2985,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **account_id** | **string**| ID of the account that owns this phone number. |
  **phone_number_id** | **string**| String that uniquely identifies this phone number resource. |
- **incoming_number_request** | [**\FreeClimb\PerCL\IncomingNumberRequest**](../Model/IncomingNumberRequest.md)| Incoming Number details to update | [optional]
+ **incoming_number_request** | [**\OpenAPI\Client\Model\IncomingNumberRequest**](../Model/IncomingNumberRequest.md)| Incoming Number details to update | [optional]
 
 ### Return type
 
-[**\FreeClimb\PerCL\IncomingNumberResult**](../Model/IncomingNumberResult.md)
+[**\OpenAPI\Client\Model\IncomingNumberResult**](../Model/IncomingNumberResult.md)
 
 ### Authorization
 

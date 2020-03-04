@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **grammar_file** | **string** |  | [optional] 
 **grammar_rule** | **bool** |  | [optional] 
 **play_beep** | **string** |  | [optional] 
-**prompts** | [**\FreeClimb\PerCL\PerCLCommand[]**](PerCLCommand.md) |  | [optional] 
+**prompts** | [**\OpenAPI\Client\Model\PerCLCommand[]**](PerCLCommand.md) |  | [optional] 
 **no_input_timeout_ms** | **int** |  | [optional] 
 **recognition_timeout_ms** | **int** |  | [optional] 
 **confidence_threshold** | **float** |  | [optional] 

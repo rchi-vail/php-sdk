@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **num_pages** | **int** | Total number of pages | [optional] 
 **page_size** | **int** | Number of items per page | [optional] 
 **next_page_uri** | **string** | Uri to retrieve the next page of items | [optional] 
-**messages** | [**\FreeClimb\PerCL\MessageResult[]**](MessageResult.md) | Array of messages | [optional] 
+**messages** | [**\OpenAPI\Client\Model\MessageResult[]**](MessageResult.md) | Array of messages | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

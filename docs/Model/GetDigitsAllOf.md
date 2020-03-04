@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **initial_timeout_ms** | **string** |  | [optional] 
 **max_digits** | **int** |  | [optional] 
 **min_digits** | **int** |  | [optional] 
-**prompts** | [**\FreeClimb\PerCL\PerCLCommand[]**](PerCLCommand.md) |  | [optional] 
+**prompts** | [**\OpenAPI\Client\Model\PerCLCommand[]**](PerCLCommand.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
