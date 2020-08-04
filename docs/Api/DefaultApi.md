@@ -4,6 +4,7 @@ All URIs are relative to *https://www.freeclimb.com/apiserver*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getAnAccount**](DefaultApi.md#getAnAccount) | **GET** /Accounts/{accountId} | Get an Account
 [**buyAPhoneNumber**](DefaultApi.md#buyAPhoneNumber) | **POST** /Accounts/{accountId}/IncomingPhoneNumbers | Buy a Phone Number
 [**createAConference**](DefaultApi.md#createAConference) | **POST** /Accounts/{accountId}/Conferences | Create a Conference
 [**createAQueue**](DefaultApi.md#createAQueue) | **POST** /Accounts/{accountId}/Queues | Create a Queue
@@ -21,7 +22,6 @@ Method | HTTP request | Description
 [**getAParticipant**](DefaultApi.md#getAParticipant) | **GET** /Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId} | Get a Participant
 [**getAQueue**](DefaultApi.md#getAQueue) | **GET** /Accounts/{accountId}/Queues/{queueId} | Get a Queue
 [**getARecording**](DefaultApi.md#getARecording) | **GET** /Accounts/{accountId}/Recordings/{recordingId} | Get a Recording
-[**getAnAccount**](DefaultApi.md#getAnAccount) | **GET** /Accounts/{accountId} | Get an Account
 [**getAnApplication**](DefaultApi.md#getAnApplication) | **GET** /Accounts/{accountId}/Applications/{applicationId} | Get an Application
 [**getAnIncomingNumber**](DefaultApi.md#getAnIncomingNumber) | **GET** /Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId} | Get an Incoming Number
 [**getAnSmsMessage**](DefaultApi.md#getAnSmsMessage) | **GET** /Accounts/{accountId}/Messages/{messageId} | Get an SMS Message
@@ -53,6 +53,63 @@ Method | HTTP request | Description
 
 
 
+## getAnAccount
+
+> \OpenAPI\Client\Model\AccountResult getAnAccount()
+
+Get an Account
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure HTTP basic authorization: fc
+$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
+
+
+$apiInstance = new OpenAPI\Client\Api\DefaultApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getAnAccount();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->getAnAccount: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\OpenAPI\Client\Model\AccountResult**](../Model/AccountResult.md)
+
+### Authorization
+
+[fc](../../README.md#fc)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to README]](../../README.md)
+
+
 ## buyAPhoneNumber
 
 > \OpenAPI\Client\Model\IncomingNumberResult buyAPhoneNumber($buy_incoming_number_request)
@@ -68,8 +125,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -129,8 +186,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -190,8 +247,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -251,8 +308,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -312,8 +369,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -372,8 +429,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -432,8 +489,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -492,8 +549,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -555,8 +612,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -616,8 +673,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -677,8 +734,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -738,8 +795,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -799,8 +856,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -860,8 +917,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -923,8 +980,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -986,8 +1043,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1047,8 +1104,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1093,63 +1150,6 @@ Name | Type | Description  | Notes
 [[Back to README]](../../README.md)
 
 
-## getAnAccount
-
-> \OpenAPI\Client\Model\AccountResult getAnAccount()
-
-Get an Account
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure HTTP basic authorization: fc
-$config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
-
-
-$apiInstance = new OpenAPI\Client\Api\DefaultApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-
-try {
-    $result = $apiInstance->getAnAccount();
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling DefaultApi->getAnAccount: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-This endpoint does not need any parameter.
-
-### Return type
-
-[**\OpenAPI\Client\Model\AccountResult**](../Model/AccountResult.md)
-
-### Authorization
-
-[fc](../../README.md#fc)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
-[[Back to README]](../../README.md)
-
-
 ## getAnApplication
 
 > \OpenAPI\Client\Model\ApplicationResult getAnApplication($application_id)
@@ -1165,8 +1165,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1226,8 +1226,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1287,8 +1287,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1348,8 +1348,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1409,8 +1409,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1470,8 +1470,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1527,8 +1527,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1588,8 +1588,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1651,8 +1651,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1712,8 +1712,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1775,8 +1775,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1846,8 +1846,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1913,8 +1913,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -1976,8 +1976,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2037,8 +2037,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2102,8 +2102,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2167,8 +2167,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2238,8 +2238,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2299,8 +2299,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2361,8 +2361,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2422,8 +2422,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2483,8 +2483,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2546,8 +2546,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2608,8 +2608,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2673,8 +2673,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2736,8 +2736,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2796,8 +2796,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
@@ -2859,8 +2859,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = OpenAPI\Client\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('ACCOUNT_ID')
+              ->setPassword('AUTH_TOKEN');
 
 
 $apiInstance = new OpenAPI\Client\Api\DefaultApi(
