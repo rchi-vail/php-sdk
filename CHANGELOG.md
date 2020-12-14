@@ -7,6 +7,16 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="1.0.2"></a>
+## [2.0.3] - 2020-12-16
+### Added
+- Additional message statuses for TFN functionality
+
+<a name="1.0.1"></a>
+## [2.0.2] - 2020-08-04
+### Added
+- Add `privacyMode` option
+
 <a name="1.2.1"></a>
 ## [1.2.1] - 2020-10-14
 ### Added
