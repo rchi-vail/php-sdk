@@ -7,6 +7,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="1.1.0"></a>
+## [1.1.0] - 2020-12-15
+### Added
+- Add `Reject` PerCL command
+- Add `Hangup` PerCL command
+
 <a name="1.0.2"></a>
 ## [1.0.2] - 2020-12-16
 ### Added

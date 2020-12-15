@@ -1,6 +1,6 @@
 <?php
 /**
- * RedirectAllOf
+ * RejectAllOf
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
- * RedirectAllOf Class Doc Comment
+ * RejectAllOf Class Doc Comment
  *
  * @category Class
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class RedirectAllOf implements ModelInterface, ArrayAccess
+class RejectAllOf implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Redirect_allOf';
+    protected static $openAPIModelName = 'Reject_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,7 +57,7 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPITypes = [
-        'action_url' => 'string'
+        'reason' => 'string'
     ];
 
     /**
@@ -66,7 +66,7 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'action_url' => null
+        'reason' => null
     ];
 
     /**
@@ -96,7 +96,7 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'action_url' => 'actionUrl'
+        'reason' => 'reason'
     ];
 
     /**
@@ -105,7 +105,7 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'action_url' => 'setActionUrl'
+        'reason' => 'setReason'
     ];
 
     /**
@@ -114,7 +114,7 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'action_url' => 'getActionUrl'
+        'reason' => 'getReason'
     ];
 
     /**
@@ -177,7 +177,7 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['action_url'] = isset($data['action_url']) ? $data['action_url'] : null;
+        $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
     }
 
     /**
@@ -189,9 +189,6 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if ($this->container['action_url'] === null) {
-            $invalidProperties[] = "'action_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -208,25 +205,25 @@ class RedirectAllOf implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets action_url
+     * Gets reason
      *
-     * @return string
+     * @return string|null
      */
-    public function getActionUrl()
+    public function getReason()
     {
-        return $this->container['action_url'];
+        return $this->container['reason'];
     }
 
     /**
-     * Sets action_url
+     * Sets reason
      *
-     * @param string $action_url URL to request a new PerCL script to continue with the current Call's processing. When `Redirect` invokes the `actionUrl`, an `inbound` Webhook is sent. This request therefore looks identical to the initial request (made to the `voiceUrl` of the number that was called) for an inbound Call.
+     * @param string|null $reason Reason for the rejection. This can be any string value. In general, applications should use a set of enumerated values that are predefined to cover all exit points of the call flows for the given application.
      *
      * @return $this
      */
-    public function setActionUrl($action_url)
+    public function setReason($reason)
     {
-        $this->container['action_url'] = $action_url;
+        $this->container['reason'] = $reason;
 
         return $this;
     }
