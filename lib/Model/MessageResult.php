@@ -221,6 +221,9 @@ class MessageResult implements ModelInterface, ArrayAccess
     const STATUS_FAILED = 'failed';
     const STATUS_RECEIVED = 'received';
     const STATUS_UNDELIVERED = 'undelivered';
+    const STATUS_EXPIRED = 'expired';
+    const STATUS_DELETED = 'deleted';
+    const STATUS_UNKNOWN = 'unknown';
     
 
     
@@ -240,6 +243,9 @@ class MessageResult implements ModelInterface, ArrayAccess
             self::STATUS_FAILED,
             self::STATUS_RECEIVED,
             self::STATUS_UNDELIVERED,
+            self::STATUS_EXPIRED,
+            self::STATUS_DELETED,
+            self::STATUS_UNKNOWN,
         ];
     }
     
@@ -462,7 +468,7 @@ class MessageResult implements ModelInterface, ArrayAccess
     /**
      * Sets status
      *
-     * @param string|null $status Indicates the state of the message through the message lifecycle including: new, queued, rejected, sending, sent, failed, received
+     * @param string|null $status Indicates the state of the message through the message lifecycle including: new, queued, rejected, sending, sent, failed, received, undelivered, expired, deleted, and unknown
      *
      * @return $this
      */
