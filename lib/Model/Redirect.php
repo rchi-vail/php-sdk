@@ -36,7 +36,7 @@ use \OpenAPI\Client\ObjectSerializer;
  * Redirect Class Doc Comment
  *
  * @category Class
- * @description The &#x60;Reject&#x60; command blocks an incoming Call. Using &#x60;Reject&#x60; is the only way to prevent FreeClimb from answering a Call. Any other response will result in an answered Call and your account will be billed.
+ * @description The &#x60;Redirect&#x60; command transfers control of a Call to the PerCL at a different URL. &#x60;Redirect&#x60; is a terminal command, so any actions following it are never executed. The maximum number of redirections allowed during the life time of a Call is 256. This is intended to prevent a Call from possibly looping infinitely due to errors in PerCL being generated.
  * @package  OpenAPI\Client
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -196,6 +196,9 @@ class Redirect extends PerclCommand
     {
         $invalidProperties = [];
 
+        if ($this->container['action_url'] === null) {
+            $invalidProperties[] = "'action_url' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -238,7 +241,7 @@ class Redirect extends PerclCommand
     /**
      * Gets action_url
      *
-     * @return string|null
+     * @return string
      */
     public function getActionUrl()
     {
@@ -248,7 +251,7 @@ class Redirect extends PerclCommand
     /**
      * Sets action_url
      *
-     * @param string|null $action_url Reason for the rejection. This can be any string value. In general, applications should use a set of enumerated values that are predefined to cover all exit points of the call flows for the given application.
+     * @param string $action_url URL to request a new PerCL script to continue with the current Call's processing. When `Redirect` invokes the `actionUrl`, an `inbound` Webhook is sent. This request therefore looks identical to the initial request (made to the `voiceUrl` of the number that was called) for an inbound Call.
      *
      * @return $this
      */
