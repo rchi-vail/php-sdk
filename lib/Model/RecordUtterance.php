@@ -28,8 +28,6 @@
  */
 
 namespace OpenAPI\Client\Model;
-
-use \ArrayAccess;
 use \OpenAPI\Client\ObjectSerializer;
 
 /**
@@ -58,13 +56,13 @@ class RecordUtterance extends PerclCommand
       * @var string[]
       */
     protected static $openAPITypes = [
-        'command' => 'string',
         'action_url' => 'string',
         'silence_timeout_ms' => 'int',
         'finish_on_key' => 'string',
         'max_length_sec' => 'int',
         'play_beep' => 'bool',
-        'auto_start' => 'bool'
+        'auto_start' => 'bool',
+        'privacy_mode' => 'bool'
     ];
 
     /**
@@ -73,13 +71,13 @@ class RecordUtterance extends PerclCommand
       * @var string[]
       */
     protected static $openAPIFormats = [
-        'command' => null,
         'action_url' => null,
         'silence_timeout_ms' => null,
         'finish_on_key' => null,
         'max_length_sec' => null,
         'play_beep' => null,
-        'auto_start' => null
+        'auto_start' => null,
+        'privacy_mode' => null
     ];
 
     /**
@@ -89,7 +87,7 @@ class RecordUtterance extends PerclCommand
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes;
+        return self::$openAPITypes + parent::openAPITypes();
     }
 
     /**
@@ -99,7 +97,7 @@ class RecordUtterance extends PerclCommand
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats;
+        return self::$openAPIFormats + parent::openAPIFormats();
     }
 
     /**
@@ -109,13 +107,13 @@ class RecordUtterance extends PerclCommand
      * @var string[]
      */
     protected static $attributeMap = [
-        'command' => 'command',
         'action_url' => 'actionUrl',
         'silence_timeout_ms' => 'silenceTimeoutMs',
         'finish_on_key' => 'finishOnKey',
         'max_length_sec' => 'maxLengthSec',
         'play_beep' => 'playBeep',
-        'auto_start' => 'autoStart'
+        'auto_start' => 'autoStart',
+        'privacy_mode' => 'privacyMode'
     ];
 
     /**
@@ -124,13 +122,13 @@ class RecordUtterance extends PerclCommand
      * @var string[]
      */
     protected static $setters = [
-        'command' => 'setCommand',
         'action_url' => 'setActionUrl',
         'silence_timeout_ms' => 'setSilenceTimeoutMs',
         'finish_on_key' => 'setFinishOnKey',
         'max_length_sec' => 'setMaxLengthSec',
         'play_beep' => 'setPlayBeep',
-        'auto_start' => 'setAutoStart'
+        'auto_start' => 'setAutoStart',
+        'privacy_mode' => 'setPrivacyMode'
     ];
 
     /**
@@ -139,13 +137,13 @@ class RecordUtterance extends PerclCommand
      * @var string[]
      */
     protected static $getters = [
-        'command' => 'getCommand',
         'action_url' => 'getActionUrl',
         'silence_timeout_ms' => 'getSilenceTimeoutMs',
         'finish_on_key' => 'getFinishOnKey',
         'max_length_sec' => 'getMaxLengthSec',
         'play_beep' => 'getPlayBeep',
-        'auto_start' => 'getAutoStart'
+        'auto_start' => 'getAutoStart',
+        'privacy_mode' => 'getPrivacyMode'
     ];
 
     /**
@@ -156,7 +154,7 @@ class RecordUtterance extends PerclCommand
      */
     public static function attributeMap()
     {
-        return self::$attributeMap;
+        return parent::attributeMap() + self::$attributeMap;
     }
 
     /**
@@ -166,7 +164,7 @@ class RecordUtterance extends PerclCommand
      */
     public static function setters()
     {
-        return self::$setters;
+        return parent::setters() + self::$setters;
     }
 
     /**
@@ -176,7 +174,7 @@ class RecordUtterance extends PerclCommand
      */
     public static function getters()
     {
-        return self::$getters;
+        return parent::getters() + self::$getters;
     }
 
     /**
@@ -193,12 +191,6 @@ class RecordUtterance extends PerclCommand
 
     
 
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
 
     /**
      * Constructor
@@ -208,13 +200,15 @@ class RecordUtterance extends PerclCommand
      */
     public function __construct(array $data = null)
     {
-        $this->container['command'] = isset($data['command']) ? $data['command'] : null;
+        parent::__construct($data);
+
         $this->container['action_url'] = isset($data['action_url']) ? $data['action_url'] : null;
         $this->container['silence_timeout_ms'] = isset($data['silence_timeout_ms']) ? $data['silence_timeout_ms'] : null;
         $this->container['finish_on_key'] = isset($data['finish_on_key']) ? $data['finish_on_key'] : null;
         $this->container['max_length_sec'] = isset($data['max_length_sec']) ? $data['max_length_sec'] : null;
         $this->container['play_beep'] = isset($data['play_beep']) ? $data['play_beep'] : null;
         $this->container['auto_start'] = isset($data['auto_start']) ? $data['auto_start'] : null;
+        $this->container['privacy_mode'] = isset($data['privacy_mode']) ? $data['privacy_mode'] : null;
     }
 
     /**
@@ -224,7 +218,7 @@ class RecordUtterance extends PerclCommand
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = [];
+        $invalidProperties = parent::listInvalidProperties();
 
         if ($this->container['action_url'] === null) {
             $invalidProperties[] = "'action_url' can't be null";
@@ -243,30 +237,6 @@ class RecordUtterance extends PerclCommand
         return count($this->listInvalidProperties()) === 0;
     }
 
-
-    /**
-     * Gets command
-     *
-     * @return string|null
-     */
-    public function getCommand()
-    {
-        return $this->container['command'];
-    }
-
-    /**
-     * Sets command
-     *
-     * @param string|null $command command
-     *
-     * @return $this
-     */
-    public function setCommand($command)
-    {
-        $this->container['command'] = $command;
-
-        return $this;
-    }
 
     /**
      * Gets action_url
@@ -408,6 +378,30 @@ class RecordUtterance extends PerclCommand
     public function setAutoStart($auto_start)
     {
         $this->container['auto_start'] = $auto_start;
+
+        return $this;
+    }
+
+    /**
+     * Gets privacy_mode
+     *
+     * @return bool|null
+     */
+    public function getPrivacyMode()
+    {
+        return $this->container['privacy_mode'];
+    }
+
+    /**
+     * Sets privacy_mode
+     *
+     * @param bool|null $privacy_mode Parameter `privacyMode` will not log the `text` as required by PCI compliance.
+     *
+     * @return $this
+     */
+    public function setPrivacyMode($privacy_mode)
+    {
+        $this->container['privacy_mode'] = $privacy_mode;
 
         return $this;
     }

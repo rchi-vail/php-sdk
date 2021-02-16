@@ -7,8 +7,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="1.1.1"></a>
+## [1.1.1] - 2020-12-17
+### Added
+- Add `privacyMode` option to RecordUtterance PerCL command
+
 <a name="1.1.0"></a>
-## [1.1.0] - 2020-12-15
+## [1.1.0] - 2020-12-16
 ### Added
 - Add `Reject` PerCL command
 - Add `Hangup` PerCL command
