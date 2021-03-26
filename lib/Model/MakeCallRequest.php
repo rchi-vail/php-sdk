@@ -65,7 +65,8 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
         'if_machine_url' => 'string',
         'timeout' => 'int',
         'parent_call_id' => 'string',
-        'privacy_mode' => 'bool'
+        'privacy_mode' => 'bool',
+        'call_connect_url' => 'string'
     ];
 
     /**
@@ -82,7 +83,8 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
         'if_machine_url' => null,
         'timeout' => 'int32',
         'parent_call_id' => null,
-        'privacy_mode' => null
+        'privacy_mode' => null,
+        'call_connect_url' => null
     ];
 
     /**
@@ -120,7 +122,8 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
         'if_machine_url' => 'ifMachineUrl',
         'timeout' => 'timeout',
         'parent_call_id' => 'parentCallId',
-        'privacy_mode' => 'privacyMode'
+        'privacy_mode' => 'privacyMode',
+        'call_connect_url' => 'callConnectUrl'
     ];
 
     /**
@@ -137,7 +140,8 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
         'if_machine_url' => 'setIfMachineUrl',
         'timeout' => 'setTimeout',
         'parent_call_id' => 'setParentCallId',
-        'privacy_mode' => 'setPrivacyMode'
+        'privacy_mode' => 'setPrivacyMode',
+        'call_connect_url' => 'setCallConnectUrl'
     ];
 
     /**
@@ -154,7 +158,8 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
         'if_machine_url' => 'getIfMachineUrl',
         'timeout' => 'getTimeout',
         'parent_call_id' => 'getParentCallId',
-        'privacy_mode' => 'getPrivacyMode'
+        'privacy_mode' => 'getPrivacyMode',
+        'call_connect_url' => 'getCallConnectUrl'
     ];
 
     /**
@@ -226,6 +231,7 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
         $this->container['timeout'] = isset($data['timeout']) ? $data['timeout'] : null;
         $this->container['parent_call_id'] = isset($data['parent_call_id']) ? $data['parent_call_id'] : null;
         $this->container['privacy_mode'] = isset($data['privacy_mode']) ? $data['privacy_mode'] : null;
+        $this->container['call_connect_url'] = isset($data['call_connect_url']) ? $data['call_connect_url'] : null;
     }
 
     /**
@@ -242,9 +248,6 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
         }
         if ($this->container['to'] === null) {
             $invalidProperties[] = "'to' can't be null";
-        }
-        if ($this->container['application_id'] === null) {
-            $invalidProperties[] = "'application_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -312,7 +315,7 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
     /**
      * Gets application_id
      *
-     * @return string
+     * @return string|null
      */
     public function getApplicationId()
     {
@@ -322,7 +325,7 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
     /**
      * Sets application_id
      *
-     * @param string $application_id ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the `callConnectUrl` and `statusCallbackUrl` set on the application. The application must have a `callConnectUrl` associated with it or an error will be returned. The application’s `voiceUrl` parameter is not used for outbound calls.
+     * @param string|null $application_id Required if no `parentCallId` or `callConnectUrl` has been provided. ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the `callConnectUrl` and `statusCallbackUrl` set on the application unless the `callConnectUrl` attribute is also provided with the request. In this case, the URL specified in that `callConnectUrl` attribute will be used as a replacement of the `callConnectUrl` originally assigned in the application. If the `callConnectUrl` is not set as either an attribute of the request or as part of the specified application, an error will be provided. The application’s voiceUrl parameter is not used for outbound calls.
      *
      * @return $this
      */
@@ -442,7 +445,7 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
     /**
      * Sets parent_call_id
      *
-     * @param string|null $parent_call_id The ID of the parent Call in the case that this new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a parent once the call is in progress or as an inbound call that is still ringing.  An outbound call is considered to be in progress once the outdialConnect or outdialApiConnect webhook is invoked.  An inbound call is ringing when the inbound webhook is invoked.
+     * @param string|null $parent_call_id Required if no `applicationId` or `callConnectUrl` has been provided. The ID of the parent Call in the case that this new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a parent once the call is in progress or as an inbound call that is still ringing. An outbound call is considered to be in progress once the `outdialConnect` or `outdialApiConnect` webhook is invoked. An inbound call is ringing when the inbound webhook is invoked. If a `callConnectUrl` attribute is also included with the `parentCallId` in the request, this URL will be used as a replacement of the `callConnectUrl` originally assigned in the parent call.
      *
      * @return $this
      */
@@ -473,6 +476,30 @@ class MakeCallRequest implements ModelInterface, ArrayAccess
     public function setPrivacyMode($privacy_mode)
     {
         $this->container['privacy_mode'] = $privacy_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets call_connect_url
+     *
+     * @return string|null
+     */
+    public function getCallConnectUrl()
+    {
+        return $this->container['call_connect_url'];
+    }
+
+    /**
+     * Sets call_connect_url
+     *
+     * @param string|null $call_connect_url The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application or parent call.
+     *
+     * @return $this
+     */
+    public function setCallConnectUrl($call_connect_url)
+    {
+        $this->container['call_connect_url'] = $call_connect_url;
 
         return $this;
     }
