@@ -7,6 +7,11 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="1.2.0"></a>
+## [1.2.0] - 2021-05-18
+### Added
+- Add `Util.php` with utilities to verify Signing Secrets
+
 <a name="1.1.2"></a>
 ## [1.1.2] - 2021-03-10
 ### Added
