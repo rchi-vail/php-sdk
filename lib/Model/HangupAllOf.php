@@ -1,6 +1,6 @@
 <?php
 /**
- * Redirect
+ * HangupAllOf
  *
  * PHP version 7.2
  *
@@ -27,13 +27,14 @@
  */
 
 namespace FreeClimb\Api\Model;
+
+use \ArrayAccess;
 use \FreeClimb\Api\ObjectSerializer;
 
 /**
- * Redirect Class Doc Comment
+ * HangupAllOf Class Doc Comment
  *
  * @category Class
- * @description The &#x60;Redirect&#x60; command transfers control of a Call to the PerCL at a different URL. &#x60;Redirect&#x60; is a terminal command, so any actions following it are never executed. The maximum number of redirections allowed during the life time of a Call is 256. This is intended to prevent a Call from possibly looping infinitely due to errors in PerCL being generated.
  * @package  FreeClimb\Api
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -41,7 +42,7 @@ use \FreeClimb\Api\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Redirect extends PerclCommand
+class HangupAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class Redirect extends PerclCommand
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Redirect';
+    protected static $openAPIModelName = 'Hangup_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +59,7 @@ class Redirect extends PerclCommand
       * @var string[]
       */
     protected static $openAPITypes = [
-        'action_url' => 'string'
+        'reason' => 'string'
     ];
 
     /**
@@ -69,7 +70,7 @@ class Redirect extends PerclCommand
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'action_url' => null
+        'reason' => null
     ];
 
     /**
@@ -79,7 +80,7 @@ class Redirect extends PerclCommand
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -89,7 +90,7 @@ class Redirect extends PerclCommand
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -99,7 +100,7 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $attributeMap = [
-        'action_url' => 'actionUrl'
+        'reason' => 'reason'
     ];
 
     /**
@@ -108,7 +109,7 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $setters = [
-        'action_url' => 'setActionUrl'
+        'reason' => 'setReason'
     ];
 
     /**
@@ -117,7 +118,7 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $getters = [
-        'action_url' => 'getActionUrl'
+        'reason' => 'getReason'
     ];
 
     /**
@@ -128,7 +129,7 @@ class Redirect extends PerclCommand
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -138,7 +139,7 @@ class Redirect extends PerclCommand
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -148,7 +149,7 @@ class Redirect extends PerclCommand
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -162,6 +163,12 @@ class Redirect extends PerclCommand
     }
 
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -171,9 +178,7 @@ class Redirect extends PerclCommand
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
-        $this->container['action_url'] = $data['action_url'] ?? null;
+        $this->container['reason'] = $data['reason'] ?? null;
     }
 
     /**
@@ -183,11 +188,8 @@ class Redirect extends PerclCommand
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
-        if ($this->container['action_url'] === null) {
-            $invalidProperties[] = "'action_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -204,25 +206,25 @@ class Redirect extends PerclCommand
 
 
     /**
-     * Gets action_url
+     * Gets reason
      *
-     * @return string
+     * @return string|null
      */
-    public function getActionUrl()
+    public function getReason()
     {
-        return $this->container['action_url'];
+        return $this->container['reason'];
     }
 
     /**
-     * Sets action_url
+     * Sets reason
      *
-     * @param string $action_url URL to request a new PerCL script to continue with the current Call's processing. When `Redirect` invokes the `actionUrl`, an `inbound` Webhook is sent. This request therefore looks identical to the initial request (made to the `voiceUrl` of the number that was called) for an inbound Call.
+     * @param string|null $reason The user defined reason for the hangup. In general, applications should use a set of enumerated values that are predefined to cover all exit points of the Call flows for the given application.
      *
      * @return self
      */
-    public function setActionUrl($action_url)
+    public function setReason($reason)
     {
-        $this->container['action_url'] = $action_url;
+        $this->container['reason'] = $reason;
 
         return $this;
     }

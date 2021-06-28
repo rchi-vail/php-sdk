@@ -1,6 +1,6 @@
 <?php
 /**
- * Redirect
+ * Hangup
  *
  * PHP version 7.2
  *
@@ -30,10 +30,10 @@ namespace FreeClimb\Api\Model;
 use \FreeClimb\Api\ObjectSerializer;
 
 /**
- * Redirect Class Doc Comment
+ * Hangup Class Doc Comment
  *
  * @category Class
- * @description The &#x60;Redirect&#x60; command transfers control of a Call to the PerCL at a different URL. &#x60;Redirect&#x60; is a terminal command, so any actions following it are never executed. The maximum number of redirections allowed during the life time of a Call is 256. This is intended to prevent a Call from possibly looping infinitely due to errors in PerCL being generated.
+ * @description The &#x60;Hangup&#x60; command terminates a Call. If &#x60;Hangup&#x60; is used as the first action in a PerCL response, it does not prevent FreeClimb from answering the Call and billing your account. See the &#x60;Reject&#x60; command to hang up at no charge.
  * @package  FreeClimb\Api
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -41,7 +41,7 @@ use \FreeClimb\Api\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Redirect extends PerclCommand
+class Hangup extends PerclCommand
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class Redirect extends PerclCommand
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Redirect';
+    protected static $openAPIModelName = 'Hangup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,7 +58,7 @@ class Redirect extends PerclCommand
       * @var string[]
       */
     protected static $openAPITypes = [
-        'action_url' => 'string'
+        'reason' => 'string'
     ];
 
     /**
@@ -69,7 +69,7 @@ class Redirect extends PerclCommand
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'action_url' => null
+        'reason' => null
     ];
 
     /**
@@ -99,7 +99,7 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $attributeMap = [
-        'action_url' => 'actionUrl'
+        'reason' => 'reason'
     ];
 
     /**
@@ -108,7 +108,7 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $setters = [
-        'action_url' => 'setActionUrl'
+        'reason' => 'setReason'
     ];
 
     /**
@@ -117,7 +117,7 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $getters = [
-        'action_url' => 'getActionUrl'
+        'reason' => 'getReason'
     ];
 
     /**
@@ -173,7 +173,7 @@ class Redirect extends PerclCommand
     {
         parent::__construct($data);
 
-        $this->container['action_url'] = $data['action_url'] ?? null;
+        $this->container['reason'] = $data['reason'] ?? null;
     }
 
     /**
@@ -185,9 +185,6 @@ class Redirect extends PerclCommand
     {
         $invalidProperties = parent::listInvalidProperties();
 
-        if ($this->container['action_url'] === null) {
-            $invalidProperties[] = "'action_url' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -204,25 +201,25 @@ class Redirect extends PerclCommand
 
 
     /**
-     * Gets action_url
+     * Gets reason
      *
-     * @return string
+     * @return string|null
      */
-    public function getActionUrl()
+    public function getReason()
     {
-        return $this->container['action_url'];
+        return $this->container['reason'];
     }
 
     /**
-     * Sets action_url
+     * Sets reason
      *
-     * @param string $action_url URL to request a new PerCL script to continue with the current Call's processing. When `Redirect` invokes the `actionUrl`, an `inbound` Webhook is sent. This request therefore looks identical to the initial request (made to the `voiceUrl` of the number that was called) for an inbound Call.
+     * @param string|null $reason The user defined reason for the hangup. In general, applications should use a set of enumerated values that are predefined to cover all exit points of the Call flows for the given application.
      *
      * @return self
      */
-    public function setActionUrl($action_url)
+    public function setReason($reason)
     {
-        $this->container['action_url'] = $action_url;
+        $this->container['reason'] = $reason;
 
         return $this;
     }
