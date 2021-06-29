@@ -7,6 +7,40 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="1.2.0"></a>
+## [1.2.0] - 2021-05-18
+### Added
+- Add `Util.php` with utilities to verify Signing Secrets
+
+<a name="1.1.2"></a>
+## [1.1.2] - 2021-03-10
+### Added
+- Add `callConnectUrl` option to MakeCall Request
+
+<a name="1.1.1"></a>
+## [1.1.1] - 2020-12-17
+### Added
+- Add `privacyMode` option to RecordUtterance PerCL command
+
+<a name="1.1.0"></a>
+## [1.1.0] - 2020-12-16
+### Added
+- Add `Reject` PerCL command
+- Add `Hangup` PerCL command
+
+### Fixed
+- Updated description and requirement of `action_url` attribute of `Redirect` PerCL command
+
+<a name="1.0.2"></a>
+## [1.0.2] - 2020-12-16
+### Added
+- Additional message statuses for TFN functionality
+
+<a name="1.0.1"></a>
+## [1.0.1] - 2020-08-04
+### Added
+- Add `privacyMode` option
+
 <a name="1.2.1"></a>
 ## [1.2.1] - 2020-10-14
 ### Added

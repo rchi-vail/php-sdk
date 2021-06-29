@@ -173,7 +173,7 @@ class Hangup extends PerclCommand
     {
         parent::__construct($data);
 
-        $this->container['reason'] = $data['reason'] ?? null;
+        $this->container['reason'] = isset($data['reason']) ? $data['reason'] : null;
     }
 
     /**
@@ -215,7 +215,7 @@ class Hangup extends PerclCommand
      *
      * @param string|null $reason The user defined reason for the hangup. In general, applications should use a set of enumerated values that are predefined to cover all exit points of the Call flows for the given application.
      *
-     * @return self
+     * @return $this
      */
     public function setReason($reason)
     {
