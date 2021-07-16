@@ -74,7 +74,9 @@ class ObjectSerializer
 
         if (is_array($data)) {
             foreach ($data as $property => $value) {
-                $data[$property] = self::sanitizeForSerialization($value);
+                if($property !== 'command') {
+                    $data[$property] = self::sanitizeForSerialization($value);
+                }
             }
             return $data;
         }
@@ -97,13 +99,15 @@ class ObjectSerializer
                             }
                         }
                     }
-                    if ($value !== null) {
+                    if ($property !== 'command' && $value !== null) {
                         $values[$data::attributeMap()[$property]] = self::sanitizeForSerialization($value, $openAPIType, $formats[$property]);
                     }
                 }
             } else {
                 foreach($data as $property => $value) {
-                    $values[$property] = self::sanitizeForSerialization($value);
+                    if($property !== 'command') {
+                        $values[$property] = self::sanitizeForSerialization($value);
+                    }
                 }
             }
             return (object)$values;
