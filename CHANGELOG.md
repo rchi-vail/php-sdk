@@ -7,10 +7,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
-<a name="1.2.0"></a>
-## [1.2.0] - 2021-05-18
+<a name="1.1.3"></a>
+## [1.1.3] - 2021-10-05
 ### Added
 - Add `Util.php` with utilities to verify Signing Secrets
+### Fixed
+- Rename PerclScript and PerclCommand files to be match case sensitivity
 
 <a name="1.1.2"></a>
 ## [1.1.2] - 2021-03-10
