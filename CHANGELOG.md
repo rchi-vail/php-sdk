@@ -7,6 +7,15 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="1.1.4"></a>
+## [1.1.4] - 2021-11-01
+### Added
+- Add `active` property to CallResult
+
+### Changed
+- Small instances of `token` to `key`
+- Call ID is not required to `AddToConference`
+
 <a name="1.1.3"></a>
 ## [1.1.3] - 2021-10-05
 ### Added

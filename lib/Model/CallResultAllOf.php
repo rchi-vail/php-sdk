@@ -65,6 +65,7 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => 'string',
         'to' => 'string',
         'phone_number_id' => 'string',
+        'active' => 'bool',
         'status' => 'string',
         'start_time' => 'string',
         'connect_time' => 'string',
@@ -90,6 +91,7 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => null,
         'to' => null,
         'phone_number_id' => null,
+        'active' => null,
         'status' => null,
         'start_time' => null,
         'connect_time' => null,
@@ -134,6 +136,7 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => 'from',
         'to' => 'to',
         'phone_number_id' => 'phoneNumberId',
+        'active' => 'active',
         'status' => 'status',
         'start_time' => 'startTime',
         'connect_time' => 'connectTime',
@@ -157,6 +160,7 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => 'setFrom',
         'to' => 'setTo',
         'phone_number_id' => 'setPhoneNumberId',
+        'active' => 'setActive',
         'status' => 'setStatus',
         'start_time' => 'setStartTime',
         'connect_time' => 'setConnectTime',
@@ -180,6 +184,7 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         'from' => 'getFrom',
         'to' => 'getTo',
         'phone_number_id' => 'getPhoneNumberId',
+        'active' => 'getActive',
         'status' => 'getStatus',
         'start_time' => 'getStartTime',
         'connect_time' => 'getConnectTime',
@@ -240,7 +245,7 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     const STATUS_BUSY = 'busy';
     const STATUS_FAILED = 'failed';
     const STATUS_NO_ANSWER = 'noAnswer';
-
+    
     /**
      * Gets allowable values of the enum
      *
@@ -259,7 +264,7 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
             self::STATUS_NO_ANSWER,
         ];
     }
-
+    
     /**
      * Associative array for storing property values
      *
@@ -281,6 +286,7 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['from'] = $data['from'] ?? null;
         $this->container['to'] = $data['to'] ?? null;
         $this->container['phone_number_id'] = $data['phone_number_id'] ?? null;
+        $this->container['active'] = $data['active'] ?? false;
         $this->container['status'] = $data['status'] ?? null;
         $this->container['start_time'] = $data['start_time'] ?? null;
         $this->container['connect_time'] = $data['connect_time'] ?? null;
@@ -465,6 +471,30 @@ class CallResultAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPhoneNumberId($phone_number_id)
     {
         $this->container['phone_number_id'] = $phone_number_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets active
+     *
+     * @return bool|null
+     */
+    public function getActive()
+    {
+        return $this->container['active'];
+    }
+
+    /**
+     * Sets active
+     *
+     * @param bool|null $active Whether the call is currently active or has concluded.
+     *
+     * @return self
+     */
+    public function setActive($active)
+    {
+        $this->container['active'] = $active;
 
         return $this;
     }
