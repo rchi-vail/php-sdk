@@ -1775,8 +1775,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('ACCOUNT_ID')
-              ->setPassword('API_KEY');
+              ->setUsername('YOUR_USERNAME')
+              ->setPassword('YOUR_PASSWORD');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1785,6 +1785,8 @@ $apiInstance = new FreeClimb\Api\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
+$account_id = 'account_id_example'; // string | ID of the account
+$active = false; // bool | If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query.
 $to = 'to_example'; // string | Only show Calls to this phone number.
 $from = 'from_example'; // string | Only show Calls from this phone number.
 $status = 'status_example'; // string | Only show Calls currently in this status. May be `queued`, `ringing`, `inProgress`, `canceled`, `completed`, `failed`, `busy`, or `noAnswer`.
@@ -1793,19 +1795,19 @@ $end_time = 'end_time_example'; // string | Only show Calls that ended at or bef
 $parent_call_id = 'parent_call_id_example'; // string | Only show Calls spawned by the call with this ID.
 
 try {
-    $result = $apiInstance->listCalls($to, $from, $status, $start_time, $end_time, $parent_call_id);
+    $result = $apiInstance->listCalls($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->listCalls: ', $e->getMessage(), PHP_EOL;
 }
-?>
 ```
 
 ### Parameters
 
-
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **account_id** | **string**| ID of the account |
+ **active** | **bool**| If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. | [optional] [default to false]
  **to** | **string**| Only show Calls to this phone number. | [optional]
  **from** | **string**| Only show Calls from this phone number. | [optional]
  **status** | **string**| Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. | [optional]
@@ -1824,12 +1826,11 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: application/json
+- **Accept**: `application/json`
 
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints)
-[[Back to Model list]](../../README.md#documentation-for-models)
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
-
 
 ## listConferences
 

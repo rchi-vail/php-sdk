@@ -8016,6 +8016,7 @@ class DefaultApi
      * List Calls
      *
      * @param  string $account_id ID of the account (required)
+     * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
      * @param  string $to Only show Calls to this phone number. (optional)
      * @param  string $from Only show Calls from this phone number. (optional)
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
@@ -8027,9 +8028,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\CallList
      */
-    public function listCalls($account_id, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCalls($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
-        list($response) = $this->listCallsWithHttpInfo($account_id, $to, $from, $status, $start_time, $end_time, $parent_call_id);
+        list($response) = $this->listCallsWithHttpInfo($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
         return $response;
     }
 
@@ -8039,6 +8040,7 @@ class DefaultApi
      * List Calls
      *
      * @param  string $account_id ID of the account (required)
+     * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
      * @param  string $to Only show Calls to this phone number. (optional)
      * @param  string $from Only show Calls from this phone number. (optional)
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
@@ -8050,9 +8052,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\CallList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCallsWithHttpInfo($account_id, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCallsWithHttpInfo($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
-        $request = $this->listCallsRequest($account_id, $to, $from, $status, $start_time, $end_time, $parent_call_id);
+        $request = $this->listCallsRequest($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8131,6 +8133,7 @@ class DefaultApi
      * List Calls
      *
      * @param  string $account_id ID of the account (required)
+     * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
      * @param  string $to Only show Calls to this phone number. (optional)
      * @param  string $from Only show Calls from this phone number. (optional)
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
@@ -8141,9 +8144,9 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCallsAsync($account_id, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCallsAsync($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
-        return $this->listCallsAsyncWithHttpInfo($account_id, $to, $from, $status, $start_time, $end_time, $parent_call_id)
+        return $this->listCallsAsyncWithHttpInfo($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8157,6 +8160,7 @@ class DefaultApi
      * List Calls
      *
      * @param  string $account_id ID of the account (required)
+     * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
      * @param  string $to Only show Calls to this phone number. (optional)
      * @param  string $from Only show Calls from this phone number. (optional)
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
@@ -8167,10 +8171,10 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCallsAsyncWithHttpInfo($account_id, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCallsAsyncWithHttpInfo($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
         $returnType = '\FreeClimb\Api\Model\CallList';
-        $request = $this->listCallsRequest($account_id, $to, $from, $status, $start_time, $end_time, $parent_call_id);
+        $request = $this->listCallsRequest($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8209,6 +8213,7 @@ class DefaultApi
      * Create request for operation 'listCalls'
      *
      * @param  string $account_id ID of the account (required)
+     * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
      * @param  string $to Only show Calls to this phone number. (optional)
      * @param  string $from Only show Calls from this phone number. (optional)
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
@@ -8219,7 +8224,7 @@ class DefaultApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listCallsRequest($account_id, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCallsRequest($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
@@ -8235,6 +8240,17 @@ class DefaultApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($active !== null) {
+            if('form' === 'form' && is_array($active)) {
+                foreach($active as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['active'] = $active;
+            }
+        }
         // query params
         if ($to !== null) {
             if('form' === 'form' && is_array($to)) {
