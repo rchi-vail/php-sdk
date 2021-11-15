@@ -10,7 +10,7 @@ None
 <a name="1.1.4"></a>
 ## [1.1.4] - 2021-11-01
 ### Added
-- Add `active` property to CallResult
+- Add `active` property to List Calls Requests
 
 ### Changed
 - Small instances of `token` to `key`
