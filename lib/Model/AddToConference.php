@@ -242,9 +242,6 @@ class AddToConference extends PerclCommand
         if ($this->container['conference_id'] === null) {
             $invalidProperties[] = "'conference_id' can't be null";
         }
-        if ($this->container['call_id'] === null) {
-            $invalidProperties[] = "'call_id' can't be null";
-        }
         return $invalidProperties;
     }
 

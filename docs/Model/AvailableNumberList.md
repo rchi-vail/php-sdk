@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **num_pages** | **int** | Total number of pages | [optional] 
 **page_size** | **int** | Number of items per page | [optional] 
 **next_page_uri** | **string** | Uri to retrieve the next page of items | [optional] 
-**available_phone_numbers** | [**\OpenAPI\Client\Model\AvailableNumber[]**](AvailableNumber.md) |  | [optional] 
+**available_phone_numbers** | [**\FreeClimb\Api\Model\AvailableNumber[]**](AvailableNumber.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
