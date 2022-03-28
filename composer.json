@@ -1,40 +1,40 @@
 {
-    "name": "freeclimbapi/php-sdk",
-    "version": "1.1.5",
-    "description": "FreeClimb is a cloud-based application programming interface (API) that puts the power of the Vail platform in your hands. FreeClimb simplifies the process of creating applications that can use a full range of telephony features without requiring specialized or on-site telephony equipment. Using the FreeClimb REST API to write applications is easy! You have the option to use the language of your choice or hit the API directly. Your application can execute a command by issuing a RESTful request to the FreeClimb API. The base URL to send HTTP requests to the FreeClimb REST API is: /apiserver. FreeClimb authenticates and processes your request.",
-    "keywords": [
-        "openapitools",
-        "openapi-generator",
-        "openapi",
-        "php",
-        "sdk",
-        "rest",
-        "api"
-    ],
-    "homepage": "https://openapi-generator.tech",
-    "license": "unlicense",
-    "authors": [
-        {
-            "name": "OpenAPI-Generator contributors",
-            "homepage": "https://openapi-generator.tech"
-        }
-    ],
-    "require": {
-        "php": "^7.3 || ^8.0",
-        "ext-curl": "*",
-        "ext-json": "*",
-        "ext-mbstring": "*",
-        "guzzlehttp/guzzle": "^7.3",
-        "guzzlehttp/psr7": "^2.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^8.0 || ^9.0",
-        "friendsofphp/php-cs-fixer": "^2.12"
-    },
-    "autoload": {
-        "psr-4": { "FreeClimb\\Api\\" : "lib/" }
-    },
-    "autoload-dev": {
-        "psr-4": { "FreeClimb\\Api\\Test\\" : "test/" }
-    }
+  "name": "freeclimbapi/php-sdk",
+  "version": "1.1.7",
+  "description": "FreeClimb is a cloud-based application programming interface (API) that puts the power of the Vail platform in your hands. FreeClimb simplifies the process of creating applications that can use a full range of telephony features without requiring specialized or on-site telephony equipment. Using the FreeClimb REST API to write applications is easy! You have the option to use the language of your choice or hit the API directly. Your application can execute a command by issuing a RESTful request to the FreeClimb API. The base URL to send HTTP requests to the FreeClimb REST API is: /apiserver. FreeClimb authenticates and processes your request.",
+  "keywords": [
+      "openapitools",
+      "openapi-generator",
+      "openapi",
+      "php",
+      "sdk",
+      "rest",
+      "api"
+  ],
+  "homepage": "https://openapi-generator.tech",
+  "license": "unlicense",
+  "authors": [
+      {
+          "name": "OpenAPI-Generator contributors",
+          "homepage": "https://openapi-generator.tech"
+      }
+  ],
+  "require": {
+      "php": "^7.3 || ^8.0",
+      "ext-curl": "*",
+      "ext-json": "*",
+      "ext-mbstring": "*",
+      "guzzlehttp/guzzle": "^7.3",
+      "guzzlehttp/psr7": "^1.7 || ^2.0"
+  },
+  "require-dev": {
+      "phpunit/phpunit": "^8.0 || ^9.0",
+      "friendsofphp/php-cs-fixer": "^2.12"
+  },
+  "autoload": {
+      "psr-4": { "FreeClimb\\Api\\" : "lib/" }
+  },
+  "autoload-dev": {
+      "psr-4": { "FreeClimb\\Api\\Test\\" : "test/" }
+  }
 }
