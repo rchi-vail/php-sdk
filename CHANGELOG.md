@@ -7,6 +7,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="2.0.0"></a>
+## [2.0.0] - 2022-03-29
+### Changed
+- Rename api->list_an_application to list->list_applications
+- Use new openapi-generator version (5.4.0)
+- Added new Capabilities Model
+
 <a name="1.1.5"></a>
 ## [1.1.5] - 2021-12-06
 -remove alias from accepted query parameters when listing AvailablePhoneNumbers
