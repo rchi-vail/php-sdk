@@ -230,23 +230,6 @@ class PerclScript implements ModelInterface, ArrayAccess, \JsonSerializable
 
         return $this;
     }
-
-    /**
-     * Sets commands
-     *
-     * @param \FreeClimb\Api\Model\PerclCommand[]|null $command A PerCL commands
-     *
-     * @return self
-     */
-    public function addCommand($command)
-    {
-        $className = (new \ReflectionClass($command))->getShortName();
-        $perclOb = new \stdClass();
-        $perclOb->$className = $command;
-        $this->container['commands'][] = $perclOb;
-
-        return $this;
-    }
     /**
      * Returns true if offset exists. False otherwise.
      *
@@ -334,17 +317,6 @@ class PerclScript implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
-
-    /**
-     * Gets a PerCL rerpesentation of the current commands
-     *
-     * @return string
-     */
-    public function toPerCLString()
-    {
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this->getCommands()));
-    }
-    
 }
 
 
