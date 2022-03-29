@@ -13,6 +13,7 @@ None
 - Rename api->list_an_application to list->list_applications
 - Use new openapi-generator version (5.4.0)
 - Added new Capabilities Model
+- Fix to allow \n and multi-line strings support for SMS message methods
 
 <a name="1.1.5"></a>
 ## [1.1.5] - 2021-12-06
