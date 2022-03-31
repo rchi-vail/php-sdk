@@ -4,8 +4,6 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**messages** | [**\FreeClimbAPI\Model\MessageResult[]**](MessageResult.md) | Array of messages | [optional] 
+**messages** | [**\FreeClimb\Api\Model\MessageResult[]**](MessageResult.md) | Array of messages | [optional]
 
-[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
-
-
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

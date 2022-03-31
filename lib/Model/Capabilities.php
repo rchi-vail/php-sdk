@@ -1,6 +1,6 @@
 <?php
 /**
- * Redirect
+ * Capabilities
  *
  * PHP version 7.3
  *
@@ -28,13 +28,15 @@
  */
 
 namespace FreeClimb\Api\Model;
+
+use \ArrayAccess;
 use \FreeClimb\Api\ObjectSerializer;
 
 /**
- * Redirect Class Doc Comment
+ * Capabilities Class Doc Comment
  *
  * @category Class
- * @description The &#x60;Redirect&#x60; command transfers control of a Call to the PerCL at a different URL. &#x60;Redirect&#x60; is a terminal command, so any actions following it are never executed. The maximum number of redirections allowed during the life time of a Call is 256. This is intended to prevent a Call from possibly looping infinitely due to errors in PerCL being generated.
+ * @description Details for which features this number may be used.
  * @package  FreeClimb\Api
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -42,7 +44,7 @@ use \FreeClimb\Api\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class Redirect extends PerclCommand
+class Capabilities implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +53,7 @@ class Redirect extends PerclCommand
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Redirect';
+    protected static $openAPIModelName = 'Capabilities';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,7 +61,11 @@ class Redirect extends PerclCommand
       * @var string[]
       */
     protected static $openAPITypes = [
-        'action_url' => 'string'
+        'voice' => 'bool',
+        'sms' => 'bool',
+        'toll_free' => 'bool',
+        'ten_dlc' => 'bool',
+        'short_code' => 'bool'
     ];
 
     /**
@@ -70,7 +76,11 @@ class Redirect extends PerclCommand
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'action_url' => null
+        'voice' => null,
+        'sms' => null,
+        'toll_free' => null,
+        'ten_dlc' => null,
+        'short_code' => null
     ];
 
     /**
@@ -80,7 +90,7 @@ class Redirect extends PerclCommand
      */
     public static function openAPITypes()
     {
-        return self::$openAPITypes + parent::openAPITypes();
+        return self::$openAPITypes;
     }
 
     /**
@@ -90,7 +100,7 @@ class Redirect extends PerclCommand
      */
     public static function openAPIFormats()
     {
-        return self::$openAPIFormats + parent::openAPIFormats();
+        return self::$openAPIFormats;
     }
 
     /**
@@ -100,7 +110,11 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $attributeMap = [
-        'action_url' => 'actionUrl'
+        'voice' => 'voice',
+        'sms' => 'sms',
+        'toll_free' => 'tollFree',
+        'ten_dlc' => 'tenDLC',
+        'short_code' => 'shortCode'
     ];
 
     /**
@@ -109,7 +123,11 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $setters = [
-        'action_url' => 'setActionUrl'
+        'voice' => 'setVoice',
+        'sms' => 'setSms',
+        'toll_free' => 'setTollFree',
+        'ten_dlc' => 'setTenDlc',
+        'short_code' => 'setShortCode'
     ];
 
     /**
@@ -118,7 +136,11 @@ class Redirect extends PerclCommand
      * @var string[]
      */
     protected static $getters = [
-        'action_url' => 'getActionUrl'
+        'voice' => 'getVoice',
+        'sms' => 'getSms',
+        'toll_free' => 'getTollFree',
+        'ten_dlc' => 'getTenDlc',
+        'short_code' => 'getShortCode'
     ];
 
     /**
@@ -129,7 +151,7 @@ class Redirect extends PerclCommand
      */
     public static function attributeMap()
     {
-        return parent::attributeMap() + self::$attributeMap;
+        return self::$attributeMap;
     }
 
     /**
@@ -139,7 +161,7 @@ class Redirect extends PerclCommand
      */
     public static function setters()
     {
-        return parent::setters() + self::$setters;
+        return self::$setters;
     }
 
     /**
@@ -149,7 +171,7 @@ class Redirect extends PerclCommand
      */
     public static function getters()
     {
-        return parent::getters() + self::$getters;
+        return self::$getters;
     }
 
     /**
@@ -163,6 +185,12 @@ class Redirect extends PerclCommand
     }
 
 
+    /**
+     * Associative array for storing property values
+     *
+     * @var mixed[]
+     */
+    protected $container = [];
 
     /**
      * Constructor
@@ -172,9 +200,11 @@ class Redirect extends PerclCommand
      */
     public function __construct(array $data = null)
     {
-        parent::__construct($data);
-
-        $this->container['action_url'] = $data['action_url'] ?? null;
+        $this->container['voice'] = $data['voice'] ?? null;
+        $this->container['sms'] = $data['sms'] ?? null;
+        $this->container['toll_free'] = $data['toll_free'] ?? null;
+        $this->container['ten_dlc'] = $data['ten_dlc'] ?? null;
+        $this->container['short_code'] = $data['short_code'] ?? null;
     }
 
     /**
@@ -184,10 +214,22 @@ class Redirect extends PerclCommand
      */
     public function listInvalidProperties()
     {
-        $invalidProperties = parent::listInvalidProperties();
+        $invalidProperties = [];
 
-        if ($this->container['action_url'] === null) {
-            $invalidProperties[] = "'action_url' can't be null";
+        if ($this->container['voice'] === null) {
+            $invalidProperties[] = "'voice' can't be null";
+        }
+        if ($this->container['sms'] === null) {
+            $invalidProperties[] = "'sms' can't be null";
+        }
+        if ($this->container['toll_free'] === null) {
+            $invalidProperties[] = "'toll_free' can't be null";
+        }
+        if ($this->container['ten_dlc'] === null) {
+            $invalidProperties[] = "'ten_dlc' can't be null";
+        }
+        if ($this->container['short_code'] === null) {
+            $invalidProperties[] = "'short_code' can't be null";
         }
         return $invalidProperties;
     }
@@ -205,25 +247,121 @@ class Redirect extends PerclCommand
 
 
     /**
-     * Gets action_url
+     * Gets voice
      *
-     * @return string
+     * @return bool
      */
-    public function getActionUrl()
+    public function getVoice()
     {
-        return $this->container['action_url'];
+        return $this->container['voice'];
     }
 
     /**
-     * Sets action_url
+     * Sets voice
      *
-     * @param string $action_url URL to request a new PerCL script to continue with the current Call's processing. When `Redirect` invokes the `actionUrl`, an `inbound` Webhook is sent. This request therefore looks identical to the initial request (made to the `voiceUrl` of the number that was called) for an inbound Call.
+     * @param bool $voice Indicates whether a number can be used for voice calls. Replaces voiceEnabled.
      *
      * @return self
      */
-    public function setActionUrl($action_url)
+    public function setVoice($voice)
     {
-        $this->container['action_url'] = $action_url;
+        $this->container['voice'] = $voice;
+
+        return $this;
+    }
+
+    /**
+     * Gets sms
+     *
+     * @return bool
+     */
+    public function getSms()
+    {
+        return $this->container['sms'];
+    }
+
+    /**
+     * Sets sms
+     *
+     * @param bool $sms Indicates whether a number can be used SMS messaging. Replaces smsEnabled.
+     *
+     * @return self
+     */
+    public function setSms($sms)
+    {
+        $this->container['sms'] = $sms;
+
+        return $this;
+    }
+
+    /**
+     * Gets toll_free
+     *
+     * @return bool
+     */
+    public function getTollFree()
+    {
+        return $this->container['toll_free'];
+    }
+
+    /**
+     * Sets toll_free
+     *
+     * @param bool $toll_free Indicates that a number is toll-free and will make toll-free calls, and when enabled, toll-free messages.
+     *
+     * @return self
+     */
+    public function setTollFree($toll_free)
+    {
+        $this->container['toll_free'] = $toll_free;
+
+        return $this;
+    }
+
+    /**
+     * Gets ten_dlc
+     *
+     * @return bool
+     */
+    public function getTenDlc()
+    {
+        return $this->container['ten_dlc'];
+    }
+
+    /**
+     * Sets ten_dlc
+     *
+     * @param bool $ten_dlc Indicates that a number, if sms is true, will be used for 10DLC messaging
+     *
+     * @return self
+     */
+    public function setTenDlc($ten_dlc)
+    {
+        $this->container['ten_dlc'] = $ten_dlc;
+
+        return $this;
+    }
+
+    /**
+     * Gets short_code
+     *
+     * @return bool
+     */
+    public function getShortCode()
+    {
+        return $this->container['short_code'];
+    }
+
+    /**
+     * Sets short_code
+     *
+     * @param bool $short_code Indicates that a number is a short code and can be used for short code messaging
+     *
+     * @return self
+     */
+    public function setShortCode($short_code)
+    {
+        $this->container['short_code'] = $short_code;
 
         return $this;
     }
