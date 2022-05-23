@@ -163,9 +163,9 @@ class GetSpeechAllOfTest extends TestCase
     }
 
     /**
-     * Test attribute "enforce_pci"
+     * Test attribute "privacy_mode"
      */
-    public function testPropertyEnforcePci()
+    public function testPropertyPrivacyMode()
     {
     }
 }
