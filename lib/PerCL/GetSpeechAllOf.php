@@ -69,7 +69,7 @@ class GetSpeechAllOf implements ModelInterface, ArrayAccess
         'sensitivity_level' => 'float',
         'speech_complete_timeout_ms' => 'int',
         'speech_incomplete_timeout_ms' => 'int',
-        'enforce_pci' => 'bool'
+        'privacy_mode' => 'bool'
     ];
 
     /**
@@ -90,7 +90,7 @@ class GetSpeechAllOf implements ModelInterface, ArrayAccess
         'sensitivity_level' => null,
         'speech_complete_timeout_ms' => null,
         'speech_incomplete_timeout_ms' => null,
-        'enforce_pci' => null
+        'privacy_mode' => null
     ];
 
     /**
@@ -132,7 +132,7 @@ class GetSpeechAllOf implements ModelInterface, ArrayAccess
         'sensitivity_level' => 'sensitivityLevel',
         'speech_complete_timeout_ms' => 'speechCompleteTimeoutMs',
         'speech_incomplete_timeout_ms' => 'speechIncompleteTimeoutMs',
-        'enforce_pci' => 'enforcePCI'
+        'privacy_mode' => 'privacyMode'
     ];
 
     /**
@@ -153,7 +153,7 @@ class GetSpeechAllOf implements ModelInterface, ArrayAccess
         'sensitivity_level' => 'setSensitivityLevel',
         'speech_complete_timeout_ms' => 'setSpeechCompleteTimeoutMs',
         'speech_incomplete_timeout_ms' => 'setSpeechIncompleteTimeoutMs',
-        'enforce_pci' => 'setEnforcePci'
+        'privacy_mode' => 'setPrivacyMode'
     ];
 
     /**
@@ -174,7 +174,7 @@ class GetSpeechAllOf implements ModelInterface, ArrayAccess
         'sensitivity_level' => 'getSensitivityLevel',
         'speech_complete_timeout_ms' => 'getSpeechCompleteTimeoutMs',
         'speech_incomplete_timeout_ms' => 'getSpeechIncompleteTimeoutMs',
-        'enforce_pci' => 'getEnforcePci'
+        'privacy_mode' => 'getPrivacyMode'
     ];
 
     /**
@@ -249,7 +249,7 @@ class GetSpeechAllOf implements ModelInterface, ArrayAccess
         $this->container['sensitivity_level'] = isset($data['sensitivity_level']) ? $data['sensitivity_level'] : null;
         $this->container['speech_complete_timeout_ms'] = isset($data['speech_complete_timeout_ms']) ? $data['speech_complete_timeout_ms'] : null;
         $this->container['speech_incomplete_timeout_ms'] = isset($data['speech_incomplete_timeout_ms']) ? $data['speech_incomplete_timeout_ms'] : null;
-        $this->container['enforce_pci'] = isset($data['enforce_pci']) ? $data['enforce_pci'] : null;
+        $this->container['privacy_mode'] = isset($data['privacy_mode']) ? $data['privacy_mode'] : null;
     }
 
     /**
@@ -565,25 +565,25 @@ class GetSpeechAllOf implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets enforce_pci
+     * Gets privacy_mode
      *
      * @return bool|null
      */
-    public function getEnforcePci()
+    public function getPrivacyMode()
     {
-        return $this->container['enforce_pci'];
+        return $this->container['privacy_mode'];
     }
 
     /**
-     * Sets enforce_pci
+     * Sets privacy_mode
      *
-     * @param bool|null $enforce_pci enforce_pci
+     * @param bool|null $privacy_mode privacy_mode
      *
      * @return $this
      */
-    public function setEnforcePci($enforce_pci)
+    public function setPrivacyMode($privacy_mode)
     {
-        $this->container['enforce_pci'] = $enforce_pci;
+        $this->container['privacy_mode'] = $privacy_mode;
 
         return $this;
     }
