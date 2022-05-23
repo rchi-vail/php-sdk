@@ -556,6 +556,7 @@ class ApplicationResultAllOf implements ModelInterface, ArrayAccess, \JsonSerial
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
 }
 
 

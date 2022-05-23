@@ -590,6 +590,7 @@ class IncomingNumberResultAllOf implements ModelInterface, ArrayAccess, \JsonSer
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
 }
 
 

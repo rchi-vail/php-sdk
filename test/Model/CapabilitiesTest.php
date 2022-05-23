@@ -29,6 +29,7 @@
 
 namespace FreeClimb\Api\Test\Model;
 
+use FreeClimb\Api\Model\Capabilities;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -42,86 +43,58 @@ use PHPUnit\Framework\TestCase;
  */
 class CapabilitiesTest extends TestCase
 {
-
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass(): void
-    {
-    }
-
-    /**
-     * Setup before running each test case
-     */
-    public function setUp(): void
-    {
-    }
-
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown(): void
-    {
-    }
-
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass(): void
-    {
-    }
+    protected $Capabilities;
 
     /**
      * Test "Capabilities"
      */
-    public function testCapabilities()
+    public function setUp() : void
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $this->Capabilities = new Capabilities();
     }
-
     /**
      * Test attribute "voice"
      */
     public function testPropertyVoice()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $this->Capabilities->setVoice(true);
+        $this->assertEquals($this->Capabilities->getVoice(), true);
+        $this->assertIsBool($this->Capabilities->getVoice());
     }
-
     /**
      * Test attribute "sms"
      */
     public function testPropertySms()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $this->Capabilities->setSms(true);
+        $this->assertEquals($this->Capabilities->getSms(), true);
+        $this->assertIsBool($this->Capabilities->getSms());
     }
-
     /**
      * Test attribute "toll_free"
      */
     public function testPropertyTollFree()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $this->Capabilities->setTollFree(true);
+        $this->assertEquals($this->Capabilities->getTollFree(), true);
+        $this->assertIsBool($this->Capabilities->getTollFree());
     }
-
     /**
      * Test attribute "ten_dlc"
      */
     public function testPropertyTenDlc()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $this->Capabilities->setTenDlc(true);
+        $this->assertEquals($this->Capabilities->getTenDlc(), true);
+        $this->assertIsBool($this->Capabilities->getTenDlc());
     }
-
     /**
      * Test attribute "short_code"
      */
     public function testPropertyShortCode()
     {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
+        $this->Capabilities->setShortCode(true);
+        $this->assertEquals($this->Capabilities->getShortCode(), true);
+        $this->assertIsBool($this->Capabilities->getShortCode());
     }
 }
