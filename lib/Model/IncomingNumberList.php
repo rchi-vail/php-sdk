@@ -526,6 +526,7 @@ class IncomingNumberList implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
 }
 
 

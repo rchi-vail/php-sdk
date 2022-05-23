@@ -499,6 +499,7 @@ class RecordUtteranceAllOf implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
 }
 
 

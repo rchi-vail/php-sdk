@@ -316,6 +316,7 @@ class AvailableNumberListAllOf implements ModelInterface, ArrayAccess, \JsonSeri
     {
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
+
 }
 
 
