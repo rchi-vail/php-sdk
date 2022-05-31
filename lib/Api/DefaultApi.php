@@ -121,16 +121,17 @@ class DefaultApi
      *
      * Buy a Phone Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\BuyIncomingNumberRequest $buy_incoming_number_request Incoming Number transaction details (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\IncomingNumberResult
      */
-    public function buyAPhoneNumber($account_id, $buy_incoming_number_request)
+    public function buyAPhoneNumber($buy_incoming_number_request)
     {
-        list($response) = $this->buyAPhoneNumberWithHttpInfo($account_id, $buy_incoming_number_request);
+        list($response) = $this->buyAPhoneNumberWithHttpInfo($buy_incoming_number_request);
         return $response;
     }
 
@@ -139,16 +140,17 @@ class DefaultApi
      *
      * Buy a Phone Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\BuyIncomingNumberRequest $buy_incoming_number_request Incoming Number transaction details (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\IncomingNumberResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function buyAPhoneNumberWithHttpInfo($account_id, $buy_incoming_number_request)
+    public function buyAPhoneNumberWithHttpInfo($buy_incoming_number_request)
     {
-        $request = $this->buyAPhoneNumberRequest($account_id, $buy_incoming_number_request);
+        $request = $this->buyAPhoneNumberRequest($buy_incoming_number_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -233,15 +235,16 @@ class DefaultApi
      *
      * Buy a Phone Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\BuyIncomingNumberRequest $buy_incoming_number_request Incoming Number transaction details (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function buyAPhoneNumberAsync($account_id, $buy_incoming_number_request)
+    public function buyAPhoneNumberAsync($buy_incoming_number_request)
     {
-        return $this->buyAPhoneNumberAsyncWithHttpInfo($account_id, $buy_incoming_number_request)
+        return $this->buyAPhoneNumberAsyncWithHttpInfo($buy_incoming_number_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -254,16 +257,17 @@ class DefaultApi
      *
      * Buy a Phone Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\BuyIncomingNumberRequest $buy_incoming_number_request Incoming Number transaction details (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function buyAPhoneNumberAsyncWithHttpInfo($account_id, $buy_incoming_number_request)
+    public function buyAPhoneNumberAsyncWithHttpInfo($buy_incoming_number_request)
     {
         $returnType = '\FreeClimb\Api\Model\IncomingNumberResult';
-        $request = $this->buyAPhoneNumberRequest($account_id, $buy_incoming_number_request);
+        $request = $this->buyAPhoneNumberRequest($buy_incoming_number_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -301,14 +305,16 @@ class DefaultApi
     /**
      * Create request for operation 'buyAPhoneNumber'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\BuyIncomingNumberRequest $buy_incoming_number_request Incoming Number transaction details (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function buyAPhoneNumberRequest($account_id, $buy_incoming_number_request)
-    {
+    public function buyAPhoneNumberRequest($buy_incoming_number_request)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -413,16 +419,17 @@ class DefaultApi
      *
      * Create a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\CreateConferenceRequest $create_conference_request Conference to create (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ConferenceResult
      */
-    public function createAConference($account_id, $create_conference_request = null)
+    public function createAConference($create_conference_request = null)
     {
-        list($response) = $this->createAConferenceWithHttpInfo($account_id, $create_conference_request);
+        list($response) = $this->createAConferenceWithHttpInfo($create_conference_request);
         return $response;
     }
 
@@ -431,16 +438,17 @@ class DefaultApi
      *
      * Create a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\CreateConferenceRequest $create_conference_request Conference to create (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ConferenceResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAConferenceWithHttpInfo($account_id, $create_conference_request = null)
+    public function createAConferenceWithHttpInfo($create_conference_request = null)
     {
-        $request = $this->createAConferenceRequest($account_id, $create_conference_request);
+        $request = $this->createAConferenceRequest($create_conference_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -525,15 +533,16 @@ class DefaultApi
      *
      * Create a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\CreateConferenceRequest $create_conference_request Conference to create (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAConferenceAsync($account_id, $create_conference_request = null)
+    public function createAConferenceAsync($create_conference_request = null)
     {
-        return $this->createAConferenceAsyncWithHttpInfo($account_id, $create_conference_request)
+        return $this->createAConferenceAsyncWithHttpInfo($create_conference_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -546,16 +555,17 @@ class DefaultApi
      *
      * Create a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\CreateConferenceRequest $create_conference_request Conference to create (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAConferenceAsyncWithHttpInfo($account_id, $create_conference_request = null)
+    public function createAConferenceAsyncWithHttpInfo($create_conference_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\ConferenceResult';
-        $request = $this->createAConferenceRequest($account_id, $create_conference_request);
+        $request = $this->createAConferenceRequest($create_conference_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -593,14 +603,16 @@ class DefaultApi
     /**
      * Create request for operation 'createAConference'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\CreateConferenceRequest $create_conference_request Conference to create (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createAConferenceRequest($account_id, $create_conference_request = null)
-    {
+    public function createAConferenceRequest($create_conference_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -699,16 +711,17 @@ class DefaultApi
      *
      * Create a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue details used to create a queue (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueResult
      */
-    public function createAQueue($account_id, $queue_request = null)
+    public function createAQueue($queue_request = null)
     {
-        list($response) = $this->createAQueueWithHttpInfo($account_id, $queue_request);
+        list($response) = $this->createAQueueWithHttpInfo($queue_request);
         return $response;
     }
 
@@ -717,16 +730,17 @@ class DefaultApi
      *
      * Create a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue details used to create a queue (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAQueueWithHttpInfo($account_id, $queue_request = null)
+    public function createAQueueWithHttpInfo($queue_request = null)
     {
-        $request = $this->createAQueueRequest($account_id, $queue_request);
+        $request = $this->createAQueueRequest($queue_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -811,15 +825,16 @@ class DefaultApi
      *
      * Create a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue details used to create a queue (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAQueueAsync($account_id, $queue_request = null)
+    public function createAQueueAsync($queue_request = null)
     {
-        return $this->createAQueueAsyncWithHttpInfo($account_id, $queue_request)
+        return $this->createAQueueAsyncWithHttpInfo($queue_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -832,16 +847,17 @@ class DefaultApi
      *
      * Create a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue details used to create a queue (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAQueueAsyncWithHttpInfo($account_id, $queue_request = null)
+    public function createAQueueAsyncWithHttpInfo($queue_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\QueueResult';
-        $request = $this->createAQueueRequest($account_id, $queue_request);
+        $request = $this->createAQueueRequest($queue_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -879,14 +895,16 @@ class DefaultApi
     /**
      * Create request for operation 'createAQueue'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue details used to create a queue (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createAQueueRequest($account_id, $queue_request = null)
-    {
+    public function createAQueueRequest($queue_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -985,16 +1003,17 @@ class DefaultApi
      *
      * Create an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application Details (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ApplicationResult
      */
-    public function createAnApplication($account_id, $application_request = null)
+    public function createAnApplication($application_request = null)
     {
-        list($response) = $this->createAnApplicationWithHttpInfo($account_id, $application_request);
+        list($response) = $this->createAnApplicationWithHttpInfo($application_request);
         return $response;
     }
 
@@ -1003,16 +1022,17 @@ class DefaultApi
      *
      * Create an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application Details (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ApplicationResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createAnApplicationWithHttpInfo($account_id, $application_request = null)
+    public function createAnApplicationWithHttpInfo($application_request = null)
     {
-        $request = $this->createAnApplicationRequest($account_id, $application_request);
+        $request = $this->createAnApplicationRequest($application_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1097,15 +1117,16 @@ class DefaultApi
      *
      * Create an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application Details (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAnApplicationAsync($account_id, $application_request = null)
+    public function createAnApplicationAsync($application_request = null)
     {
-        return $this->createAnApplicationAsyncWithHttpInfo($account_id, $application_request)
+        return $this->createAnApplicationAsyncWithHttpInfo($application_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1118,16 +1139,17 @@ class DefaultApi
      *
      * Create an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application Details (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createAnApplicationAsyncWithHttpInfo($account_id, $application_request = null)
+    public function createAnApplicationAsyncWithHttpInfo($application_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\ApplicationResult';
-        $request = $this->createAnApplicationRequest($account_id, $application_request);
+        $request = $this->createAnApplicationRequest($application_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1165,14 +1187,16 @@ class DefaultApi
     /**
      * Create request for operation 'createAnApplication'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application Details (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function createAnApplicationRequest($account_id, $application_request = null)
-    {
+    public function createAnApplicationRequest($application_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1271,16 +1295,17 @@ class DefaultApi
      *
      * Delete a Recording
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteARecording($account_id, $recording_id)
+    public function deleteARecording($recording_id)
     {
-        $this->deleteARecordingWithHttpInfo($account_id, $recording_id);
+        $this->deleteARecordingWithHttpInfo($recording_id);
     }
 
     /**
@@ -1288,16 +1313,17 @@ class DefaultApi
      *
      * Delete a Recording
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteARecordingWithHttpInfo($account_id, $recording_id)
+    public function deleteARecordingWithHttpInfo($recording_id)
     {
-        $request = $this->deleteARecordingRequest($account_id, $recording_id);
+        $request = $this->deleteARecordingRequest($recording_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1348,15 +1374,16 @@ class DefaultApi
      *
      * Delete a Recording
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteARecordingAsync($account_id, $recording_id)
+    public function deleteARecordingAsync($recording_id)
     {
-        return $this->deleteARecordingAsyncWithHttpInfo($account_id, $recording_id)
+        return $this->deleteARecordingAsyncWithHttpInfo($recording_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1369,16 +1396,17 @@ class DefaultApi
      *
      * Delete a Recording
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteARecordingAsyncWithHttpInfo($account_id, $recording_id)
+    public function deleteARecordingAsyncWithHttpInfo($recording_id)
     {
         $returnType = '';
-        $request = $this->deleteARecordingRequest($account_id, $recording_id);
+        $request = $this->deleteARecordingRequest($recording_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1406,14 +1434,16 @@ class DefaultApi
     /**
      * Create request for operation 'deleteARecording'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteARecordingRequest($account_id, $recording_id)
-    {
+    public function deleteARecordingRequest($recording_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1520,16 +1550,17 @@ class DefaultApi
      *
      * Delete an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id String that uniquely identifies this application resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteAnApplication($account_id, $application_id)
+    public function deleteAnApplication($application_id)
     {
-        $this->deleteAnApplicationWithHttpInfo($account_id, $application_id);
+        $this->deleteAnApplicationWithHttpInfo($application_id);
     }
 
     /**
@@ -1537,16 +1568,17 @@ class DefaultApi
      *
      * Delete an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id String that uniquely identifies this application resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteAnApplicationWithHttpInfo($account_id, $application_id)
+    public function deleteAnApplicationWithHttpInfo($application_id)
     {
-        $request = $this->deleteAnApplicationRequest($account_id, $application_id);
+        $request = $this->deleteAnApplicationRequest($application_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1597,15 +1629,16 @@ class DefaultApi
      *
      * Delete an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id String that uniquely identifies this application resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAnApplicationAsync($account_id, $application_id)
+    public function deleteAnApplicationAsync($application_id)
     {
-        return $this->deleteAnApplicationAsyncWithHttpInfo($account_id, $application_id)
+        return $this->deleteAnApplicationAsyncWithHttpInfo($application_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1618,16 +1651,17 @@ class DefaultApi
      *
      * Delete an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id String that uniquely identifies this application resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAnApplicationAsyncWithHttpInfo($account_id, $application_id)
+    public function deleteAnApplicationAsyncWithHttpInfo($application_id)
     {
         $returnType = '';
-        $request = $this->deleteAnApplicationRequest($account_id, $application_id);
+        $request = $this->deleteAnApplicationRequest($application_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1655,14 +1689,16 @@ class DefaultApi
     /**
      * Create request for operation 'deleteAnApplication'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id String that uniquely identifies this application resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteAnApplicationRequest($account_id, $application_id)
-    {
+    public function deleteAnApplicationRequest($application_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -1769,16 +1805,17 @@ class DefaultApi
      *
      * Delete an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function deleteAnIncomingNumber($account_id, $phone_number_id)
+    public function deleteAnIncomingNumber($phone_number_id)
     {
-        $this->deleteAnIncomingNumberWithHttpInfo($account_id, $phone_number_id);
+        $this->deleteAnIncomingNumberWithHttpInfo($phone_number_id);
     }
 
     /**
@@ -1786,16 +1823,17 @@ class DefaultApi
      *
      * Delete an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteAnIncomingNumberWithHttpInfo($account_id, $phone_number_id)
+    public function deleteAnIncomingNumberWithHttpInfo($phone_number_id)
     {
-        $request = $this->deleteAnIncomingNumberRequest($account_id, $phone_number_id);
+        $request = $this->deleteAnIncomingNumberRequest($phone_number_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1846,15 +1884,16 @@ class DefaultApi
      *
      * Delete an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAnIncomingNumberAsync($account_id, $phone_number_id)
+    public function deleteAnIncomingNumberAsync($phone_number_id)
     {
-        return $this->deleteAnIncomingNumberAsyncWithHttpInfo($account_id, $phone_number_id)
+        return $this->deleteAnIncomingNumberAsyncWithHttpInfo($phone_number_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1867,16 +1906,17 @@ class DefaultApi
      *
      * Delete an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function deleteAnIncomingNumberAsyncWithHttpInfo($account_id, $phone_number_id)
+    public function deleteAnIncomingNumberAsyncWithHttpInfo($phone_number_id)
     {
         $returnType = '';
-        $request = $this->deleteAnIncomingNumberRequest($account_id, $phone_number_id);
+        $request = $this->deleteAnIncomingNumberRequest($phone_number_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1904,14 +1944,16 @@ class DefaultApi
     /**
      * Create request for operation 'deleteAnIncomingNumber'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function deleteAnIncomingNumberRequest($account_id, $phone_number_id)
-    {
+    public function deleteAnIncomingNumberRequest($phone_number_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2018,17 +2060,19 @@ class DefaultApi
      *
      * Dequeue a Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID if the Call that the Member belongs to (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueMember
      */
-    public function dequeueAMember($account_id, $queue_id, $call_id)
+    public function dequeueAMember($queue_id, $call_id)
     {
-        list($response) = $this->dequeueAMemberWithHttpInfo($account_id, $queue_id, $call_id);
+        list($response) = $this->dequeueAMemberWithHttpInfo($queue_id, $call_id);
         return $response;
     }
 
@@ -2037,17 +2081,19 @@ class DefaultApi
      *
      * Dequeue a Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID if the Call that the Member belongs to (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueMember, HTTP status code, HTTP response headers (array of strings)
      */
-    public function dequeueAMemberWithHttpInfo($account_id, $queue_id, $call_id)
+    public function dequeueAMemberWithHttpInfo($queue_id, $call_id)
     {
-        $request = $this->dequeueAMemberRequest($account_id, $queue_id, $call_id);
+        $request = $this->dequeueAMemberRequest($queue_id, $call_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2132,16 +2178,18 @@ class DefaultApi
      *
      * Dequeue a Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID if the Call that the Member belongs to (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function dequeueAMemberAsync($account_id, $queue_id, $call_id)
+    public function dequeueAMemberAsync($queue_id, $call_id)
     {
-        return $this->dequeueAMemberAsyncWithHttpInfo($account_id, $queue_id, $call_id)
+        return $this->dequeueAMemberAsyncWithHttpInfo($queue_id, $call_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2154,17 +2202,19 @@ class DefaultApi
      *
      * Dequeue a Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID if the Call that the Member belongs to (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function dequeueAMemberAsyncWithHttpInfo($account_id, $queue_id, $call_id)
+    public function dequeueAMemberAsyncWithHttpInfo($queue_id, $call_id)
     {
         $returnType = '\FreeClimb\Api\Model\QueueMember';
-        $request = $this->dequeueAMemberRequest($account_id, $queue_id, $call_id);
+        $request = $this->dequeueAMemberRequest($queue_id, $call_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2202,15 +2252,18 @@ class DefaultApi
     /**
      * Create request for operation 'dequeueAMember'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID if the Call that the Member belongs to (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function dequeueAMemberRequest($account_id, $queue_id, $call_id)
-    {
+    public function dequeueAMemberRequest($queue_id, $call_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2331,16 +2384,17 @@ class DefaultApi
      *
      * Dequeue Head Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies this queue resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueMember
      */
-    public function dequeueHeadMember($account_id, $queue_id)
+    public function dequeueHeadMember($queue_id)
     {
-        list($response) = $this->dequeueHeadMemberWithHttpInfo($account_id, $queue_id);
+        list($response) = $this->dequeueHeadMemberWithHttpInfo($queue_id);
         return $response;
     }
 
@@ -2349,16 +2403,17 @@ class DefaultApi
      *
      * Dequeue Head Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies this queue resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueMember, HTTP status code, HTTP response headers (array of strings)
      */
-    public function dequeueHeadMemberWithHttpInfo($account_id, $queue_id)
+    public function dequeueHeadMemberWithHttpInfo($queue_id)
     {
-        $request = $this->dequeueHeadMemberRequest($account_id, $queue_id);
+        $request = $this->dequeueHeadMemberRequest($queue_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2443,15 +2498,16 @@ class DefaultApi
      *
      * Dequeue Head Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies this queue resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function dequeueHeadMemberAsync($account_id, $queue_id)
+    public function dequeueHeadMemberAsync($queue_id)
     {
-        return $this->dequeueHeadMemberAsyncWithHttpInfo($account_id, $queue_id)
+        return $this->dequeueHeadMemberAsyncWithHttpInfo($queue_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2464,16 +2520,17 @@ class DefaultApi
      *
      * Dequeue Head Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies this queue resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function dequeueHeadMemberAsyncWithHttpInfo($account_id, $queue_id)
+    public function dequeueHeadMemberAsyncWithHttpInfo($queue_id)
     {
         $returnType = '\FreeClimb\Api\Model\QueueMember';
-        $request = $this->dequeueHeadMemberRequest($account_id, $queue_id);
+        $request = $this->dequeueHeadMemberRequest($queue_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2511,14 +2568,16 @@ class DefaultApi
     /**
      * Create request for operation 'dequeueHeadMember'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies this queue resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function dequeueHeadMemberRequest($account_id, $queue_id)
-    {
+    public function dequeueHeadMemberRequest($queue_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2625,16 +2684,17 @@ class DefaultApi
      *
      * Download a Recording File
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function downloadARecordingFile($account_id, $recording_id)
+    public function downloadARecordingFile($recording_id)
     {
-        list($response) = $this->downloadARecordingFileWithHttpInfo($account_id, $recording_id);
+        list($response) = $this->downloadARecordingFileWithHttpInfo($recording_id);
         return $response;
     }
 
@@ -2643,16 +2703,17 @@ class DefaultApi
      *
      * Download a Recording File
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function downloadARecordingFileWithHttpInfo($account_id, $recording_id)
+    public function downloadARecordingFileWithHttpInfo($recording_id)
     {
-        $request = $this->downloadARecordingFileRequest($account_id, $recording_id);
+        $request = $this->downloadARecordingFileRequest($recording_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2737,15 +2798,16 @@ class DefaultApi
      *
      * Download a Recording File
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function downloadARecordingFileAsync($account_id, $recording_id)
+    public function downloadARecordingFileAsync($recording_id)
     {
-        return $this->downloadARecordingFileAsyncWithHttpInfo($account_id, $recording_id)
+        return $this->downloadARecordingFileAsyncWithHttpInfo($recording_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2758,16 +2820,17 @@ class DefaultApi
      *
      * Download a Recording File
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function downloadARecordingFileAsyncWithHttpInfo($account_id, $recording_id)
+    public function downloadARecordingFileAsyncWithHttpInfo($recording_id)
     {
         $returnType = '\SplFileObject';
-        $request = $this->downloadARecordingFileRequest($account_id, $recording_id);
+        $request = $this->downloadARecordingFileRequest($recording_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2805,14 +2868,16 @@ class DefaultApi
     /**
      * Create request for operation 'downloadARecordingFile'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function downloadARecordingFileRequest($account_id, $recording_id)
-    {
+    public function downloadARecordingFileRequest($recording_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -2919,16 +2984,17 @@ class DefaultApi
      *
      * Filter Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\FilterLogsRequest $filter_logs_request Filter logs request paramters (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\LogList
      */
-    public function filterLogs($account_id, $filter_logs_request)
+    public function filterLogs($filter_logs_request)
     {
-        list($response) = $this->filterLogsWithHttpInfo($account_id, $filter_logs_request);
+        list($response) = $this->filterLogsWithHttpInfo($filter_logs_request);
         return $response;
     }
 
@@ -2937,16 +3003,17 @@ class DefaultApi
      *
      * Filter Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\FilterLogsRequest $filter_logs_request Filter logs request paramters (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\LogList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function filterLogsWithHttpInfo($account_id, $filter_logs_request)
+    public function filterLogsWithHttpInfo($filter_logs_request)
     {
-        $request = $this->filterLogsRequest($account_id, $filter_logs_request);
+        $request = $this->filterLogsRequest($filter_logs_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3031,15 +3098,16 @@ class DefaultApi
      *
      * Filter Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\FilterLogsRequest $filter_logs_request Filter logs request paramters (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function filterLogsAsync($account_id, $filter_logs_request)
+    public function filterLogsAsync($filter_logs_request)
     {
-        return $this->filterLogsAsyncWithHttpInfo($account_id, $filter_logs_request)
+        return $this->filterLogsAsyncWithHttpInfo($filter_logs_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3052,16 +3120,17 @@ class DefaultApi
      *
      * Filter Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\FilterLogsRequest $filter_logs_request Filter logs request paramters (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function filterLogsAsyncWithHttpInfo($account_id, $filter_logs_request)
+    public function filterLogsAsyncWithHttpInfo($filter_logs_request)
     {
         $returnType = '\FreeClimb\Api\Model\LogList';
-        $request = $this->filterLogsRequest($account_id, $filter_logs_request);
+        $request = $this->filterLogsRequest($filter_logs_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3099,14 +3168,16 @@ class DefaultApi
     /**
      * Create request for operation 'filterLogs'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\FilterLogsRequest $filter_logs_request Filter logs request paramters (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function filterLogsRequest($account_id, $filter_logs_request)
-    {
+    public function filterLogsRequest($filter_logs_request)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -3211,16 +3282,17 @@ class DefaultApi
      *
      * Get a Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\CallResult
      */
-    public function getACall($account_id, $call_id)
+    public function getACall($call_id)
     {
-        list($response) = $this->getACallWithHttpInfo($account_id, $call_id);
+        list($response) = $this->getACallWithHttpInfo($call_id);
         return $response;
     }
 
@@ -3229,16 +3301,17 @@ class DefaultApi
      *
      * Get a Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\CallResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getACallWithHttpInfo($account_id, $call_id)
+    public function getACallWithHttpInfo($call_id)
     {
-        $request = $this->getACallRequest($account_id, $call_id);
+        $request = $this->getACallRequest($call_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3323,15 +3396,16 @@ class DefaultApi
      *
      * Get a Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getACallAsync($account_id, $call_id)
+    public function getACallAsync($call_id)
     {
-        return $this->getACallAsyncWithHttpInfo($account_id, $call_id)
+        return $this->getACallAsyncWithHttpInfo($call_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3344,16 +3418,17 @@ class DefaultApi
      *
      * Get a Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getACallAsyncWithHttpInfo($account_id, $call_id)
+    public function getACallAsyncWithHttpInfo($call_id)
     {
         $returnType = '\FreeClimb\Api\Model\CallResult';
-        $request = $this->getACallRequest($account_id, $call_id);
+        $request = $this->getACallRequest($call_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3391,14 +3466,16 @@ class DefaultApi
     /**
      * Create request for operation 'getACall'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getACallRequest($account_id, $call_id)
-    {
+    public function getACallRequest($call_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -3505,16 +3582,17 @@ class DefaultApi
      *
      * Get a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id A string that uniquely identifies this conference resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ConferenceResult
      */
-    public function getAConference($account_id, $conference_id)
+    public function getAConference($conference_id)
     {
-        list($response) = $this->getAConferenceWithHttpInfo($account_id, $conference_id);
+        list($response) = $this->getAConferenceWithHttpInfo($conference_id);
         return $response;
     }
 
@@ -3523,16 +3601,17 @@ class DefaultApi
      *
      * Get a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id A string that uniquely identifies this conference resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ConferenceResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAConferenceWithHttpInfo($account_id, $conference_id)
+    public function getAConferenceWithHttpInfo($conference_id)
     {
-        $request = $this->getAConferenceRequest($account_id, $conference_id);
+        $request = $this->getAConferenceRequest($conference_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3617,15 +3696,16 @@ class DefaultApi
      *
      * Get a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id A string that uniquely identifies this conference resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAConferenceAsync($account_id, $conference_id)
+    public function getAConferenceAsync($conference_id)
     {
-        return $this->getAConferenceAsyncWithHttpInfo($account_id, $conference_id)
+        return $this->getAConferenceAsyncWithHttpInfo($conference_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3638,16 +3718,17 @@ class DefaultApi
      *
      * Get a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id A string that uniquely identifies this conference resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAConferenceAsyncWithHttpInfo($account_id, $conference_id)
+    public function getAConferenceAsyncWithHttpInfo($conference_id)
     {
         $returnType = '\FreeClimb\Api\Model\ConferenceResult';
-        $request = $this->getAConferenceRequest($account_id, $conference_id);
+        $request = $this->getAConferenceRequest($conference_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3685,14 +3766,16 @@ class DefaultApi
     /**
      * Create request for operation 'getAConference'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id A string that uniquely identifies this conference resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAConferenceRequest($account_id, $conference_id)
-    {
+    public function getAConferenceRequest($conference_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -3799,17 +3882,19 @@ class DefaultApi
      *
      * Get a Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID of the Call that the Member belongs to (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueMember
      */
-    public function getAMember($account_id, $queue_id, $call_id)
+    public function getAMember($queue_id, $call_id)
     {
-        list($response) = $this->getAMemberWithHttpInfo($account_id, $queue_id, $call_id);
+        list($response) = $this->getAMemberWithHttpInfo($queue_id, $call_id);
         return $response;
     }
 
@@ -3818,17 +3903,19 @@ class DefaultApi
      *
      * Get a Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID of the Call that the Member belongs to (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueMember, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAMemberWithHttpInfo($account_id, $queue_id, $call_id)
+    public function getAMemberWithHttpInfo($queue_id, $call_id)
     {
-        $request = $this->getAMemberRequest($account_id, $queue_id, $call_id);
+        $request = $this->getAMemberRequest($queue_id, $call_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3913,16 +4000,18 @@ class DefaultApi
      *
      * Get a Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID of the Call that the Member belongs to (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAMemberAsync($account_id, $queue_id, $call_id)
+    public function getAMemberAsync($queue_id, $call_id)
     {
-        return $this->getAMemberAsyncWithHttpInfo($account_id, $queue_id, $call_id)
+        return $this->getAMemberAsyncWithHttpInfo($queue_id, $call_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3935,17 +4024,19 @@ class DefaultApi
      *
      * Get a Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID of the Call that the Member belongs to (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAMemberAsyncWithHttpInfo($account_id, $queue_id, $call_id)
+    public function getAMemberAsyncWithHttpInfo($queue_id, $call_id)
     {
         $returnType = '\FreeClimb\Api\Model\QueueMember';
-        $request = $this->getAMemberRequest($account_id, $queue_id, $call_id);
+        $request = $this->getAMemberRequest($queue_id, $call_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3983,15 +4074,18 @@ class DefaultApi
     /**
      * Create request for operation 'getAMember'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      * @param  string $call_id ID of the Call that the Member belongs to (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAMemberRequest($account_id, $queue_id, $call_id)
-    {
+    public function getAMemberRequest($queue_id, $call_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -4112,17 +4206,19 @@ class DefaultApi
      *
      * Get a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ConferenceParticipantResult
      */
-    public function getAParticipant($account_id, $conference_id, $call_id)
+    public function getAParticipant($conference_id, $call_id)
     {
-        list($response) = $this->getAParticipantWithHttpInfo($account_id, $conference_id, $call_id);
+        list($response) = $this->getAParticipantWithHttpInfo($conference_id, $call_id);
         return $response;
     }
 
@@ -4131,17 +4227,19 @@ class DefaultApi
      *
      * Get a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ConferenceParticipantResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAParticipantWithHttpInfo($account_id, $conference_id, $call_id)
+    public function getAParticipantWithHttpInfo($conference_id, $call_id)
     {
-        $request = $this->getAParticipantRequest($account_id, $conference_id, $call_id);
+        $request = $this->getAParticipantRequest($conference_id, $call_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4226,16 +4324,18 @@ class DefaultApi
      *
      * Get a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAParticipantAsync($account_id, $conference_id, $call_id)
+    public function getAParticipantAsync($conference_id, $call_id)
     {
-        return $this->getAParticipantAsyncWithHttpInfo($account_id, $conference_id, $call_id)
+        return $this->getAParticipantAsyncWithHttpInfo($conference_id, $call_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4248,17 +4348,19 @@ class DefaultApi
      *
      * Get a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAParticipantAsyncWithHttpInfo($account_id, $conference_id, $call_id)
+    public function getAParticipantAsyncWithHttpInfo($conference_id, $call_id)
     {
         $returnType = '\FreeClimb\Api\Model\ConferenceParticipantResult';
-        $request = $this->getAParticipantRequest($account_id, $conference_id, $call_id);
+        $request = $this->getAParticipantRequest($conference_id, $call_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4296,15 +4398,18 @@ class DefaultApi
     /**
      * Create request for operation 'getAParticipant'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAParticipantRequest($account_id, $conference_id, $call_id)
-    {
+    public function getAParticipantRequest($conference_id, $call_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -4425,16 +4530,17 @@ class DefaultApi
      *
      * Get a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this queue resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueResult
      */
-    public function getAQueue($account_id, $queue_id)
+    public function getAQueue($queue_id)
     {
-        list($response) = $this->getAQueueWithHttpInfo($account_id, $queue_id);
+        list($response) = $this->getAQueueWithHttpInfo($queue_id);
         return $response;
     }
 
@@ -4443,16 +4549,17 @@ class DefaultApi
      *
      * Get a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this queue resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAQueueWithHttpInfo($account_id, $queue_id)
+    public function getAQueueWithHttpInfo($queue_id)
     {
-        $request = $this->getAQueueRequest($account_id, $queue_id);
+        $request = $this->getAQueueRequest($queue_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4537,15 +4644,16 @@ class DefaultApi
      *
      * Get a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this queue resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAQueueAsync($account_id, $queue_id)
+    public function getAQueueAsync($queue_id)
     {
-        return $this->getAQueueAsyncWithHttpInfo($account_id, $queue_id)
+        return $this->getAQueueAsyncWithHttpInfo($queue_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4558,16 +4666,17 @@ class DefaultApi
      *
      * Get a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this queue resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAQueueAsyncWithHttpInfo($account_id, $queue_id)
+    public function getAQueueAsyncWithHttpInfo($queue_id)
     {
         $returnType = '\FreeClimb\Api\Model\QueueResult';
-        $request = $this->getAQueueRequest($account_id, $queue_id);
+        $request = $this->getAQueueRequest($queue_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4605,14 +4714,16 @@ class DefaultApi
     /**
      * Create request for operation 'getAQueue'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this queue resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAQueueRequest($account_id, $queue_id)
-    {
+    public function getAQueueRequest($queue_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -4719,16 +4830,17 @@ class DefaultApi
      *
      * Get a Recording
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\RecordingResult
      */
-    public function getARecording($account_id, $recording_id)
+    public function getARecording($recording_id)
     {
-        list($response) = $this->getARecordingWithHttpInfo($account_id, $recording_id);
+        list($response) = $this->getARecordingWithHttpInfo($recording_id);
         return $response;
     }
 
@@ -4737,16 +4849,17 @@ class DefaultApi
      *
      * Get a Recording
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\RecordingResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getARecordingWithHttpInfo($account_id, $recording_id)
+    public function getARecordingWithHttpInfo($recording_id)
     {
-        $request = $this->getARecordingRequest($account_id, $recording_id);
+        $request = $this->getARecordingRequest($recording_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4831,15 +4944,16 @@ class DefaultApi
      *
      * Get a Recording
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getARecordingAsync($account_id, $recording_id)
+    public function getARecordingAsync($recording_id)
     {
-        return $this->getARecordingAsyncWithHttpInfo($account_id, $recording_id)
+        return $this->getARecordingAsyncWithHttpInfo($recording_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4852,16 +4966,17 @@ class DefaultApi
      *
      * Get a Recording
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getARecordingAsyncWithHttpInfo($account_id, $recording_id)
+    public function getARecordingAsyncWithHttpInfo($recording_id)
     {
         $returnType = '\FreeClimb\Api\Model\RecordingResult';
-        $request = $this->getARecordingRequest($account_id, $recording_id);
+        $request = $this->getARecordingRequest($recording_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4899,14 +5014,16 @@ class DefaultApi
     /**
      * Create request for operation 'getARecording'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getARecordingRequest($account_id, $recording_id)
-    {
+    public function getARecordingRequest($recording_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -5013,15 +5130,15 @@ class DefaultApi
      *
      * Get an Account
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\AccountResult
      */
-    public function getAnAccount($account_id)
+    public function getAnAccount()
     {
-        list($response) = $this->getAnAccountWithHttpInfo($account_id);
+        list($response) = $this->getAnAccountWithHttpInfo();
         return $response;
     }
 
@@ -5030,15 +5147,15 @@ class DefaultApi
      *
      * Get an Account
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\AccountResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAnAccountWithHttpInfo($account_id)
+    public function getAnAccountWithHttpInfo()
     {
-        $request = $this->getAnAccountRequest($account_id);
+        $request = $this->getAnAccountRequest();
 
         try {
             $options = $this->createHttpClientOption();
@@ -5123,14 +5240,14 @@ class DefaultApi
      *
      * Get an Account
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnAccountAsync($account_id)
+    public function getAnAccountAsync()
     {
-        return $this->getAnAccountAsyncWithHttpInfo($account_id)
+        return $this->getAnAccountAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5143,15 +5260,15 @@ class DefaultApi
      *
      * Get an Account
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnAccountAsyncWithHttpInfo($account_id)
+    public function getAnAccountAsyncWithHttpInfo()
     {
         $returnType = '\FreeClimb\Api\Model\AccountResult';
-        $request = $this->getAnAccountRequest($account_id);
+        $request = $this->getAnAccountRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5189,13 +5306,14 @@ class DefaultApi
     /**
      * Create request for operation 'getAnAccount'
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAnAccountRequest($account_id)
-    {
+    public function getAnAccountRequest()
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -5288,16 +5406,17 @@ class DefaultApi
      *
      * Get an Application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ApplicationResult
      */
-    public function getAnApplication($account_id, $application_id)
+    public function getAnApplication($application_id)
     {
-        list($response) = $this->getAnApplicationWithHttpInfo($account_id, $application_id);
+        list($response) = $this->getAnApplicationWithHttpInfo($application_id);
         return $response;
     }
 
@@ -5306,16 +5425,17 @@ class DefaultApi
      *
      * Get an Application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ApplicationResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAnApplicationWithHttpInfo($account_id, $application_id)
+    public function getAnApplicationWithHttpInfo($application_id)
     {
-        $request = $this->getAnApplicationRequest($account_id, $application_id);
+        $request = $this->getAnApplicationRequest($application_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5400,15 +5520,16 @@ class DefaultApi
      *
      * Get an Application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnApplicationAsync($account_id, $application_id)
+    public function getAnApplicationAsync($application_id)
     {
-        return $this->getAnApplicationAsyncWithHttpInfo($account_id, $application_id)
+        return $this->getAnApplicationAsyncWithHttpInfo($application_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5421,16 +5542,17 @@ class DefaultApi
      *
      * Get an Application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnApplicationAsyncWithHttpInfo($account_id, $application_id)
+    public function getAnApplicationAsyncWithHttpInfo($application_id)
     {
         $returnType = '\FreeClimb\Api\Model\ApplicationResult';
-        $request = $this->getAnApplicationRequest($account_id, $application_id);
+        $request = $this->getAnApplicationRequest($application_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5468,14 +5590,16 @@ class DefaultApi
     /**
      * Create request for operation 'getAnApplication'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAnApplicationRequest($account_id, $application_id)
-    {
+    public function getAnApplicationRequest($application_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -5582,16 +5706,17 @@ class DefaultApi
      *
      * Get an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\IncomingNumberResult
      */
-    public function getAnIncomingNumber($account_id, $phone_number_id)
+    public function getAnIncomingNumber($phone_number_id)
     {
-        list($response) = $this->getAnIncomingNumberWithHttpInfo($account_id, $phone_number_id);
+        list($response) = $this->getAnIncomingNumberWithHttpInfo($phone_number_id);
         return $response;
     }
 
@@ -5600,16 +5725,17 @@ class DefaultApi
      *
      * Get an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\IncomingNumberResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAnIncomingNumberWithHttpInfo($account_id, $phone_number_id)
+    public function getAnIncomingNumberWithHttpInfo($phone_number_id)
     {
-        $request = $this->getAnIncomingNumberRequest($account_id, $phone_number_id);
+        $request = $this->getAnIncomingNumberRequest($phone_number_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5694,15 +5820,16 @@ class DefaultApi
      *
      * Get an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnIncomingNumberAsync($account_id, $phone_number_id)
+    public function getAnIncomingNumberAsync($phone_number_id)
     {
-        return $this->getAnIncomingNumberAsyncWithHttpInfo($account_id, $phone_number_id)
+        return $this->getAnIncomingNumberAsyncWithHttpInfo($phone_number_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5715,16 +5842,17 @@ class DefaultApi
      *
      * Get an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnIncomingNumberAsyncWithHttpInfo($account_id, $phone_number_id)
+    public function getAnIncomingNumberAsyncWithHttpInfo($phone_number_id)
     {
         $returnType = '\FreeClimb\Api\Model\IncomingNumberResult';
-        $request = $this->getAnIncomingNumberRequest($account_id, $phone_number_id);
+        $request = $this->getAnIncomingNumberRequest($phone_number_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5762,14 +5890,16 @@ class DefaultApi
     /**
      * Create request for operation 'getAnIncomingNumber'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAnIncomingNumberRequest($account_id, $phone_number_id)
-    {
+    public function getAnIncomingNumberRequest($phone_number_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -5876,16 +6006,17 @@ class DefaultApi
      *
      * Get an SMS Message
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $message_id String that uniquely identifies this Message resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\MessageResult
      */
-    public function getAnSmsMessage($account_id, $message_id)
+    public function getAnSmsMessage($message_id)
     {
-        list($response) = $this->getAnSmsMessageWithHttpInfo($account_id, $message_id);
+        list($response) = $this->getAnSmsMessageWithHttpInfo($message_id);
         return $response;
     }
 
@@ -5894,16 +6025,17 @@ class DefaultApi
      *
      * Get an SMS Message
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $message_id String that uniquely identifies this Message resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\MessageResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAnSmsMessageWithHttpInfo($account_id, $message_id)
+    public function getAnSmsMessageWithHttpInfo($message_id)
     {
-        $request = $this->getAnSmsMessageRequest($account_id, $message_id);
+        $request = $this->getAnSmsMessageRequest($message_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5988,15 +6120,16 @@ class DefaultApi
      *
      * Get an SMS Message
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $message_id String that uniquely identifies this Message resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnSmsMessageAsync($account_id, $message_id)
+    public function getAnSmsMessageAsync($message_id)
     {
-        return $this->getAnSmsMessageAsyncWithHttpInfo($account_id, $message_id)
+        return $this->getAnSmsMessageAsyncWithHttpInfo($message_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6009,16 +6142,17 @@ class DefaultApi
      *
      * Get an SMS Message
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $message_id String that uniquely identifies this Message resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getAnSmsMessageAsyncWithHttpInfo($account_id, $message_id)
+    public function getAnSmsMessageAsyncWithHttpInfo($message_id)
     {
         $returnType = '\FreeClimb\Api\Model\MessageResult';
-        $request = $this->getAnSmsMessageRequest($account_id, $message_id);
+        $request = $this->getAnSmsMessageRequest($message_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6056,14 +6190,16 @@ class DefaultApi
     /**
      * Create request for operation 'getAnSmsMessage'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $message_id String that uniquely identifies this Message resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getAnSmsMessageRequest($account_id, $message_id)
-    {
+    public function getAnSmsMessageRequest($message_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -6170,16 +6306,17 @@ class DefaultApi
      *
      * Get Head Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueMember
      */
-    public function getHeadMember($account_id, $queue_id)
+    public function getHeadMember($queue_id)
     {
-        list($response) = $this->getHeadMemberWithHttpInfo($account_id, $queue_id);
+        list($response) = $this->getHeadMemberWithHttpInfo($queue_id);
         return $response;
     }
 
@@ -6188,16 +6325,17 @@ class DefaultApi
      *
      * Get Head Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueMember, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getHeadMemberWithHttpInfo($account_id, $queue_id)
+    public function getHeadMemberWithHttpInfo($queue_id)
     {
-        $request = $this->getHeadMemberRequest($account_id, $queue_id);
+        $request = $this->getHeadMemberRequest($queue_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6282,15 +6420,16 @@ class DefaultApi
      *
      * Get Head Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getHeadMemberAsync($account_id, $queue_id)
+    public function getHeadMemberAsync($queue_id)
     {
-        return $this->getHeadMemberAsyncWithHttpInfo($account_id, $queue_id)
+        return $this->getHeadMemberAsyncWithHttpInfo($queue_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6303,16 +6442,17 @@ class DefaultApi
      *
      * Get Head Member
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getHeadMemberAsyncWithHttpInfo($account_id, $queue_id)
+    public function getHeadMemberAsyncWithHttpInfo($queue_id)
     {
         $returnType = '\FreeClimb\Api\Model\QueueMember';
-        $request = $this->getHeadMemberRequest($account_id, $queue_id);
+        $request = $this->getHeadMemberRequest($queue_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6350,14 +6490,16 @@ class DefaultApi
     /**
      * Create request for operation 'getHeadMember'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getHeadMemberRequest($account_id, $queue_id)
-    {
+    public function getHeadMemberRequest($queue_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -6464,16 +6606,17 @@ class DefaultApi
      *
      * List Active Queues
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only the Queue resources with aliases that exactly match this name. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueList
      */
-    public function listActiveQueues($account_id, $alias = null)
+    public function listActiveQueues($alias = null)
     {
-        list($response) = $this->listActiveQueuesWithHttpInfo($account_id, $alias);
+        list($response) = $this->listActiveQueuesWithHttpInfo($alias);
         return $response;
     }
 
@@ -6482,16 +6625,17 @@ class DefaultApi
      *
      * List Active Queues
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only the Queue resources with aliases that exactly match this name. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listActiveQueuesWithHttpInfo($account_id, $alias = null)
+    public function listActiveQueuesWithHttpInfo($alias = null)
     {
-        $request = $this->listActiveQueuesRequest($account_id, $alias);
+        $request = $this->listActiveQueuesRequest($alias);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6576,15 +6720,16 @@ class DefaultApi
      *
      * List Active Queues
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only the Queue resources with aliases that exactly match this name. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listActiveQueuesAsync($account_id, $alias = null)
+    public function listActiveQueuesAsync($alias = null)
     {
-        return $this->listActiveQueuesAsyncWithHttpInfo($account_id, $alias)
+        return $this->listActiveQueuesAsyncWithHttpInfo($alias)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6597,16 +6742,17 @@ class DefaultApi
      *
      * List Active Queues
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only the Queue resources with aliases that exactly match this name. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listActiveQueuesAsyncWithHttpInfo($account_id, $alias = null)
+    public function listActiveQueuesAsyncWithHttpInfo($alias = null)
     {
         $returnType = '\FreeClimb\Api\Model\QueueList';
-        $request = $this->listActiveQueuesRequest($account_id, $alias);
+        $request = $this->listActiveQueuesRequest($alias);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6644,14 +6790,16 @@ class DefaultApi
     /**
      * Create request for operation 'listActiveQueues'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only the Queue resources with aliases that exactly match this name. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listActiveQueuesRequest($account_id, $alias = null)
-    {
+    public function listActiveQueuesRequest($alias = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -6755,15 +6903,15 @@ class DefaultApi
      *
      * List All Account Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\LogList
      */
-    public function listAllAccountLogs($account_id)
+    public function listAllAccountLogs()
     {
-        list($response) = $this->listAllAccountLogsWithHttpInfo($account_id);
+        list($response) = $this->listAllAccountLogsWithHttpInfo();
         return $response;
     }
 
@@ -6772,15 +6920,15 @@ class DefaultApi
      *
      * List All Account Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\LogList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listAllAccountLogsWithHttpInfo($account_id)
+    public function listAllAccountLogsWithHttpInfo()
     {
-        $request = $this->listAllAccountLogsRequest($account_id);
+        $request = $this->listAllAccountLogsRequest();
 
         try {
             $options = $this->createHttpClientOption();
@@ -6865,14 +7013,14 @@ class DefaultApi
      *
      * List All Account Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAllAccountLogsAsync($account_id)
+    public function listAllAccountLogsAsync()
     {
-        return $this->listAllAccountLogsAsyncWithHttpInfo($account_id)
+        return $this->listAllAccountLogsAsyncWithHttpInfo()
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6885,15 +7033,15 @@ class DefaultApi
      *
      * List All Account Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listAllAccountLogsAsyncWithHttpInfo($account_id)
+    public function listAllAccountLogsAsyncWithHttpInfo()
     {
         $returnType = '\FreeClimb\Api\Model\LogList';
-        $request = $this->listAllAccountLogsRequest($account_id);
+        $request = $this->listAllAccountLogsRequest();
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6931,13 +7079,14 @@ class DefaultApi
     /**
      * Create request for operation 'listAllAccountLogs'
      *
-     * @param  string $account_id ID of the account (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listAllAccountLogsRequest($account_id)
-    {
+    public function listAllAccountLogsRequest()
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -7030,16 +7179,17 @@ class DefaultApi
      *
      * List applications
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only applications with aliases that exactly match this value. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ApplicationList
      */
-    public function listApplications($account_id, $alias = null)
+    public function listApplications($alias = null)
     {
-        list($response) = $this->listApplicationsWithHttpInfo($account_id, $alias);
+        list($response) = $this->listApplicationsWithHttpInfo($alias);
         return $response;
     }
 
@@ -7048,16 +7198,17 @@ class DefaultApi
      *
      * List applications
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only applications with aliases that exactly match this value. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ApplicationList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listApplicationsWithHttpInfo($account_id, $alias = null)
+    public function listApplicationsWithHttpInfo($alias = null)
     {
-        $request = $this->listApplicationsRequest($account_id, $alias);
+        $request = $this->listApplicationsRequest($alias);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7142,15 +7293,16 @@ class DefaultApi
      *
      * List applications
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only applications with aliases that exactly match this value. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listApplicationsAsync($account_id, $alias = null)
+    public function listApplicationsAsync($alias = null)
     {
-        return $this->listApplicationsAsyncWithHttpInfo($account_id, $alias)
+        return $this->listApplicationsAsyncWithHttpInfo($alias)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7163,16 +7315,17 @@ class DefaultApi
      *
      * List applications
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only applications with aliases that exactly match this value. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listApplicationsAsyncWithHttpInfo($account_id, $alias = null)
+    public function listApplicationsAsyncWithHttpInfo($alias = null)
     {
         $returnType = '\FreeClimb\Api\Model\ApplicationList';
-        $request = $this->listApplicationsRequest($account_id, $alias);
+        $request = $this->listApplicationsRequest($alias);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7210,14 +7363,16 @@ class DefaultApi
     /**
      * Create request for operation 'listApplications'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $alias Return only applications with aliases that exactly match this value. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listApplicationsRequest($account_id, $alias = null)
-    {
+    public function listApplicationsRequest($alias = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -7321,16 +7476,27 @@ class DefaultApi
      *
      * List available numbers
      *
+
      * @param  string $phone_number PCRE-compatible regular expression to filter against &#x60;phoneNumber&#x60; field, which is in E.164 format. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $capabilities_voice capabilities_voice (optional)
+
      * @param  bool $capabilities_sms capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code capabilities_short_code (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7347,16 +7513,27 @@ class DefaultApi
      *
      * List available numbers
      *
+
      * @param  string $phone_number PCRE-compatible regular expression to filter against &#x60;phoneNumber&#x60; field, which is in E.164 format. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $capabilities_voice (optional)
+
      * @param  bool $capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -7449,16 +7626,27 @@ class DefaultApi
      *
      * List available numbers
      *
+
      * @param  string $phone_number PCRE-compatible regular expression to filter against &#x60;phoneNumber&#x60; field, which is in E.164 format. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $capabilities_voice (optional)
+
      * @param  bool $capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7478,16 +7666,27 @@ class DefaultApi
      *
      * List available numbers
      *
+
      * @param  string $phone_number PCRE-compatible regular expression to filter against &#x60;phoneNumber&#x60; field, which is in E.164 format. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $capabilities_voice (optional)
+
      * @param  bool $capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -7533,22 +7732,33 @@ class DefaultApi
     /**
      * Create request for operation 'listAvailableNumbers'
      *
+
      * @param  string $phone_number PCRE-compatible regular expression to filter against &#x60;phoneNumber&#x60; field, which is in E.164 format. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true)
+
      * @param  bool $capabilities_voice (optional)
+
      * @param  bool $capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function listAvailableNumbersRequest($phone_number = null, $region = null, $country = null, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
-    {
+    { 
 
         $resourcePath = '/AvailablePhoneNumbers';
         $formParams = [];
@@ -7737,16 +7947,17 @@ class DefaultApi
      *
      * List Call Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\LogList
      */
-    public function listCallLogs($account_id, $call_id)
+    public function listCallLogs($call_id)
     {
-        list($response) = $this->listCallLogsWithHttpInfo($account_id, $call_id);
+        list($response) = $this->listCallLogsWithHttpInfo($call_id);
         return $response;
     }
 
@@ -7755,16 +7966,17 @@ class DefaultApi
      *
      * List Call Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\LogList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCallLogsWithHttpInfo($account_id, $call_id)
+    public function listCallLogsWithHttpInfo($call_id)
     {
-        $request = $this->listCallLogsRequest($account_id, $call_id);
+        $request = $this->listCallLogsRequest($call_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7849,15 +8061,16 @@ class DefaultApi
      *
      * List Call Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCallLogsAsync($account_id, $call_id)
+    public function listCallLogsAsync($call_id)
     {
-        return $this->listCallLogsAsyncWithHttpInfo($account_id, $call_id)
+        return $this->listCallLogsAsyncWithHttpInfo($call_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7870,16 +8083,17 @@ class DefaultApi
      *
      * List Call Logs
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCallLogsAsyncWithHttpInfo($account_id, $call_id)
+    public function listCallLogsAsyncWithHttpInfo($call_id)
     {
         $returnType = '\FreeClimb\Api\Model\LogList';
-        $request = $this->listCallLogsRequest($account_id, $call_id);
+        $request = $this->listCallLogsRequest($call_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7917,14 +8131,16 @@ class DefaultApi
     /**
      * Create request for operation 'listCallLogs'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listCallLogsRequest($account_id, $call_id)
-    {
+    public function listCallLogsRequest($call_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -8031,17 +8247,19 @@ class DefaultApi
      *
      * List Call Recordings
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  string $date_created Only show recordings created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\RecordingList
      */
-    public function listCallRecordings($account_id, $call_id, $date_created = null)
+    public function listCallRecordings($call_id, $date_created = null)
     {
-        list($response) = $this->listCallRecordingsWithHttpInfo($account_id, $call_id, $date_created);
+        list($response) = $this->listCallRecordingsWithHttpInfo($call_id, $date_created);
         return $response;
     }
 
@@ -8050,17 +8268,19 @@ class DefaultApi
      *
      * List Call Recordings
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  string $date_created Only show recordings created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\RecordingList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCallRecordingsWithHttpInfo($account_id, $call_id, $date_created = null)
+    public function listCallRecordingsWithHttpInfo($call_id, $date_created = null)
     {
-        $request = $this->listCallRecordingsRequest($account_id, $call_id, $date_created);
+        $request = $this->listCallRecordingsRequest($call_id, $date_created);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8145,16 +8365,18 @@ class DefaultApi
      *
      * List Call Recordings
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  string $date_created Only show recordings created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCallRecordingsAsync($account_id, $call_id, $date_created = null)
+    public function listCallRecordingsAsync($call_id, $date_created = null)
     {
-        return $this->listCallRecordingsAsyncWithHttpInfo($account_id, $call_id, $date_created)
+        return $this->listCallRecordingsAsyncWithHttpInfo($call_id, $date_created)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8167,17 +8389,19 @@ class DefaultApi
      *
      * List Call Recordings
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  string $date_created Only show recordings created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCallRecordingsAsyncWithHttpInfo($account_id, $call_id, $date_created = null)
+    public function listCallRecordingsAsyncWithHttpInfo($call_id, $date_created = null)
     {
         $returnType = '\FreeClimb\Api\Model\RecordingList';
-        $request = $this->listCallRecordingsRequest($account_id, $call_id, $date_created);
+        $request = $this->listCallRecordingsRequest($call_id, $date_created);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8215,15 +8439,18 @@ class DefaultApi
     /**
      * Create request for operation 'listCallRecordings'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  string $date_created Only show recordings created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listCallRecordingsRequest($account_id, $call_id, $date_created = null)
-    {
+    public function listCallRecordingsRequest($call_id, $date_created = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -8341,22 +8568,29 @@ class DefaultApi
      *
      * List Calls
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
+
      * @param  string $to Only show Calls to this phone number. (optional)
+
      * @param  string $from Only show Calls from this phone number. (optional)
+
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
+
      * @param  string $start_time Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+
      * @param  string $end_time Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss. (optional)
+
      * @param  string $parent_call_id Only show Calls spawned by the call with this ID. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\CallList
      */
-    public function listCalls($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCalls($active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
-        list($response) = $this->listCallsWithHttpInfo($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
+        list($response) = $this->listCallsWithHttpInfo($active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
         return $response;
     }
 
@@ -8365,22 +8599,29 @@ class DefaultApi
      *
      * List Calls
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
+
      * @param  string $to Only show Calls to this phone number. (optional)
+
      * @param  string $from Only show Calls from this phone number. (optional)
+
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
+
      * @param  string $start_time Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+
      * @param  string $end_time Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss. (optional)
+
      * @param  string $parent_call_id Only show Calls spawned by the call with this ID. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\CallList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listCallsWithHttpInfo($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCallsWithHttpInfo($active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
-        $request = $this->listCallsRequest($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
+        $request = $this->listCallsRequest($active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8465,21 +8706,28 @@ class DefaultApi
      *
      * List Calls
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
+
      * @param  string $to Only show Calls to this phone number. (optional)
+
      * @param  string $from Only show Calls from this phone number. (optional)
+
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
+
      * @param  string $start_time Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+
      * @param  string $end_time Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss. (optional)
+
      * @param  string $parent_call_id Only show Calls spawned by the call with this ID. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCallsAsync($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCallsAsync($active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
-        return $this->listCallsAsyncWithHttpInfo($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id)
+        return $this->listCallsAsyncWithHttpInfo($active, $to, $from, $status, $start_time, $end_time, $parent_call_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8492,22 +8740,29 @@ class DefaultApi
      *
      * List Calls
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
+
      * @param  string $to Only show Calls to this phone number. (optional)
+
      * @param  string $from Only show Calls from this phone number. (optional)
+
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
+
      * @param  string $start_time Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+
      * @param  string $end_time Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss. (optional)
+
      * @param  string $parent_call_id Only show Calls spawned by the call with this ID. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listCallsAsyncWithHttpInfo($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    public function listCallsAsyncWithHttpInfo($active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
     {
         $returnType = '\FreeClimb\Api\Model\CallList';
-        $request = $this->listCallsRequest($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
+        $request = $this->listCallsRequest($active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8545,20 +8800,28 @@ class DefaultApi
     /**
      * Create request for operation 'listCalls'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
+
      * @param  string $to Only show Calls to this phone number. (optional)
+
      * @param  string $from Only show Calls from this phone number. (optional)
+
      * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
+
      * @param  string $start_time Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+
      * @param  string $end_time Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss. (optional)
+
      * @param  string $parent_call_id Only show Calls spawned by the call with this ID. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listCallsRequest($account_id, $active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
-    {
+    public function listCallsRequest($active = false, $to = null, $from = null, $status = null, $start_time = null, $end_time = null, $parent_call_id = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -8728,19 +8991,23 @@ class DefaultApi
      *
      * List Conferences
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;. (optional)
+
      * @param  string $alias List Conferences whose alias exactly matches this string. (optional)
+
      * @param  string $date_created Only show Conferences that were created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      * @param  string $date_updated Only show Conferences that were last updated on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ConferenceList
      */
-    public function listConferences($account_id, $status = null, $alias = null, $date_created = null, $date_updated = null)
+    public function listConferences($status = null, $alias = null, $date_created = null, $date_updated = null)
     {
-        list($response) = $this->listConferencesWithHttpInfo($account_id, $status, $alias, $date_created, $date_updated);
+        list($response) = $this->listConferencesWithHttpInfo($status, $alias, $date_created, $date_updated);
         return $response;
     }
 
@@ -8749,19 +9016,23 @@ class DefaultApi
      *
      * List Conferences
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;. (optional)
+
      * @param  string $alias List Conferences whose alias exactly matches this string. (optional)
+
      * @param  string $date_created Only show Conferences that were created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      * @param  string $date_updated Only show Conferences that were last updated on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ConferenceList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listConferencesWithHttpInfo($account_id, $status = null, $alias = null, $date_created = null, $date_updated = null)
+    public function listConferencesWithHttpInfo($status = null, $alias = null, $date_created = null, $date_updated = null)
     {
-        $request = $this->listConferencesRequest($account_id, $status, $alias, $date_created, $date_updated);
+        $request = $this->listConferencesRequest($status, $alias, $date_created, $date_updated);
 
         try {
             $options = $this->createHttpClientOption();
@@ -8846,18 +9117,22 @@ class DefaultApi
      *
      * List Conferences
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;. (optional)
+
      * @param  string $alias List Conferences whose alias exactly matches this string. (optional)
+
      * @param  string $date_created Only show Conferences that were created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      * @param  string $date_updated Only show Conferences that were last updated on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listConferencesAsync($account_id, $status = null, $alias = null, $date_created = null, $date_updated = null)
+    public function listConferencesAsync($status = null, $alias = null, $date_created = null, $date_updated = null)
     {
-        return $this->listConferencesAsyncWithHttpInfo($account_id, $status, $alias, $date_created, $date_updated)
+        return $this->listConferencesAsyncWithHttpInfo($status, $alias, $date_created, $date_updated)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -8870,19 +9145,23 @@ class DefaultApi
      *
      * List Conferences
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;. (optional)
+
      * @param  string $alias List Conferences whose alias exactly matches this string. (optional)
+
      * @param  string $date_created Only show Conferences that were created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      * @param  string $date_updated Only show Conferences that were last updated on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listConferencesAsyncWithHttpInfo($account_id, $status = null, $alias = null, $date_created = null, $date_updated = null)
+    public function listConferencesAsyncWithHttpInfo($status = null, $alias = null, $date_created = null, $date_updated = null)
     {
         $returnType = '\FreeClimb\Api\Model\ConferenceList';
-        $request = $this->listConferencesRequest($account_id, $status, $alias, $date_created, $date_updated);
+        $request = $this->listConferencesRequest($status, $alias, $date_created, $date_updated);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -8920,17 +9199,22 @@ class DefaultApi
     /**
      * Create request for operation 'listConferences'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;. (optional)
+
      * @param  string $alias List Conferences whose alias exactly matches this string. (optional)
+
      * @param  string $date_created Only show Conferences that were created on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      * @param  string $date_updated Only show Conferences that were last updated on the specified date, in the form *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listConferencesRequest($account_id, $status = null, $alias = null, $date_created = null, $date_updated = null)
-    {
+    public function listConferencesRequest($status = null, $alias = null, $date_created = null, $date_updated = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -9067,28 +9351,41 @@ class DefaultApi
      *
      * List Incoming Numbers
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number Only show incoming phone number resources that match this PCRE-compatible regular expression. (optional)
+
      * @param  string $alias Only show incoming phone numbers with aliases that exactly match this value. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  string $application_id ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId. (optional)
+
      * @param  bool $has_application Indication of whether the phone number has an application linked to it. (optional, default to false)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $capabilities_voice capabilities_voice (optional)
+
      * @param  bool $capabilities_sms capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code capabilities_short_code (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\IncomingNumberList
      */
-    public function listIncomingNumbers($account_id, $phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbers($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
     {
-        list($response) = $this->listIncomingNumbersWithHttpInfo($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
+        list($response) = $this->listIncomingNumbersWithHttpInfo($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
         return $response;
     }
 
@@ -9097,28 +9394,41 @@ class DefaultApi
      *
      * List Incoming Numbers
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number Only show incoming phone number resources that match this PCRE-compatible regular expression. (optional)
+
      * @param  string $alias Only show incoming phone numbers with aliases that exactly match this value. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  string $application_id ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId. (optional)
+
      * @param  bool $has_application Indication of whether the phone number has an application linked to it. (optional, default to false)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $capabilities_voice (optional)
+
      * @param  bool $capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\IncomingNumberList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listIncomingNumbersWithHttpInfo($account_id, $phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbersWithHttpInfo($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
     {
-        $request = $this->listIncomingNumbersRequest($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
+        $request = $this->listIncomingNumbersRequest($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9203,27 +9513,40 @@ class DefaultApi
      *
      * List Incoming Numbers
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number Only show incoming phone number resources that match this PCRE-compatible regular expression. (optional)
+
      * @param  string $alias Only show incoming phone numbers with aliases that exactly match this value. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  string $application_id ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId. (optional)
+
      * @param  bool $has_application Indication of whether the phone number has an application linked to it. (optional, default to false)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $capabilities_voice (optional)
+
      * @param  bool $capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listIncomingNumbersAsync($account_id, $phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbersAsync($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
     {
-        return $this->listIncomingNumbersAsyncWithHttpInfo($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code)
+        return $this->listIncomingNumbersAsyncWithHttpInfo($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9236,28 +9559,41 @@ class DefaultApi
      *
      * List Incoming Numbers
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number Only show incoming phone number resources that match this PCRE-compatible regular expression. (optional)
+
      * @param  string $alias Only show incoming phone numbers with aliases that exactly match this value. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  string $application_id ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId. (optional)
+
      * @param  bool $has_application Indication of whether the phone number has an application linked to it. (optional, default to false)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $capabilities_voice (optional)
+
      * @param  bool $capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listIncomingNumbersAsyncWithHttpInfo($account_id, $phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbersAsyncWithHttpInfo($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
     {
         $returnType = '\FreeClimb\Api\Model\IncomingNumberList';
-        $request = $this->listIncomingNumbersRequest($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
+        $request = $this->listIncomingNumbersRequest($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9295,26 +9631,40 @@ class DefaultApi
     /**
      * Create request for operation 'listIncomingNumbers'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number Only show incoming phone number resources that match this PCRE-compatible regular expression. (optional)
+
      * @param  string $alias Only show incoming phone numbers with aliases that exactly match this value. (optional)
+
      * @param  string $region State or province of this phone number. (optional)
+
      * @param  string $country Country of this phone number. (optional)
+
      * @param  string $application_id ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId. (optional)
+
      * @param  bool $has_application Indication of whether the phone number has an application linked to it. (optional, default to false)
+
      * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true) (deprecated)
+
      * @param  bool $capabilities_voice (optional)
+
      * @param  bool $capabilities_sms (optional)
+
      * @param  bool $capabilities_toll_free (optional)
+
      * @param  bool $capabilities_ten_dlc (optional)
+
      * @param  bool $capabilities_short_code (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listIncomingNumbersRequest($account_id, $phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
-    {
+    public function listIncomingNumbersRequest($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -9550,16 +9900,17 @@ class DefaultApi
      *
      * List Members
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueMemberList
      */
-    public function listMembers($account_id, $queue_id)
+    public function listMembers($queue_id)
     {
-        list($response) = $this->listMembersWithHttpInfo($account_id, $queue_id);
+        list($response) = $this->listMembersWithHttpInfo($queue_id);
         return $response;
     }
 
@@ -9568,16 +9919,17 @@ class DefaultApi
      *
      * List Members
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueMemberList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listMembersWithHttpInfo($account_id, $queue_id)
+    public function listMembersWithHttpInfo($queue_id)
     {
-        $request = $this->listMembersRequest($account_id, $queue_id);
+        $request = $this->listMembersRequest($queue_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9662,15 +10014,16 @@ class DefaultApi
      *
      * List Members
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listMembersAsync($account_id, $queue_id)
+    public function listMembersAsync($queue_id)
     {
-        return $this->listMembersAsyncWithHttpInfo($account_id, $queue_id)
+        return $this->listMembersAsyncWithHttpInfo($queue_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9683,16 +10036,17 @@ class DefaultApi
      *
      * List Members
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listMembersAsyncWithHttpInfo($account_id, $queue_id)
+    public function listMembersAsyncWithHttpInfo($queue_id)
     {
         $returnType = '\FreeClimb\Api\Model\QueueMemberList';
-        $request = $this->listMembersRequest($account_id, $queue_id);
+        $request = $this->listMembersRequest($queue_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9730,14 +10084,16 @@ class DefaultApi
     /**
      * Create request for operation 'listMembers'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listMembersRequest($account_id, $queue_id)
-    {
+    public function listMembersRequest($queue_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -9844,18 +10200,21 @@ class DefaultApi
      *
      * List Participants
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  bool $talk Only show Participants with the talk privilege. (optional)
+
      * @param  bool $listen Only show Participants with the listen privilege. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ConferenceParticipantList
      */
-    public function listParticipants($account_id, $conference_id, $talk = null, $listen = null)
+    public function listParticipants($conference_id, $talk = null, $listen = null)
     {
-        list($response) = $this->listParticipantsWithHttpInfo($account_id, $conference_id, $talk, $listen);
+        list($response) = $this->listParticipantsWithHttpInfo($conference_id, $talk, $listen);
         return $response;
     }
 
@@ -9864,18 +10223,21 @@ class DefaultApi
      *
      * List Participants
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  bool $talk Only show Participants with the talk privilege. (optional)
+
      * @param  bool $listen Only show Participants with the listen privilege. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ConferenceParticipantList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listParticipantsWithHttpInfo($account_id, $conference_id, $talk = null, $listen = null)
+    public function listParticipantsWithHttpInfo($conference_id, $talk = null, $listen = null)
     {
-        $request = $this->listParticipantsRequest($account_id, $conference_id, $talk, $listen);
+        $request = $this->listParticipantsRequest($conference_id, $talk, $listen);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9960,17 +10322,20 @@ class DefaultApi
      *
      * List Participants
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  bool $talk Only show Participants with the talk privilege. (optional)
+
      * @param  bool $listen Only show Participants with the listen privilege. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listParticipantsAsync($account_id, $conference_id, $talk = null, $listen = null)
+    public function listParticipantsAsync($conference_id, $talk = null, $listen = null)
     {
-        return $this->listParticipantsAsyncWithHttpInfo($account_id, $conference_id, $talk, $listen)
+        return $this->listParticipantsAsyncWithHttpInfo($conference_id, $talk, $listen)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9983,18 +10348,21 @@ class DefaultApi
      *
      * List Participants
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  bool $talk Only show Participants with the talk privilege. (optional)
+
      * @param  bool $listen Only show Participants with the listen privilege. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listParticipantsAsyncWithHttpInfo($account_id, $conference_id, $talk = null, $listen = null)
+    public function listParticipantsAsyncWithHttpInfo($conference_id, $talk = null, $listen = null)
     {
         $returnType = '\FreeClimb\Api\Model\ConferenceParticipantList';
-        $request = $this->listParticipantsRequest($account_id, $conference_id, $talk, $listen);
+        $request = $this->listParticipantsRequest($conference_id, $talk, $listen);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10032,16 +10400,20 @@ class DefaultApi
     /**
      * Create request for operation 'listParticipants'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  bool $talk Only show Participants with the talk privilege. (optional)
+
      * @param  bool $listen Only show Participants with the listen privilege. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listParticipantsRequest($account_id, $conference_id, $talk = null, $listen = null)
-    {
+    public function listParticipantsRequest($conference_id, $talk = null, $listen = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -10170,18 +10542,21 @@ class DefaultApi
      *
      * List Recordings
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id Show only Recordings made during the Call with this ID. (optional)
+
      * @param  string $conference_id Show only Recordings made during the conference with this ID. (optional)
+
      * @param  string $date_created Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\RecordingList
      */
-    public function listRecordings($account_id, $call_id = null, $conference_id = null, $date_created = null)
+    public function listRecordings($call_id = null, $conference_id = null, $date_created = null)
     {
-        list($response) = $this->listRecordingsWithHttpInfo($account_id, $call_id, $conference_id, $date_created);
+        list($response) = $this->listRecordingsWithHttpInfo($call_id, $conference_id, $date_created);
         return $response;
     }
 
@@ -10190,18 +10565,21 @@ class DefaultApi
      *
      * List Recordings
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id Show only Recordings made during the Call with this ID. (optional)
+
      * @param  string $conference_id Show only Recordings made during the conference with this ID. (optional)
+
      * @param  string $date_created Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\RecordingList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listRecordingsWithHttpInfo($account_id, $call_id = null, $conference_id = null, $date_created = null)
+    public function listRecordingsWithHttpInfo($call_id = null, $conference_id = null, $date_created = null)
     {
-        $request = $this->listRecordingsRequest($account_id, $call_id, $conference_id, $date_created);
+        $request = $this->listRecordingsRequest($call_id, $conference_id, $date_created);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10286,17 +10664,20 @@ class DefaultApi
      *
      * List Recordings
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id Show only Recordings made during the Call with this ID. (optional)
+
      * @param  string $conference_id Show only Recordings made during the conference with this ID. (optional)
+
      * @param  string $date_created Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listRecordingsAsync($account_id, $call_id = null, $conference_id = null, $date_created = null)
+    public function listRecordingsAsync($call_id = null, $conference_id = null, $date_created = null)
     {
-        return $this->listRecordingsAsyncWithHttpInfo($account_id, $call_id, $conference_id, $date_created)
+        return $this->listRecordingsAsyncWithHttpInfo($call_id, $conference_id, $date_created)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10309,18 +10690,21 @@ class DefaultApi
      *
      * List Recordings
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id Show only Recordings made during the Call with this ID. (optional)
+
      * @param  string $conference_id Show only Recordings made during the conference with this ID. (optional)
+
      * @param  string $date_created Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listRecordingsAsyncWithHttpInfo($account_id, $call_id = null, $conference_id = null, $date_created = null)
+    public function listRecordingsAsyncWithHttpInfo($call_id = null, $conference_id = null, $date_created = null)
     {
         $returnType = '\FreeClimb\Api\Model\RecordingList';
-        $request = $this->listRecordingsRequest($account_id, $call_id, $conference_id, $date_created);
+        $request = $this->listRecordingsRequest($call_id, $conference_id, $date_created);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10358,16 +10742,20 @@ class DefaultApi
     /**
      * Create request for operation 'listRecordings'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id Show only Recordings made during the Call with this ID. (optional)
+
      * @param  string $conference_id Show only Recordings made during the conference with this ID. (optional)
+
      * @param  string $date_created Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listRecordingsRequest($account_id, $call_id = null, $conference_id = null, $date_created = null)
-    {
+    public function listRecordingsRequest($call_id = null, $conference_id = null, $date_created = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -10493,20 +10881,25 @@ class DefaultApi
      *
      * List SMS Messages
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $to Only show Messages to this phone number. (optional)
+
      * @param  string $from Only show Messages from this phone number. (optional)
+
      * @param  string $begin_time Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. (optional)
+
      * @param  string $end_time Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. (optional)
+
      * @param  string $direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\MessagesList
      */
-    public function listSmsMessages($account_id, $to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
+    public function listSmsMessages($to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
     {
-        list($response) = $this->listSmsMessagesWithHttpInfo($account_id, $to, $from, $begin_time, $end_time, $direction);
+        list($response) = $this->listSmsMessagesWithHttpInfo($to, $from, $begin_time, $end_time, $direction);
         return $response;
     }
 
@@ -10515,20 +10908,25 @@ class DefaultApi
      *
      * List SMS Messages
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $to Only show Messages to this phone number. (optional)
+
      * @param  string $from Only show Messages from this phone number. (optional)
+
      * @param  string $begin_time Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. (optional)
+
      * @param  string $end_time Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. (optional)
+
      * @param  string $direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\MessagesList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listSmsMessagesWithHttpInfo($account_id, $to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
+    public function listSmsMessagesWithHttpInfo($to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
     {
-        $request = $this->listSmsMessagesRequest($account_id, $to, $from, $begin_time, $end_time, $direction);
+        $request = $this->listSmsMessagesRequest($to, $from, $begin_time, $end_time, $direction);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10613,19 +11011,24 @@ class DefaultApi
      *
      * List SMS Messages
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $to Only show Messages to this phone number. (optional)
+
      * @param  string $from Only show Messages from this phone number. (optional)
+
      * @param  string $begin_time Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. (optional)
+
      * @param  string $end_time Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. (optional)
+
      * @param  string $direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listSmsMessagesAsync($account_id, $to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
+    public function listSmsMessagesAsync($to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
     {
-        return $this->listSmsMessagesAsyncWithHttpInfo($account_id, $to, $from, $begin_time, $end_time, $direction)
+        return $this->listSmsMessagesAsyncWithHttpInfo($to, $from, $begin_time, $end_time, $direction)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10638,20 +11041,25 @@ class DefaultApi
      *
      * List SMS Messages
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $to Only show Messages to this phone number. (optional)
+
      * @param  string $from Only show Messages from this phone number. (optional)
+
      * @param  string $begin_time Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. (optional)
+
      * @param  string $end_time Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. (optional)
+
      * @param  string $direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listSmsMessagesAsyncWithHttpInfo($account_id, $to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
+    public function listSmsMessagesAsyncWithHttpInfo($to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
     {
         $returnType = '\FreeClimb\Api\Model\MessagesList';
-        $request = $this->listSmsMessagesRequest($account_id, $to, $from, $begin_time, $end_time, $direction);
+        $request = $this->listSmsMessagesRequest($to, $from, $begin_time, $end_time, $direction);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -10689,18 +11097,24 @@ class DefaultApi
     /**
      * Create request for operation 'listSmsMessages'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $to Only show Messages to this phone number. (optional)
+
      * @param  string $from Only show Messages from this phone number. (optional)
+
      * @param  string $begin_time Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. (optional)
+
      * @param  string $end_time Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. (optional)
+
      * @param  string $direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listSmsMessagesRequest($account_id, $to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
-    {
+    public function listSmsMessagesRequest($to = null, $from = null, $begin_time = null, $end_time = null, $direction = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -10848,16 +11262,17 @@ class DefaultApi
      *
      * Make a Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MakeCallRequest $make_call_request Call details for making a call (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\CallResult
      */
-    public function makeACall($account_id, $make_call_request = null)
+    public function makeACall($make_call_request = null)
     {
-        list($response) = $this->makeACallWithHttpInfo($account_id, $make_call_request);
+        list($response) = $this->makeACallWithHttpInfo($make_call_request);
         return $response;
     }
 
@@ -10866,16 +11281,17 @@ class DefaultApi
      *
      * Make a Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MakeCallRequest $make_call_request Call details for making a call (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\CallResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function makeACallWithHttpInfo($account_id, $make_call_request = null)
+    public function makeACallWithHttpInfo($make_call_request = null)
     {
-        $request = $this->makeACallRequest($account_id, $make_call_request);
+        $request = $this->makeACallRequest($make_call_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -10960,15 +11376,16 @@ class DefaultApi
      *
      * Make a Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MakeCallRequest $make_call_request Call details for making a call (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function makeACallAsync($account_id, $make_call_request = null)
+    public function makeACallAsync($make_call_request = null)
     {
-        return $this->makeACallAsyncWithHttpInfo($account_id, $make_call_request)
+        return $this->makeACallAsyncWithHttpInfo($make_call_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -10981,16 +11398,17 @@ class DefaultApi
      *
      * Make a Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MakeCallRequest $make_call_request Call details for making a call (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function makeACallAsyncWithHttpInfo($account_id, $make_call_request = null)
+    public function makeACallAsyncWithHttpInfo($make_call_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\CallResult';
-        $request = $this->makeACallRequest($account_id, $make_call_request);
+        $request = $this->makeACallRequest($make_call_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11028,14 +11446,16 @@ class DefaultApi
     /**
      * Create request for operation 'makeACall'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MakeCallRequest $make_call_request Call details for making a call (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function makeACallRequest($account_id, $make_call_request = null)
-    {
+    public function makeACallRequest($make_call_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -11134,17 +11554,19 @@ class DefaultApi
      *
      * Remove a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function removeAParticipant($account_id, $conference_id, $call_id)
+    public function removeAParticipant($conference_id, $call_id)
     {
-        $this->removeAParticipantWithHttpInfo($account_id, $conference_id, $call_id);
+        $this->removeAParticipantWithHttpInfo($conference_id, $call_id);
     }
 
     /**
@@ -11152,17 +11574,19 @@ class DefaultApi
      *
      * Remove a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removeAParticipantWithHttpInfo($account_id, $conference_id, $call_id)
+    public function removeAParticipantWithHttpInfo($conference_id, $call_id)
     {
-        $request = $this->removeAParticipantRequest($account_id, $conference_id, $call_id);
+        $request = $this->removeAParticipantRequest($conference_id, $call_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11213,16 +11637,18 @@ class DefaultApi
      *
      * Remove a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeAParticipantAsync($account_id, $conference_id, $call_id)
+    public function removeAParticipantAsync($conference_id, $call_id)
     {
-        return $this->removeAParticipantAsyncWithHttpInfo($account_id, $conference_id, $call_id)
+        return $this->removeAParticipantAsyncWithHttpInfo($conference_id, $call_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11235,17 +11661,19 @@ class DefaultApi
      *
      * Remove a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function removeAParticipantAsyncWithHttpInfo($account_id, $conference_id, $call_id)
+    public function removeAParticipantAsyncWithHttpInfo($conference_id, $call_id)
     {
         $returnType = '';
-        $request = $this->removeAParticipantRequest($account_id, $conference_id, $call_id);
+        $request = $this->removeAParticipantRequest($conference_id, $call_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11273,15 +11701,18 @@ class DefaultApi
     /**
      * Create request for operation 'removeAParticipant'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function removeAParticipantRequest($account_id, $conference_id, $call_id)
-    {
+    public function removeAParticipantRequest($conference_id, $call_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -11402,16 +11833,17 @@ class DefaultApi
      *
      * Send an SMS Message
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MessageRequest $message_request Details to create a message (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\MessageResult
      */
-    public function sendAnSmsMessage($account_id, $message_request)
+    public function sendAnSmsMessage($message_request)
     {
-        list($response) = $this->sendAnSmsMessageWithHttpInfo($account_id, $message_request);
+        list($response) = $this->sendAnSmsMessageWithHttpInfo($message_request);
         return $response;
     }
 
@@ -11420,16 +11852,17 @@ class DefaultApi
      *
      * Send an SMS Message
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MessageRequest $message_request Details to create a message (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\MessageResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendAnSmsMessageWithHttpInfo($account_id, $message_request)
+    public function sendAnSmsMessageWithHttpInfo($message_request)
     {
-        $request = $this->sendAnSmsMessageRequest($account_id, $message_request);
+        $request = $this->sendAnSmsMessageRequest($message_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11514,15 +11947,16 @@ class DefaultApi
      *
      * Send an SMS Message
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MessageRequest $message_request Details to create a message (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendAnSmsMessageAsync($account_id, $message_request)
+    public function sendAnSmsMessageAsync($message_request)
     {
-        return $this->sendAnSmsMessageAsyncWithHttpInfo($account_id, $message_request)
+        return $this->sendAnSmsMessageAsyncWithHttpInfo($message_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11535,16 +11969,17 @@ class DefaultApi
      *
      * Send an SMS Message
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MessageRequest $message_request Details to create a message (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function sendAnSmsMessageAsyncWithHttpInfo($account_id, $message_request)
+    public function sendAnSmsMessageAsyncWithHttpInfo($message_request)
     {
         $returnType = '\FreeClimb\Api\Model\MessageResult';
-        $request = $this->sendAnSmsMessageRequest($account_id, $message_request);
+        $request = $this->sendAnSmsMessageRequest($message_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11582,14 +12017,16 @@ class DefaultApi
     /**
      * Create request for operation 'sendAnSmsMessage'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\MessageRequest $message_request Details to create a message (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function sendAnSmsMessageRequest($account_id, $message_request)
-    {
+    public function sendAnSmsMessageRequest($message_request)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -11694,16 +12131,17 @@ class DefaultApi
      *
      * Stream a Recording File
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \SplFileObject
      */
-    public function streamARecordingFile($account_id, $recording_id)
+    public function streamARecordingFile($recording_id)
     {
-        list($response) = $this->streamARecordingFileWithHttpInfo($account_id, $recording_id);
+        list($response) = $this->streamARecordingFileWithHttpInfo($recording_id);
         return $response;
     }
 
@@ -11712,16 +12150,17 @@ class DefaultApi
      *
      * Stream a Recording File
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \SplFileObject, HTTP status code, HTTP response headers (array of strings)
      */
-    public function streamARecordingFileWithHttpInfo($account_id, $recording_id)
+    public function streamARecordingFileWithHttpInfo($recording_id)
     {
-        $request = $this->streamARecordingFileRequest($account_id, $recording_id);
+        $request = $this->streamARecordingFileRequest($recording_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -11806,15 +12245,16 @@ class DefaultApi
      *
      * Stream a Recording File
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function streamARecordingFileAsync($account_id, $recording_id)
+    public function streamARecordingFileAsync($recording_id)
     {
-        return $this->streamARecordingFileAsyncWithHttpInfo($account_id, $recording_id)
+        return $this->streamARecordingFileAsyncWithHttpInfo($recording_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -11827,16 +12267,17 @@ class DefaultApi
      *
      * Stream a Recording File
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function streamARecordingFileAsyncWithHttpInfo($account_id, $recording_id)
+    public function streamARecordingFileAsyncWithHttpInfo($recording_id)
     {
         $returnType = '\SplFileObject';
-        $request = $this->streamARecordingFileRequest($account_id, $recording_id);
+        $request = $this->streamARecordingFileRequest($recording_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -11874,14 +12315,16 @@ class DefaultApi
     /**
      * Create request for operation 'streamARecordingFile'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $recording_id String that uniquely identifies this recording resource. (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function streamARecordingFileRequest($account_id, $recording_id)
-    {
+    public function streamARecordingFileRequest($recording_id)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -11988,17 +12431,19 @@ class DefaultApi
      *
      * Update a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id String that uniquely identifies this conference resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceRequest $update_conference_request Conference Details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ConferenceResult
      */
-    public function updateAConference($account_id, $conference_id, $update_conference_request = null)
+    public function updateAConference($conference_id, $update_conference_request = null)
     {
-        list($response) = $this->updateAConferenceWithHttpInfo($account_id, $conference_id, $update_conference_request);
+        list($response) = $this->updateAConferenceWithHttpInfo($conference_id, $update_conference_request);
         return $response;
     }
 
@@ -12007,17 +12452,19 @@ class DefaultApi
      *
      * Update a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id String that uniquely identifies this conference resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceRequest $update_conference_request Conference Details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ConferenceResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAConferenceWithHttpInfo($account_id, $conference_id, $update_conference_request = null)
+    public function updateAConferenceWithHttpInfo($conference_id, $update_conference_request = null)
     {
-        $request = $this->updateAConferenceRequest($account_id, $conference_id, $update_conference_request);
+        $request = $this->updateAConferenceRequest($conference_id, $update_conference_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12102,16 +12549,18 @@ class DefaultApi
      *
      * Update a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id String that uniquely identifies this conference resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceRequest $update_conference_request Conference Details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAConferenceAsync($account_id, $conference_id, $update_conference_request = null)
+    public function updateAConferenceAsync($conference_id, $update_conference_request = null)
     {
-        return $this->updateAConferenceAsyncWithHttpInfo($account_id, $conference_id, $update_conference_request)
+        return $this->updateAConferenceAsyncWithHttpInfo($conference_id, $update_conference_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12124,17 +12573,19 @@ class DefaultApi
      *
      * Update a Conference
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id String that uniquely identifies this conference resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceRequest $update_conference_request Conference Details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAConferenceAsyncWithHttpInfo($account_id, $conference_id, $update_conference_request = null)
+    public function updateAConferenceAsyncWithHttpInfo($conference_id, $update_conference_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\ConferenceResult';
-        $request = $this->updateAConferenceRequest($account_id, $conference_id, $update_conference_request);
+        $request = $this->updateAConferenceRequest($conference_id, $update_conference_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12172,15 +12623,18 @@ class DefaultApi
     /**
      * Create request for operation 'updateAConference'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id String that uniquely identifies this conference resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceRequest $update_conference_request Conference Details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAConferenceRequest($account_id, $conference_id, $update_conference_request = null)
-    {
+    public function updateAConferenceRequest($conference_id, $update_conference_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -12293,17 +12747,19 @@ class DefaultApi
      *
      * Update a Live Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateCallRequest $update_call_request Call details to update (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function updateALiveCall($account_id, $call_id, $update_call_request)
+    public function updateALiveCall($call_id, $update_call_request)
     {
-        $this->updateALiveCallWithHttpInfo($account_id, $call_id, $update_call_request);
+        $this->updateALiveCallWithHttpInfo($call_id, $update_call_request);
     }
 
     /**
@@ -12311,17 +12767,19 @@ class DefaultApi
      *
      * Update a Live Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateCallRequest $update_call_request Call details to update (required)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateALiveCallWithHttpInfo($account_id, $call_id, $update_call_request)
+    public function updateALiveCallWithHttpInfo($call_id, $update_call_request)
     {
-        $request = $this->updateALiveCallRequest($account_id, $call_id, $update_call_request);
+        $request = $this->updateALiveCallRequest($call_id, $update_call_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12372,16 +12830,18 @@ class DefaultApi
      *
      * Update a Live Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateCallRequest $update_call_request Call details to update (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateALiveCallAsync($account_id, $call_id, $update_call_request)
+    public function updateALiveCallAsync($call_id, $update_call_request)
     {
-        return $this->updateALiveCallAsyncWithHttpInfo($account_id, $call_id, $update_call_request)
+        return $this->updateALiveCallAsyncWithHttpInfo($call_id, $update_call_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12394,17 +12854,19 @@ class DefaultApi
      *
      * Update a Live Call
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateCallRequest $update_call_request Call details to update (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateALiveCallAsyncWithHttpInfo($account_id, $call_id, $update_call_request)
+    public function updateALiveCallAsyncWithHttpInfo($call_id, $update_call_request)
     {
         $returnType = '';
-        $request = $this->updateALiveCallRequest($account_id, $call_id, $update_call_request);
+        $request = $this->updateALiveCallRequest($call_id, $update_call_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12432,15 +12894,18 @@ class DefaultApi
     /**
      * Create request for operation 'updateALiveCall'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $call_id String that uniquely identifies this call resource. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateCallRequest $update_call_request Call details to update (required)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateALiveCallRequest($account_id, $call_id, $update_call_request)
-    {
+    public function updateALiveCallRequest($call_id, $update_call_request)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -12559,18 +13024,21 @@ class DefaultApi
      *
      * Update a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceParticipantRequest $update_conference_participant_request Conference participant details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ConferenceParticipantResult
      */
-    public function updateAParticipant($account_id, $conference_id, $call_id, $update_conference_participant_request = null)
+    public function updateAParticipant($conference_id, $call_id, $update_conference_participant_request = null)
     {
-        list($response) = $this->updateAParticipantWithHttpInfo($account_id, $conference_id, $call_id, $update_conference_participant_request);
+        list($response) = $this->updateAParticipantWithHttpInfo($conference_id, $call_id, $update_conference_participant_request);
         return $response;
     }
 
@@ -12579,18 +13047,21 @@ class DefaultApi
      *
      * Update a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceParticipantRequest $update_conference_participant_request Conference participant details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ConferenceParticipantResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAParticipantWithHttpInfo($account_id, $conference_id, $call_id, $update_conference_participant_request = null)
+    public function updateAParticipantWithHttpInfo($conference_id, $call_id, $update_conference_participant_request = null)
     {
-        $request = $this->updateAParticipantRequest($account_id, $conference_id, $call_id, $update_conference_participant_request);
+        $request = $this->updateAParticipantRequest($conference_id, $call_id, $update_conference_participant_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12675,17 +13146,20 @@ class DefaultApi
      *
      * Update a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceParticipantRequest $update_conference_participant_request Conference participant details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAParticipantAsync($account_id, $conference_id, $call_id, $update_conference_participant_request = null)
+    public function updateAParticipantAsync($conference_id, $call_id, $update_conference_participant_request = null)
     {
-        return $this->updateAParticipantAsyncWithHttpInfo($account_id, $conference_id, $call_id, $update_conference_participant_request)
+        return $this->updateAParticipantAsyncWithHttpInfo($conference_id, $call_id, $update_conference_participant_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -12698,18 +13172,21 @@ class DefaultApi
      *
      * Update a Participant
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceParticipantRequest $update_conference_participant_request Conference participant details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAParticipantAsyncWithHttpInfo($account_id, $conference_id, $call_id, $update_conference_participant_request = null)
+    public function updateAParticipantAsyncWithHttpInfo($conference_id, $call_id, $update_conference_participant_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\ConferenceParticipantResult';
-        $request = $this->updateAParticipantRequest($account_id, $conference_id, $call_id, $update_conference_participant_request);
+        $request = $this->updateAParticipantRequest($conference_id, $call_id, $update_conference_participant_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -12747,16 +13224,20 @@ class DefaultApi
     /**
      * Create request for operation 'updateAParticipant'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $conference_id ID of the conference this participant is in. (required)
+
      * @param  string $call_id ID of the Call associated with this participant. (required)
+
      * @param  \FreeClimb\Api\Model\UpdateConferenceParticipantRequest $update_conference_participant_request Conference participant details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAParticipantRequest($account_id, $conference_id, $call_id, $update_conference_participant_request = null)
-    {
+    public function updateAParticipantRequest($conference_id, $call_id, $update_conference_participant_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -12883,17 +13364,19 @@ class DefaultApi
      *
      * Update a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this Queue resource. (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue Details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\QueueResult
      */
-    public function updateAQueue($account_id, $queue_id, $queue_request = null)
+    public function updateAQueue($queue_id, $queue_request = null)
     {
-        list($response) = $this->updateAQueueWithHttpInfo($account_id, $queue_id, $queue_request);
+        list($response) = $this->updateAQueueWithHttpInfo($queue_id, $queue_request);
         return $response;
     }
 
@@ -12902,17 +13385,19 @@ class DefaultApi
      *
      * Update a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this Queue resource. (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue Details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\QueueResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAQueueWithHttpInfo($account_id, $queue_id, $queue_request = null)
+    public function updateAQueueWithHttpInfo($queue_id, $queue_request = null)
     {
-        $request = $this->updateAQueueRequest($account_id, $queue_id, $queue_request);
+        $request = $this->updateAQueueRequest($queue_id, $queue_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -12997,16 +13482,18 @@ class DefaultApi
      *
      * Update a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this Queue resource. (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue Details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAQueueAsync($account_id, $queue_id, $queue_request = null)
+    public function updateAQueueAsync($queue_id, $queue_request = null)
     {
-        return $this->updateAQueueAsyncWithHttpInfo($account_id, $queue_id, $queue_request)
+        return $this->updateAQueueAsyncWithHttpInfo($queue_id, $queue_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13019,17 +13506,19 @@ class DefaultApi
      *
      * Update a Queue
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this Queue resource. (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue Details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAQueueAsyncWithHttpInfo($account_id, $queue_id, $queue_request = null)
+    public function updateAQueueAsyncWithHttpInfo($queue_id, $queue_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\QueueResult';
-        $request = $this->updateAQueueRequest($account_id, $queue_id, $queue_request);
+        $request = $this->updateAQueueRequest($queue_id, $queue_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13067,15 +13556,18 @@ class DefaultApi
     /**
      * Create request for operation 'updateAQueue'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $queue_id A string that uniquely identifies this Queue resource. (required)
+
      * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue Details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAQueueRequest($account_id, $queue_id, $queue_request = null)
-    {
+    public function updateAQueueRequest($queue_id, $queue_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -13188,16 +13680,17 @@ class DefaultApi
      *
      * Manage an account
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\AccountRequest $account_request Account details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function updateAnAccount($account_id, $account_request = null)
+    public function updateAnAccount($account_request = null)
     {
-        $this->updateAnAccountWithHttpInfo($account_id, $account_request);
+        $this->updateAnAccountWithHttpInfo($account_request);
     }
 
     /**
@@ -13205,16 +13698,17 @@ class DefaultApi
      *
      * Manage an account
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\AccountRequest $account_request Account details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAnAccountWithHttpInfo($account_id, $account_request = null)
+    public function updateAnAccountWithHttpInfo($account_request = null)
     {
-        $request = $this->updateAnAccountRequest($account_id, $account_request);
+        $request = $this->updateAnAccountRequest($account_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13265,15 +13759,16 @@ class DefaultApi
      *
      * Manage an account
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\AccountRequest $account_request Account details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAnAccountAsync($account_id, $account_request = null)
+    public function updateAnAccountAsync($account_request = null)
     {
-        return $this->updateAnAccountAsyncWithHttpInfo($account_id, $account_request)
+        return $this->updateAnAccountAsyncWithHttpInfo($account_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13286,16 +13781,17 @@ class DefaultApi
      *
      * Manage an account
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\AccountRequest $account_request Account details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAnAccountAsyncWithHttpInfo($account_id, $account_request = null)
+    public function updateAnAccountAsyncWithHttpInfo($account_request = null)
     {
         $returnType = '';
-        $request = $this->updateAnAccountRequest($account_id, $account_request);
+        $request = $this->updateAnAccountRequest($account_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13323,14 +13819,16 @@ class DefaultApi
     /**
      * Create request for operation 'updateAnAccount'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  \FreeClimb\Api\Model\AccountRequest $account_request Account details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAnAccountRequest($account_id, $account_request = null)
-    {
+    public function updateAnAccountRequest($account_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -13429,17 +13927,19 @@ class DefaultApi
      *
      * Update an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application details to update. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\ApplicationResult
      */
-    public function updateAnApplication($account_id, $application_id, $application_request = null)
+    public function updateAnApplication($application_id, $application_request = null)
     {
-        list($response) = $this->updateAnApplicationWithHttpInfo($account_id, $application_id, $application_request);
+        list($response) = $this->updateAnApplicationWithHttpInfo($application_id, $application_request);
         return $response;
     }
 
@@ -13448,17 +13948,19 @@ class DefaultApi
      *
      * Update an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application details to update. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\ApplicationResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAnApplicationWithHttpInfo($account_id, $application_id, $application_request = null)
+    public function updateAnApplicationWithHttpInfo($application_id, $application_request = null)
     {
-        $request = $this->updateAnApplicationRequest($account_id, $application_id, $application_request);
+        $request = $this->updateAnApplicationRequest($application_id, $application_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13543,16 +14045,18 @@ class DefaultApi
      *
      * Update an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application details to update. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAnApplicationAsync($account_id, $application_id, $application_request = null)
+    public function updateAnApplicationAsync($application_id, $application_request = null)
     {
-        return $this->updateAnApplicationAsyncWithHttpInfo($account_id, $application_id, $application_request)
+        return $this->updateAnApplicationAsyncWithHttpInfo($application_id, $application_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13565,17 +14069,19 @@ class DefaultApi
      *
      * Update an application
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application details to update. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAnApplicationAsyncWithHttpInfo($account_id, $application_id, $application_request = null)
+    public function updateAnApplicationAsyncWithHttpInfo($application_id, $application_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\ApplicationResult';
-        $request = $this->updateAnApplicationRequest($account_id, $application_id, $application_request);
+        $request = $this->updateAnApplicationRequest($application_id, $application_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13613,15 +14119,18 @@ class DefaultApi
     /**
      * Create request for operation 'updateAnApplication'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $application_id A string that uniquely identifies this application resource. (required)
+
      * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application details to update. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAnApplicationRequest($account_id, $application_id, $application_request = null)
-    {
+    public function updateAnApplicationRequest($application_id, $application_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(
@@ -13734,17 +14243,19 @@ class DefaultApi
      *
      * Update an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      * @param  \FreeClimb\Api\Model\IncomingNumberRequest $incoming_number_request Incoming Number details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\IncomingNumberResult
      */
-    public function updateAnIncomingNumber($account_id, $phone_number_id, $incoming_number_request = null)
+    public function updateAnIncomingNumber($phone_number_id, $incoming_number_request = null)
     {
-        list($response) = $this->updateAnIncomingNumberWithHttpInfo($account_id, $phone_number_id, $incoming_number_request);
+        list($response) = $this->updateAnIncomingNumberWithHttpInfo($phone_number_id, $incoming_number_request);
         return $response;
     }
 
@@ -13753,17 +14264,19 @@ class DefaultApi
      *
      * Update an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      * @param  \FreeClimb\Api\Model\IncomingNumberRequest $incoming_number_request Incoming Number details to update (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\IncomingNumberResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateAnIncomingNumberWithHttpInfo($account_id, $phone_number_id, $incoming_number_request = null)
+    public function updateAnIncomingNumberWithHttpInfo($phone_number_id, $incoming_number_request = null)
     {
-        $request = $this->updateAnIncomingNumberRequest($account_id, $phone_number_id, $incoming_number_request);
+        $request = $this->updateAnIncomingNumberRequest($phone_number_id, $incoming_number_request);
 
         try {
             $options = $this->createHttpClientOption();
@@ -13848,16 +14361,18 @@ class DefaultApi
      *
      * Update an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      * @param  \FreeClimb\Api\Model\IncomingNumberRequest $incoming_number_request Incoming Number details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAnIncomingNumberAsync($account_id, $phone_number_id, $incoming_number_request = null)
+    public function updateAnIncomingNumberAsync($phone_number_id, $incoming_number_request = null)
     {
-        return $this->updateAnIncomingNumberAsyncWithHttpInfo($account_id, $phone_number_id, $incoming_number_request)
+        return $this->updateAnIncomingNumberAsyncWithHttpInfo($phone_number_id, $incoming_number_request)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -13870,17 +14385,19 @@ class DefaultApi
      *
      * Update an Incoming Number
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      * @param  \FreeClimb\Api\Model\IncomingNumberRequest $incoming_number_request Incoming Number details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function updateAnIncomingNumberAsyncWithHttpInfo($account_id, $phone_number_id, $incoming_number_request = null)
+    public function updateAnIncomingNumberAsyncWithHttpInfo($phone_number_id, $incoming_number_request = null)
     {
         $returnType = '\FreeClimb\Api\Model\IncomingNumberResult';
-        $request = $this->updateAnIncomingNumberRequest($account_id, $phone_number_id, $incoming_number_request);
+        $request = $this->updateAnIncomingNumberRequest($phone_number_id, $incoming_number_request);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -13918,15 +14435,18 @@ class DefaultApi
     /**
      * Create request for operation 'updateAnIncomingNumber'
      *
-     * @param  string $account_id ID of the account (required)
+
      * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+
      * @param  \FreeClimb\Api\Model\IncomingNumberRequest $incoming_number_request Incoming Number details to update (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function updateAnIncomingNumberRequest($account_id, $phone_number_id, $incoming_number_request = null)
-    {
+    public function updateAnIncomingNumberRequest($phone_number_id, $incoming_number_request = null)
+    { 
+        $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
         if ($account_id === null || (is_array($account_id) && count($account_id) === 0)) {
             throw new \InvalidArgumentException(

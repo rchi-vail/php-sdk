@@ -54,6 +54,9 @@ class DefaultApiTest extends TestCase
 {
 
     protected $client;
+    protected $apiInstance;
+    protected $config;
+
     /**
      * Setup before running any test cases
      */
@@ -66,16 +69,32 @@ class DefaultApiTest extends TestCase
      */
     public function setUp(): void
     { 
+        $responseString = '{"accountId": "TEST_ID","applicationId": "TEST_ID","phoneNumber": "+18883334444"}';
+        
+        // create our http client (Guzzle)
+        $this->client = $this->buildGuzzleClient($responseString);
+
+        // Setup FC API Client
+        $accountId = 'TEST_ACCOUNT_ID';
+        $api_key = 'TEST_API_KEY';
+        $this->config = Configuration::getDefaultConfiguration()
+                      ->setUsername($accountId)
+                      ->setPassword($api_key);
+        $this->apiInstance = new DefaultApi($this->client, $this->config);
+
+    }
+
+    private function buildGuzzleClient($responseString) : Client
+    {
+        $responseString = '{"accountId": "TEST_ID","applicationId": "TEST_ID","phoneNumber": "+18883334444"}';
         $mock = new MockHandler([
-            new Response(201, ['X-Foo' => 'Bar'], 'Hello, World'),
-            new Response(202, ['Content-Length' => 0]),
-            new RequestException('Error Communicating with Server', new Request('GET', 'test'))
+            new Response(200, [], $responseString)
         ]);
 
         $handlerStack = HandlerStack::create($mock);
 
         // create our http client (Guzzle)
-        $this->client = new Client(['handler' => $handlerStack]);
+        return new Client(['handler' => $handlerStack]);
 
     }
 
@@ -92,1081 +111,874 @@ class DefaultApiTest extends TestCase
     public static function tearDownAfterClass(): void
     {
     }
-
     /**
      * Test case for buyAPhoneNumber
      *
      * Buy a Phone Number.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  \FreeClimb\Api\Model\BuyIncomingNumberRequest $buy_incoming_number_request Incoming Number transaction details (required)
      */
     public function testBuyAPhoneNumber()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $buy_incoming_number_request = new \FreeClimb\Api\Model\BuyIncomingNumberRequest(array());
         
-
-        $path = '/Accounts/{accountId}/IncomingPhoneNumbers';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->buyAPhoneNumber($account_id, $buy_incoming_number_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\IncomingNumberResult',$response);
     }
-
     /**
      * Test case for createAConference
      *
      * Create a Conference.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  \FreeClimb\Api\Model\CreateConferenceRequest $create_conference_request Conference to create (optional)
      */
     public function testCreateAConference()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $create_conference_request = new \FreeClimb\Api\Model\CreateConferenceRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Conferences';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->createAConference($account_id, $create_conference_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ConferenceResult',$response);
     }
-
     /**
      * Test case for createAQueue
      *
      * Create a Queue.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue details used to create a queue (optional)
      */
     public function testCreateAQueue()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $queue_request = new \FreeClimb\Api\Model\QueueRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Queues';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->createAQueue($account_id, $queue_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueResult',$response);
     }
-
     /**
      * Test case for createAnApplication
      *
      * Create an application.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application Details (optional)
      */
     public function testCreateAnApplication()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $application_request = new \FreeClimb\Api\Model\ApplicationRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Applications';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->createAnApplication($account_id, $application_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ApplicationResult',$response);
     }
-
     /**
      * Test case for deleteARecording
      *
      * Delete a Recording.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $recording_id String that uniquely identifies this recording resource. (required)
      */
     public function testDeleteARecording()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $recording_id = 'recording_id_example';
         
-
-        $path = '/Accounts/{accountId}/Recordings/{recordingId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "recordingId" . "}";
-        $path = str_replace($pathParam,'recording_id_example',$path);
+        $response = $this->apiInstance->deleteARecording($account_id, $recording_id);
         
-        $response = $this->client->DELETE($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        $this->assertNull($response);
     }
-
     /**
      * Test case for deleteAnApplication
      *
      * Delete an application.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $application_id String that uniquely identifies this application resource. (required)
      */
     public function testDeleteAnApplication()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $application_id = 'application_id_example';
         
-
-        $path = '/Accounts/{accountId}/Applications/{applicationId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "applicationId" . "}";
-        $path = str_replace($pathParam,'application_id_example',$path);
+        $response = $this->apiInstance->deleteAnApplication($account_id, $application_id);
         
-        $response = $this->client->DELETE($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        $this->assertNull($response);
     }
-
     /**
      * Test case for deleteAnIncomingNumber
      *
      * Delete an Incoming Number.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
      */
     public function testDeleteAnIncomingNumber()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $phone_number_id = 'phone_number_id_example';
         
-
-        $path = '/Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "phoneNumberId" . "}";
-        $path = str_replace($pathParam,'phone_number_id_example',$path);
+        $response = $this->apiInstance->deleteAnIncomingNumber($account_id, $phone_number_id);
         
-        $response = $this->client->DELETE($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        $this->assertNull($response);
     }
-
     /**
      * Test case for dequeueAMember
      *
      * Dequeue a Member.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+     * @param  string $call_id ID if the Call that the Member belongs to (required)
      */
     public function testDequeueAMember()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $queue_id = 'queue_id_example';
+        $call_id = 'call_id_example';
         
-
-        $path = '/Accounts/{accountId}/Queues/{queueId}/Members/{callId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "queueId" . "}";
-        $path = str_replace($pathParam,'queue_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->dequeueAMember($account_id, $queue_id, $call_id);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueMember',$response);
     }
-
     /**
      * Test case for dequeueHeadMember
      *
      * Dequeue Head Member.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $queue_id String that uniquely identifies this queue resource. (required)
      */
     public function testDequeueHeadMember()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $queue_id = 'queue_id_example';
         
-
-        $path = '/Accounts/{accountId}/Queues/{queueId}/Members/Front';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "queueId" . "}";
-        $path = str_replace($pathParam,'queue_id_example',$path);
+        $response = $this->apiInstance->dequeueHeadMember($account_id, $queue_id);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueMember',$response);
     }
-
     /**
      * Test case for downloadARecordingFile
      *
      * Download a Recording File.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $recording_id String that uniquely identifies this recording resource. (required)
      */
     public function testDownloadARecordingFile()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $recording_id = 'recording_id_example';
         
-
-        $path = '/Accounts/{accountId}/Recordings/{recordingId}/Download';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "recordingId" . "}";
-        $path = str_replace($pathParam,'recording_id_example',$path);
+        $response = $this->apiInstance->downloadARecordingFile($account_id, $recording_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\SplFileObject',$response);
     }
-
     /**
      * Test case for filterLogs
      *
      * Filter Logs.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  \FreeClimb\Api\Model\FilterLogsRequest $filter_logs_request Filter logs request paramters (required)
      */
     public function testFilterLogs()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $filter_logs_request = new \FreeClimb\Api\Model\FilterLogsRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Logs';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->filterLogs($account_id, $filter_logs_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\LogList',$response);
     }
-
     /**
      * Test case for getACall
      *
      * Get a Call.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $call_id String that uniquely identifies this call resource. (required)
      */
     public function testGetACall()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $call_id = 'call_id_example';
         
-
-        $path = '/Accounts/{accountId}/Calls/{callId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->getACall($account_id, $call_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\CallResult',$response);
     }
-
     /**
      * Test case for getAConference
      *
      * Get a Conference.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $conference_id A string that uniquely identifies this conference resource. (required)
      */
     public function testGetAConference()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $conference_id = 'conference_id_example';
         
-
-        $path = '/Accounts/{accountId}/Conferences/{conferenceId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "conferenceId" . "}";
-        $path = str_replace($pathParam,'conference_id_example',$path);
+        $response = $this->apiInstance->getAConference($account_id, $conference_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ConferenceResult',$response);
     }
-
     /**
      * Test case for getAMember
      *
      * Get a Member.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
+     * @param  string $call_id ID of the Call that the Member belongs to (required)
      */
     public function testGetAMember()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $queue_id = 'queue_id_example';
+        $call_id = 'call_id_example';
         
-
-        $path = '/Accounts/{accountId}/Queues/{queueId}/Members/{callId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "queueId" . "}";
-        $path = str_replace($pathParam,'queue_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->getAMember($account_id, $queue_id, $call_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueMember',$response);
     }
-
     /**
      * Test case for getAParticipant
      *
      * Get a Participant.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $conference_id ID of the conference this participant is in. (required)
+     * @param  string $call_id ID of the Call associated with this participant. (required)
      */
     public function testGetAParticipant()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $conference_id = 'conference_id_example';
+        $call_id = 'call_id_example';
         
-
-        $path = '/Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "conferenceId" . "}";
-        $path = str_replace($pathParam,'conference_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->getAParticipant($account_id, $conference_id, $call_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ConferenceParticipantResult',$response);
     }
-
     /**
      * Test case for getAQueue
      *
      * Get a Queue.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $queue_id A string that uniquely identifies this queue resource. (required)
      */
     public function testGetAQueue()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $queue_id = 'queue_id_example';
         
-
-        $path = '/Accounts/{accountId}/Queues/{queueId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "queueId" . "}";
-        $path = str_replace($pathParam,'queue_id_example',$path);
+        $response = $this->apiInstance->getAQueue($account_id, $queue_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueResult',$response);
     }
-
     /**
      * Test case for getARecording
      *
      * Get a Recording.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $recording_id String that uniquely identifies this recording resource. (required)
      */
     public function testGetARecording()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $recording_id = 'recording_id_example';
         
-
-        $path = '/Accounts/{accountId}/Recordings/{recordingId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "recordingId" . "}";
-        $path = str_replace($pathParam,'recording_id_example',$path);
+        $response = $this->apiInstance->getARecording($account_id, $recording_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\RecordingResult',$response);
     }
-
     /**
      * Test case for getAnAccount
      *
      * Get an Account.
-     *
+     * @param  string $account_id ID of the account (required)
      */
     public function testGetAnAccount()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
         
-
-        $path = '/Accounts/{accountId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->getAnAccount($account_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\AccountResult',$response);
     }
-
     /**
      * Test case for getAnApplication
      *
      * Get an Application.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $application_id A string that uniquely identifies this application resource. (required)
      */
     public function testGetAnApplication()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $application_id = 'application_id_example';
         
-
-        $path = '/Accounts/{accountId}/Applications/{applicationId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "applicationId" . "}";
-        $path = str_replace($pathParam,'application_id_example',$path);
+        $response = $this->apiInstance->getAnApplication($account_id, $application_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ApplicationResult',$response);
     }
-
     /**
      * Test case for getAnIncomingNumber
      *
      * Get an Incoming Number.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
      */
     public function testGetAnIncomingNumber()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $phone_number_id = 'phone_number_id_example';
         
-
-        $path = '/Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "phoneNumberId" . "}";
-        $path = str_replace($pathParam,'phone_number_id_example',$path);
+        $response = $this->apiInstance->getAnIncomingNumber($account_id, $phone_number_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\IncomingNumberResult',$response);
     }
-
     /**
      * Test case for getAnSmsMessage
      *
      * Get an SMS Message.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $message_id String that uniquely identifies this Message resource. (required)
      */
     public function testGetAnSmsMessage()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $message_id = 'message_id_example';
         
-
-        $path = '/Accounts/{accountId}/Messages/{messageId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "messageId" . "}";
-        $path = str_replace($pathParam,'message_id_example',$path);
+        $response = $this->apiInstance->getAnSmsMessage($account_id, $message_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\MessageResult',$response);
     }
-
     /**
      * Test case for getHeadMember
      *
      * Get Head Member.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
      */
     public function testGetHeadMember()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $queue_id = 'queue_id_example';
         
-
-        $path = '/Accounts/{accountId}/Queues/{queueId}/Members/Front';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "queueId" . "}";
-        $path = str_replace($pathParam,'queue_id_example',$path);
+        $response = $this->apiInstance->getHeadMember($account_id, $queue_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueMember',$response);
     }
-
     /**
      * Test case for listActiveQueues
      *
      * List Active Queues.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $alias Return only the Queue resources with aliases that exactly match this name. (optional)
      */
     public function testListActiveQueues()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $alias = 'alias_example';
         
-        $data->alias = 'TEST_STRING';
-
-        $path = '/Accounts/{accountId}/Queues';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->listActiveQueues($account_id, $alias);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueList',$response);
     }
-
     /**
      * Test case for listAllAccountLogs
      *
      * List All Account Logs.
-     *
+     * @param  string $account_id ID of the account (required)
      */
     public function testListAllAccountLogs()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
         
-
-        $path = '/Accounts/{accountId}/Logs';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->listAllAccountLogs($account_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\LogList',$response);
     }
-
     /**
      * Test case for listApplications
      *
      * List applications.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $alias Return only applications with aliases that exactly match this value. (optional)
      */
     public function testListApplications()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $alias = 'alias_example';
         
-        $data->alias = 'TEST_STRING';
-
-        $path = '/Accounts/{accountId}/Applications';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->listApplications($account_id, $alias);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ApplicationList',$response);
     }
-
     /**
      * Test case for listAvailableNumbers
      *
      * List available numbers.
-     *
+     * @param  string $phone_number PCRE-compatible regular expression to filter against &#x60;phoneNumber&#x60; field, which is in E.164 format. (optional)
+     * @param  string $region State or province of this phone number. (optional)
+     * @param  string $country Country of this phone number. (optional)
+     * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true)
+     * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true)
+     * @param  bool $capabilities_voice capabilities_voice (optional)
+     * @param  bool $capabilities_sms capabilities_sms (optional)
+     * @param  bool $capabilities_toll_free capabilities_toll_free (optional)
+     * @param  bool $capabilities_ten_dlc capabilities_ten_dlc (optional)
+     * @param  bool $capabilities_short_code capabilities_short_code (optional)
      */
     public function testListAvailableNumbers()
     {
-        $data = new \stdClass();
+        $phone_number = 'phone_number_example';
+        $region = 'region_example';
+        $country = 'country_example';
+        $voice_enabled = true;
+        $sms_enabled = true;
+        $capabilities_voice = True;
+        $capabilities_sms = True;
+        $capabilities_toll_free = True;
+        $capabilities_ten_dlc = True;
+        $capabilities_short_code = True;
         
-        $data->phone_number = 'TEST_STRING';
-        $data->region = 'TEST_STRING';
-        $data->country = 'TEST_STRING';
-        $data->voice_enabled = true;
-        $data->sms_enabled = true;
-        $data->capabilities_voice = true;
-        $data->capabilities_sms = true;
-        $data->capabilities_toll_free = true;
-        $data->capabilities_ten_dlc = true;
-        $data->capabilities_short_code = true;
-
-        $path = '/AvailablePhoneNumbers';
+        $response = $this->apiInstance->listAvailableNumbers($phone_number, $region, $country, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\AvailableNumberList',$response);
     }
-
     /**
      * Test case for listCallLogs
      *
      * List Call Logs.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $call_id String that uniquely identifies this call resource. (required)
      */
     public function testListCallLogs()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $call_id = 'call_id_example';
         
-
-        $path = '/Accounts/{accountId}/Calls/{callId}/Logs';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->listCallLogs($account_id, $call_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\LogList',$response);
     }
-
     /**
      * Test case for listCallRecordings
      *
      * List Call Recordings.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $call_id String that uniquely identifies this call resource. (required)
+     * @param  string $date_created Only show recordings created on the specified date, in the form *YYYY-MM-DD*. (optional)
      */
     public function testListCallRecordings()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $call_id = 'call_id_example';
+        $date_created = 'date_created_example';
         
-        $data->date_created = 'TEST_STRING';
-
-        $path = '/Accounts/{accountId}/Calls/{callId}/Recordings';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->listCallRecordings($account_id, $call_id, $date_created);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\RecordingList',$response);
     }
-
     /**
      * Test case for listCalls
      *
      * List Calls.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  bool $active If active is set to true then all calls of the nature queued, ringing, inProgress are returned in the query. (optional, default to false)
+     * @param  string $to Only show Calls to this phone number. (optional)
+     * @param  string $from Only show Calls from this phone number. (optional)
+     * @param  string $status Only show Calls currently in this status. May be &#x60;queued&#x60;, &#x60;ringing&#x60;, &#x60;inProgress&#x60;, &#x60;canceled&#x60;, &#x60;completed&#x60;, &#x60;failed&#x60;, &#x60;busy&#x60;, or &#x60;noAnswer&#x60;. (optional)
+     * @param  string $start_time Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss. (optional)
+     * @param  string $end_time Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss. (optional)
+     * @param  string $parent_call_id Only show Calls spawned by the call with this ID. (optional)
      */
     public function testListCalls()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $active = false;
+        $to = 'to_example';
+        $from = 'from_example';
+        $status = 'status_example';
+        $start_time = 'start_time_example';
+        $end_time = 'end_time_example';
+        $parent_call_id = 'parent_call_id_example';
         
-        $data->active = true;
-        $data->to = 'TEST_STRING';
-        $data->from = 'TEST_STRING';
-        $data->status = 'TEST_STRING';
-        $data->start_time = 'TEST_STRING';
-        $data->end_time = 'TEST_STRING';
-        $data->parent_call_id = 'TEST_STRING';
-
-        $path = '/Accounts/{accountId}/Calls';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->listCalls($account_id, $active, $to, $from, $status, $start_time, $end_time, $parent_call_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\CallList',$response);
     }
-
     /**
      * Test case for listConferences
      *
      * List Conferences.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $status Only show conferences that currently have the specified status. Valid values: &#x60;empty&#x60;, &#x60;populated&#x60;, &#x60;inProgress&#x60;, or &#x60;terminated&#x60;. (optional)
+     * @param  string $alias List Conferences whose alias exactly matches this string. (optional)
+     * @param  string $date_created Only show Conferences that were created on the specified date, in the form *YYYY-MM-DD*. (optional)
+     * @param  string $date_updated Only show Conferences that were last updated on the specified date, in the form *YYYY-MM-DD*. (optional)
      */
     public function testListConferences()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $status = 'status_example';
+        $alias = 'alias_example';
+        $date_created = 'date_created_example';
+        $date_updated = 'date_updated_example';
         
-        $data->status = 'TEST_STRING';
-        $data->alias = 'TEST_STRING';
-        $data->date_created = 'TEST_STRING';
-        $data->date_updated = 'TEST_STRING';
-
-        $path = '/Accounts/{accountId}/Conferences';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->listConferences($account_id, $status, $alias, $date_created, $date_updated);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ConferenceList',$response);
     }
-
     /**
      * Test case for listIncomingNumbers
      *
      * List Incoming Numbers.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $phone_number Only show incoming phone number resources that match this PCRE-compatible regular expression. (optional)
+     * @param  string $alias Only show incoming phone numbers with aliases that exactly match this value. (optional)
+     * @param  string $region State or province of this phone number. (optional)
+     * @param  string $country Country of this phone number. (optional)
+     * @param  string $application_id ID of the Application that FreeClimb should contact if a Call or SMS arrives for this phone number or a Call from this number is placed. An incoming phone number is not useful until associated with an applicationId. (optional)
+     * @param  bool $has_application Indication of whether the phone number has an application linked to it. (optional, default to false)
+     * @param  bool $voice_enabled Indicates whether the phone number can handle Calls. Typically set to true for all numbers. (optional, default to true) (deprecated)
+     * @param  bool $sms_enabled Indication of whether the phone number can handle sending and receiving SMS messages. Typically set to true for all numbers. (optional, default to true) (deprecated)
+     * @param  bool $capabilities_voice capabilities_voice (optional)
+     * @param  bool $capabilities_sms capabilities_sms (optional)
+     * @param  bool $capabilities_toll_free capabilities_toll_free (optional)
+     * @param  bool $capabilities_ten_dlc capabilities_ten_dlc (optional)
+     * @param  bool $capabilities_short_code capabilities_short_code (optional)
      */
     public function testListIncomingNumbers()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $phone_number = 'phone_number_example';
+        $alias = 'alias_example';
+        $region = 'region_example';
+        $country = 'country_example';
+        $application_id = 'application_id_example';
+        $has_application = false;
+        $voice_enabled = true;
+        $sms_enabled = true;
+        $capabilities_voice = True;
+        $capabilities_sms = True;
+        $capabilities_toll_free = True;
+        $capabilities_ten_dlc = True;
+        $capabilities_short_code = True;
         
-        $data->phone_number = 'TEST_STRING';
-        $data->alias = 'TEST_STRING';
-        $data->region = 'TEST_STRING';
-        $data->country = 'TEST_STRING';
-        $data->application_id = 'TEST_STRING';
-        $data->has_application = true;
-        $data->voice_enabled = true;
-        $data->sms_enabled = true;
-        $data->capabilities_voice = true;
-        $data->capabilities_sms = true;
-        $data->capabilities_toll_free = true;
-        $data->capabilities_ten_dlc = true;
-        $data->capabilities_short_code = true;
-
-        $path = '/Accounts/{accountId}/IncomingPhoneNumbers';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->listIncomingNumbers($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\IncomingNumberList',$response);
     }
-
     /**
      * Test case for listMembers
      *
      * List Members.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $queue_id String that uniquely identifies the Queue that the Member belongs to. (required)
      */
     public function testListMembers()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $queue_id = 'queue_id_example';
         
-
-        $path = '/Accounts/{accountId}/Queues/{queueId}/Members';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "queueId" . "}";
-        $path = str_replace($pathParam,'queue_id_example',$path);
+        $response = $this->apiInstance->listMembers($account_id, $queue_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueMemberList',$response);
     }
-
     /**
      * Test case for listParticipants
      *
      * List Participants.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $conference_id ID of the conference this participant is in. (required)
+     * @param  bool $talk Only show Participants with the talk privilege. (optional)
+     * @param  bool $listen Only show Participants with the listen privilege. (optional)
      */
     public function testListParticipants()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $conference_id = 'conference_id_example';
+        $talk = True;
+        $listen = True;
         
-        $data->talk = true;
-        $data->listen = true;
-
-        $path = '/Accounts/{accountId}/Conferences/{conferenceId}/Participants';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "conferenceId" . "}";
-        $path = str_replace($pathParam,'conference_id_example',$path);
+        $response = $this->apiInstance->listParticipants($account_id, $conference_id, $talk, $listen);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ConferenceParticipantList',$response);
     }
-
     /**
      * Test case for listRecordings
      *
      * List Recordings.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $call_id Show only Recordings made during the Call with this ID. (optional)
+     * @param  string $conference_id Show only Recordings made during the conference with this ID. (optional)
+     * @param  string $date_created Only show Recordings created on this date, formatted as *YYYY-MM-DD*. (optional)
      */
     public function testListRecordings()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $call_id = 'call_id_example';
+        $conference_id = 'conference_id_example';
+        $date_created = 'date_created_example';
         
-        $data->call_id = 'TEST_STRING';
-        $data->conference_id = 'TEST_STRING';
-        $data->date_created = 'TEST_STRING';
-
-        $path = '/Accounts/{accountId}/Recordings';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->listRecordings($account_id, $call_id, $conference_id, $date_created);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\RecordingList',$response);
     }
-
     /**
      * Test case for listSmsMessages
      *
      * List SMS Messages.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $to Only show Messages to this phone number. (optional)
+     * @param  string $from Only show Messages from this phone number. (optional)
+     * @param  string $begin_time Only show Messages sent at or after this time (GMT), given as *YYYY-MM-DD hh:mm:ss*. (optional)
+     * @param  string $end_time Only show messages sent at or before this time (GMT), given as *YYYY-MM-DD hh:mm*.. (optional)
+     * @param  string $direction Either &#x60;inbound&#x60; or &#x60;outbound&#x60;. Only show Messages that were either *sent from* or *received by* FreeClimb. (optional)
      */
     public function testListSmsMessages()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $to = 'to_example';
+        $from = 'from_example';
+        $begin_time = 'begin_time_example';
+        $end_time = 'end_time_example';
+        $direction = 'direction_example';
         
-        $data->to = 'TEST_STRING';
-        $data->from = 'TEST_STRING';
-        $data->begin_time = 'TEST_STRING';
-        $data->end_time = 'TEST_STRING';
-        $data->direction = 'TEST_STRING';
-
-        $path = '/Accounts/{accountId}/Messages';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->listSmsMessages($account_id, $to, $from, $begin_time, $end_time, $direction);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\MessagesList',$response);
     }
-
     /**
      * Test case for makeACall
      *
      * Make a Call.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  \FreeClimb\Api\Model\MakeCallRequest $make_call_request Call details for making a call (optional)
      */
     public function testMakeACall()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $make_call_request = new \FreeClimb\Api\Model\MakeCallRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Calls';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->makeACall($account_id, $make_call_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\CallResult',$response);
     }
-
     /**
      * Test case for removeAParticipant
      *
      * Remove a Participant.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $conference_id ID of the conference this participant is in. (required)
+     * @param  string $call_id ID of the Call associated with this participant. (required)
      */
     public function testRemoveAParticipant()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $conference_id = 'conference_id_example';
+        $call_id = 'call_id_example';
         
-
-        $path = '/Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "conferenceId" . "}";
-        $path = str_replace($pathParam,'conference_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->removeAParticipant($account_id, $conference_id, $call_id);
         
-        $response = $this->client->DELETE($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        $this->assertNull($response);
     }
-
     /**
      * Test case for sendAnSmsMessage
      *
      * Send an SMS Message.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  \FreeClimb\Api\Model\MessageRequest $message_request Details to create a message (required)
      */
     public function testSendAnSmsMessage()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $message_request = new \FreeClimb\Api\Model\MessageRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Messages';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->sendAnSmsMessage($account_id, $message_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\MessageResult',$response);
     }
-
     /**
      * Test case for streamARecordingFile
      *
      * Stream a Recording File.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $recording_id String that uniquely identifies this recording resource. (required)
      */
     public function testStreamARecordingFile()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $recording_id = 'recording_id_example';
         
-
-        $path = '/Accounts/{accountId}/Recordings/{recordingId}/Stream';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "recordingId" . "}";
-        $path = str_replace($pathParam,'recording_id_example',$path);
+        $response = $this->apiInstance->streamARecordingFile($account_id, $recording_id);
         
-        $response = $this->client->GET($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\SplFileObject',$response);
     }
-
     /**
      * Test case for updateAConference
      *
      * Update a Conference.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $conference_id String that uniquely identifies this conference resource. (required)
+     * @param  \FreeClimb\Api\Model\UpdateConferenceRequest $update_conference_request Conference Details to update (optional)
      */
     public function testUpdateAConference()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $conference_id = 'conference_id_example';
+        $update_conference_request = new \FreeClimb\Api\Model\UpdateConferenceRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Conferences/{conferenceId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "conferenceId" . "}";
-        $path = str_replace($pathParam,'conference_id_example',$path);
+        $response = $this->apiInstance->updateAConference($account_id, $conference_id, $update_conference_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ConferenceResult',$response);
     }
-
     /**
      * Test case for updateALiveCall
      *
      * Update a Live Call.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $call_id String that uniquely identifies this call resource. (required)
+     * @param  \FreeClimb\Api\Model\UpdateCallRequest $update_call_request Call details to update (required)
      */
     public function testUpdateALiveCall()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $call_id = 'call_id_example';
+        $update_call_request = new \FreeClimb\Api\Model\UpdateCallRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Calls/{callId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->updateALiveCall($account_id, $call_id, $update_call_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        $this->assertNull($response);
     }
-
     /**
      * Test case for updateAParticipant
      *
      * Update a Participant.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $conference_id ID of the conference this participant is in. (required)
+     * @param  string $call_id ID of the Call associated with this participant. (required)
+     * @param  \FreeClimb\Api\Model\UpdateConferenceParticipantRequest $update_conference_participant_request Conference participant details to update (optional)
      */
     public function testUpdateAParticipant()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $conference_id = 'conference_id_example';
+        $call_id = 'call_id_example';
+        $update_conference_participant_request = new \FreeClimb\Api\Model\UpdateConferenceParticipantRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Conferences/{conferenceId}/Participants/{callId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "conferenceId" . "}";
-        $path = str_replace($pathParam,'conference_id_example',$path);
-        $pathParam = "{" . "callId" . "}";
-        $path = str_replace($pathParam,'call_id_example',$path);
+        $response = $this->apiInstance->updateAParticipant($account_id, $conference_id, $call_id, $update_conference_participant_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ConferenceParticipantResult',$response);
     }
-
     /**
      * Test case for updateAQueue
      *
      * Update a Queue.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $queue_id A string that uniquely identifies this Queue resource. (required)
+     * @param  \FreeClimb\Api\Model\QueueRequest $queue_request Queue Details to update (optional)
      */
     public function testUpdateAQueue()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $queue_id = 'queue_id_example';
+        $queue_request = new \FreeClimb\Api\Model\QueueRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Queues/{queueId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "queueId" . "}";
-        $path = str_replace($pathParam,'queue_id_example',$path);
+        $response = $this->apiInstance->updateAQueue($account_id, $queue_id, $queue_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\QueueResult',$response);
     }
-
     /**
      * Test case for updateAnAccount
      *
      * Manage an account.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  \FreeClimb\Api\Model\AccountRequest $account_request Account details to update (optional)
      */
     public function testUpdateAnAccount()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $account_request = new \FreeClimb\Api\Model\AccountRequest(array());
         
-
-        $path = '/Accounts/{accountId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
+        $response = $this->apiInstance->updateAnAccount($account_id, $account_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        $this->assertNull($response);
     }
-
     /**
      * Test case for updateAnApplication
      *
      * Update an application.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $application_id A string that uniquely identifies this application resource. (required)
+     * @param  \FreeClimb\Api\Model\ApplicationRequest $application_request Application details to update. (optional)
      */
     public function testUpdateAnApplication()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $application_id = 'application_id_example';
+        $application_request = new \FreeClimb\Api\Model\ApplicationRequest(array());
         
-
-        $path = '/Accounts/{accountId}/Applications/{applicationId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "applicationId" . "}";
-        $path = str_replace($pathParam,'application_id_example',$path);
+        $response = $this->apiInstance->updateAnApplication($account_id, $application_id, $application_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\ApplicationResult',$response);
     }
-
     /**
      * Test case for updateAnIncomingNumber
      *
      * Update an Incoming Number.
-     *
+     * @param  string $account_id ID of the account (required)
+     * @param  string $phone_number_id String that uniquely identifies this phone number resource. (required)
+     * @param  \FreeClimb\Api\Model\IncomingNumberRequest $incoming_number_request Incoming Number details to update (optional)
      */
     public function testUpdateAnIncomingNumber()
     {
-        $data = new \stdClass();
+        $account_id = 'account_id_example';
+        $phone_number_id = 'phone_number_id_example';
+        $incoming_number_request = new \FreeClimb\Api\Model\IncomingNumberRequest(array());
         
-
-        $path = '/Accounts/{accountId}/IncomingPhoneNumbers/{phoneNumberId}';
-        $pathParam = "{" . "accountId" . "}";
-        $path = str_replace($pathParam,'account_id_example',$path);
-        $pathParam = "{" . "phoneNumberId" . "}";
-        $path = str_replace($pathParam,'phone_number_id_example',$path);
+        $response = $this->apiInstance->updateAnIncomingNumber($account_id, $phone_number_id, $incoming_number_request);
         
-        $response = $this->client->POST($path, ['json' => $data]);
-
-        $this->assertEquals(201, $response->getStatusCode());
-        $data = json_decode($response->getBody(true), true);
+        
+        $this->assertInstanceOf('\FreeClimb\Api\Model\IncomingNumberResult',$response);
     }
 }
