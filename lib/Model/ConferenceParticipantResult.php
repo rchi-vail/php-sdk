@@ -561,7 +561,7 @@ class ConferenceParticipantResult implements ModelInterface, ArrayAccess, \JsonS
      */
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

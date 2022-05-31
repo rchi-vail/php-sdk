@@ -291,7 +291,7 @@ class ConferenceParticipantListAllOf implements ModelInterface, ArrayAccess, \Js
      */
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**

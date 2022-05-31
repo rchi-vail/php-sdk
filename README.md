@@ -74,6 +74,47 @@ try {
 
 ```
 
+## Using PerCL
+The PerclScript class provides a convenient wrapper to handle PerCL generation in your responses. Simply execute `json_encode` with an instance of the `PerclScript` class and you will have `PerclCommands` serialized and formatted the way you need.
+
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$say = new \FreeClimb\Api\Model\Say();
+$sms = new \FreeClimb\Api\Model\Sms();
+$script = new \FreeClimb\Api\Model\PerclScript();
+
+$say->setText("hello world");
+$sms->setFrom("from number");
+$sms->setTo("to number");
+$sms->setText("hello world SMS");
+
+
+$script->setCommands(array($say, $sms));
+
+json_encode($script);
+/**
+* [
+*   {
+*     "Say": {
+*       "text": "hello world"
+*     }
+*   },
+*   {
+*     "Sms": {
+*       "from": "from number",
+*       "to": "to number",
+*       "text": "hello world SMS"
+*     }
+*   }
+* ]
+*/
+
+?>
+```
+
 ## API Endpoints
 
 All URIs are relative to *https://www.freeclimb.com/apiserver*

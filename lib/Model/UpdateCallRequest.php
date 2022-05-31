@@ -328,7 +328,7 @@ class UpdateCallRequest implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function jsonSerialize()
     {
-       return ObjectSerializer::sanitizeForSerialization($this);
+        return ObjectSerializer::sanitizeForSerialization($this);
     }
 
     /**
