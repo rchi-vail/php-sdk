@@ -69,8 +69,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -131,8 +131,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -193,8 +193,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -255,8 +255,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -317,8 +317,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -378,8 +378,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -439,8 +439,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -500,8 +500,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -564,8 +564,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -626,8 +626,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -688,8 +688,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -750,8 +750,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -812,8 +812,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -874,8 +874,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -938,8 +938,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1002,8 +1002,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1064,8 +1064,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1126,8 +1126,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1186,8 +1186,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1248,8 +1248,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1310,8 +1310,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1372,8 +1372,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1434,8 +1434,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1496,8 +1496,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1556,8 +1556,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1618,8 +1618,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1696,8 +1696,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1758,8 +1758,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1822,8 +1822,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1896,8 +1896,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -1964,8 +1964,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2050,8 +2050,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2112,8 +2112,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2178,8 +2178,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2244,8 +2244,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2314,8 +2314,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2376,8 +2376,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2439,8 +2439,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2501,8 +2501,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2563,8 +2563,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2627,8 +2627,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2690,8 +2690,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2756,8 +2756,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2820,8 +2820,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2881,8 +2881,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -2945,8 +2945,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(

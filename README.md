@@ -52,8 +52,8 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure HTTP basic authorization: fc
 $config = FreeClimb\Api\Configuration::getDefaultConfiguration()
-              ->setUsername('YOUR_USERNAME')
-              ->setPassword('YOUR_PASSWORD');
+              ->setUsername('YOUR_ACCOUNT_ID')
+              ->setPassword('YOUR_API_KEY');
 
 
 $apiInstance = new FreeClimb\Api\Api\DefaultApi(
@@ -62,11 +62,11 @@ $apiInstance = new FreeClimb\Api\Api\DefaultApi(
     new GuzzleHttp\Client(),
     $config
 );
-$account_id = 'account_id_example'; // string | ID of the account
 $buy_incoming_number_request = new \FreeClimb\Api\Model\BuyIncomingNumberRequest(); // \FreeClimb\Api\Model\BuyIncomingNumberRequest | Incoming Number transaction details
 
+
 try {
-    $result = $apiInstance->buyAPhoneNumber($account_id, $buy_incoming_number_request);
+    $result = $apiInstance->buyAPhoneNumber($buy_incoming_number_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->buyAPhoneNumber: ', $e->getMessage(), PHP_EOL;
