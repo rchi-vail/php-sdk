@@ -196,7 +196,7 @@ class Say extends PerclCommand
 
         $this->container['text'] = $data['text'] ?? null;
         $this->container['language'] = $data['language'] ?? null;
-        $this->container['loop'] = $data['loop'] ?? null;
+        $this->container['loop'] = $data['loop'] ?? 1;
         $this->container['conference_id'] = $data['conference_id'] ?? null;
         $this->container['privacy_mode'] = $data['privacy_mode'] ?? null;
     }
