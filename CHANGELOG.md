@@ -7,6 +7,17 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [Unreleased]
 None
 
+<a name="3.0.1"></a>
+## [3.0.1] - 2022-08-22
+### Changed
+- Say command 'loop' property defaults to `1`
+- Add Park/Unpark commands
+
+<a name="3.0.0"></a>
+## [3.0.0] - 2022-05-21
+### Changed
+- Updates for SDK parity
+
 <a name="2.0.0"></a>
 ## [2.0.0] - 2022-03-29
 ### Changed
