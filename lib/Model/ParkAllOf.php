@@ -1,6 +1,6 @@
 <?php
 /**
- * AvailableNumber
+ * ParkAllOf
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \FreeClimb\Api\ObjectSerializer;
 
 /**
- * AvailableNumber Class Doc Comment
+ * ParkAllOf Class Doc Comment
  *
  * @category Class
  * @package  FreeClimb\Api
@@ -43,7 +43,7 @@ use \FreeClimb\Api\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
+class ParkAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AvailableNumber';
+    protected static $openAPIModelName = 'Park_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,13 +60,9 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'capabilities' => '\FreeClimb\Api\Model\Capabilities',
-        'campaign_id' => 'string',
-        'phone_number' => 'string',
-        'voice_enabled' => 'bool',
-        'sms_enabled' => 'bool',
-        'region' => 'string',
-        'country' => 'string'
+        'wait_url' => 'string',
+        'action_url' => 'string',
+        'notification_url' => 'string'
     ];
 
     /**
@@ -77,13 +73,9 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'capabilities' => null,
-        'campaign_id' => null,
-        'phone_number' => null,
-        'voice_enabled' => null,
-        'sms_enabled' => null,
-        'region' => null,
-        'country' => null
+        'wait_url' => null,
+        'action_url' => null,
+        'notification_url' => null
     ];
 
     /**
@@ -113,13 +105,9 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'capabilities' => 'capabilities',
-        'campaign_id' => 'campaignId',
-        'phone_number' => 'phoneNumber',
-        'voice_enabled' => 'voiceEnabled',
-        'sms_enabled' => 'smsEnabled',
-        'region' => 'region',
-        'country' => 'country'
+        'wait_url' => 'waitUrl',
+        'action_url' => 'actionUrl',
+        'notification_url' => 'notificationUrl'
     ];
 
     /**
@@ -128,13 +116,9 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'capabilities' => 'setCapabilities',
-        'campaign_id' => 'setCampaignId',
-        'phone_number' => 'setPhoneNumber',
-        'voice_enabled' => 'setVoiceEnabled',
-        'sms_enabled' => 'setSmsEnabled',
-        'region' => 'setRegion',
-        'country' => 'setCountry'
+        'wait_url' => 'setWaitUrl',
+        'action_url' => 'setActionUrl',
+        'notification_url' => 'setNotificationUrl'
     ];
 
     /**
@@ -143,13 +127,9 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'capabilities' => 'getCapabilities',
-        'campaign_id' => 'getCampaignId',
-        'phone_number' => 'getPhoneNumber',
-        'voice_enabled' => 'getVoiceEnabled',
-        'sms_enabled' => 'getSmsEnabled',
-        'region' => 'getRegion',
-        'country' => 'getCountry'
+        'wait_url' => 'getWaitUrl',
+        'action_url' => 'getActionUrl',
+        'notification_url' => 'getNotificationUrl'
     ];
 
     /**
@@ -209,13 +189,9 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['capabilities'] = $data['capabilities'] ?? null;
-        $this->container['campaign_id'] = $data['campaign_id'] ?? null;
-        $this->container['phone_number'] = $data['phone_number'] ?? null;
-        $this->container['voice_enabled'] = $data['voice_enabled'] ?? null;
-        $this->container['sms_enabled'] = $data['sms_enabled'] ?? null;
-        $this->container['region'] = $data['region'] ?? null;
-        $this->container['country'] = $data['country'] ?? null;
+        $this->container['wait_url'] = $data['wait_url'] ?? null;
+        $this->container['action_url'] = $data['action_url'] ?? null;
+        $this->container['notification_url'] = $data['notification_url'] ?? null;
     }
 
     /**
@@ -227,6 +203,12 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['wait_url'] === null) {
+            $invalidProperties[] = "'wait_url' can't be null";
+        }
+        if ($this->container['action_url'] === null) {
+            $invalidProperties[] = "'action_url' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -243,173 +225,73 @@ class AvailableNumber implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets capabilities
+     * Gets wait_url
      *
-     * @return \FreeClimb\Api\Model\Capabilities|null
+     * @return string
      */
-    public function getCapabilities()
+    public function getWaitUrl()
     {
-        return $this->container['capabilities'];
+        return $this->container['wait_url'];
     }
 
     /**
-     * Sets capabilities
+     * Sets wait_url
      *
-     * @param \FreeClimb\Api\Model\Capabilities|null $capabilities capabilities
+     * @param string $wait_url Specifies a URL pointing to a PerCL script containing actions to be executed while the caller is Parked. Once the script returned by the waitUrl runs out of commands to execute, FreeClimb will re-request the waitUrl and start over, essentially looping the script requests indefinitely.
      *
      * @return self
      */
-    public function setCapabilities($capabilities)
+    public function setWaitUrl($wait_url)
     {
-        $this->container['capabilities'] = $capabilities;
+        $this->container['wait_url'] = $wait_url;
 
         return $this;
     }
 
     /**
-     * Gets campaign_id
+     * Gets action_url
+     *
+     * @return string
+     */
+    public function getActionUrl()
+    {
+        return $this->container['action_url'];
+    }
+
+    /**
+     * Sets action_url
+     *
+     * @param string $action_url A request is made to this URL when the Call is resumed, which can occur if the Call is resumed via the Unpark command, the REST API (POST to Call resource), or the caller hangs up. The PerCL script returned in response to the actionUrl will be executed on the resumed call.
+     *
+     * @return self
+     */
+    public function setActionUrl($action_url)
+    {
+        $this->container['action_url'] = $action_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets notification_url
      *
      * @return string|null
      */
-    public function getCampaignId()
+    public function getNotificationUrl()
     {
-        return $this->container['campaign_id'];
+        return $this->container['notification_url'];
     }
 
     /**
-     * Sets campaign_id
+     * Sets notification_url
      *
-     * @param string|null $campaign_id The campaign ID generated by the campaign registry
+     * @param string|null $notification_url URL to be invoked when the Call is parked. The request to the URL contains the standard request parameters.
      *
      * @return self
      */
-    public function setCampaignId($campaign_id)
+    public function setNotificationUrl($notification_url)
     {
-        $this->container['campaign_id'] = $campaign_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets phone_number
-     *
-     * @return string|null
-     */
-    public function getPhoneNumber()
-    {
-        return $this->container['phone_number'];
-    }
-
-    /**
-     * Sets phone_number
-     *
-     * @param string|null $phone_number The phone number, in E.164 format (+ country code and phone number: +18003608245).
-     *
-     * @return self
-     */
-    public function setPhoneNumber($phone_number)
-    {
-        $this->container['phone_number'] = $phone_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets voice_enabled
-     *
-     * @return bool|null
-     * @deprecated
-     */
-    public function getVoiceEnabled()
-    {
-        return $this->container['voice_enabled'];
-    }
-
-    /**
-     * Sets voice_enabled
-     *
-     * @param bool|null $voice_enabled Typically set to true for all numbers.
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setVoiceEnabled($voice_enabled)
-    {
-        $this->container['voice_enabled'] = $voice_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets sms_enabled
-     *
-     * @return bool|null
-     * @deprecated
-     */
-    public function getSmsEnabled()
-    {
-        return $this->container['sms_enabled'];
-    }
-
-    /**
-     * Sets sms_enabled
-     *
-     * @param bool|null $sms_enabled Indicates whether the phone number can send and receive SMS messages.
-     *
-     * @return self
-     * @deprecated
-     */
-    public function setSmsEnabled($sms_enabled)
-    {
-        $this->container['sms_enabled'] = $sms_enabled;
-
-        return $this;
-    }
-
-    /**
-     * Gets region
-     *
-     * @return string|null
-     */
-    public function getRegion()
-    {
-        return $this->container['region'];
-    }
-
-    /**
-     * Sets region
-     *
-     * @param string|null $region The state or province of this phone number.
-     *
-     * @return self
-     */
-    public function setRegion($region)
-    {
-        $this->container['region'] = $region;
-
-        return $this;
-    }
-
-    /**
-     * Gets country
-     *
-     * @return string|null
-     */
-    public function getCountry()
-    {
-        return $this->container['country'];
-    }
-
-    /**
-     * Sets country
-     *
-     * @param string|null $country The country of this phone number.
-     *
-     * @return self
-     */
-    public function setCountry($country)
-    {
-        $this->container['country'] = $country;
+        $this->container['notification_url'] = $notification_url;
 
         return $this;
     }

@@ -63,6 +63,8 @@ docs/Model/MutableResourceModel.md
 docs/Model/OutDial.md
 docs/Model/OutDialAllOf.md
 docs/Model/PaginationModel.md
+docs/Model/Park.md
+docs/Model/ParkAllOf.md
 docs/Model/Pause.md
 docs/Model/PauseAllOf.md
 docs/Model/PerclCommand.md
@@ -104,6 +106,7 @@ docs/Model/SmsAllOf.md
 docs/Model/StartRecordCall.md
 docs/Model/TerminateConference.md
 docs/Model/TerminateConferenceAllOf.md
+docs/Model/Unpark.md
 docs/Model/UpdateCallRequest.md
 docs/Model/UpdateConferenceParticipantRequest.md
 docs/Model/UpdateConferenceRequest.md
@@ -172,6 +175,8 @@ lib/Model/MutableResourceModel.php
 lib/Model/OutDial.php
 lib/Model/OutDialAllOf.php
 lib/Model/PaginationModel.php
+lib/Model/Park.php
+lib/Model/ParkAllOf.php
 lib/Model/Pause.php
 lib/Model/PauseAllOf.php
 lib/Model/PerclCommand.php
@@ -213,6 +218,7 @@ lib/Model/SmsAllOf.php
 lib/Model/StartRecordCall.php
 lib/Model/TerminateConference.php
 lib/Model/TerminateConferenceAllOf.php
+lib/Model/Unpark.php
 lib/Model/UpdateCallRequest.php
 lib/Model/UpdateConferenceParticipantRequest.php
 lib/Model/UpdateConferenceRequest.php
