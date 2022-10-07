@@ -233,7 +233,7 @@ class ConferenceResult implements ModelInterface, ArrayAccess, \JsonSerializable
     const PLAY_BEEP_ENTRY_ONLY = 'entryOnly';
     const PLAY_BEEP_EXIT_ONLY = 'exitOnly';
     const STATUS_CREATING = 'creating';
-    const STATUS__EMPTY = 'empty';
+    const STATUS_EMPTY = 'empty';
     const STATUS_POPULATED = 'populated';
     const STATUS_IN_PROGRESS = 'inProgress';
     const STATUS_TERMINATED = 'terminated';
@@ -262,7 +262,7 @@ class ConferenceResult implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         return [
             self::STATUS_CREATING,
-            self::STATUS__EMPTY,
+            self::STATUS_EMPTY,
             self::STATUS_POPULATED,
             self::STATUS_IN_PROGRESS,
             self::STATUS_TERMINATED,

@@ -173,8 +173,27 @@ class UpdateConferenceRequest implements ModelInterface, ArrayAccess, \JsonSeria
         return self::$openAPIModelName;
     }
 
-    const STATUS__EMPTY = 'empty';
+    const PLAY_BEEP_ALWAYS = 'always';
+    const PLAY_BEEP_NEVER = 'never';
+    const PLAY_BEEP_ENTRY_ONLY = 'entryOnly';
+    const PLAY_BEEP_EXIT_ONLY = 'exitOnly';
+    const STATUS_EMPTY = 'empty';
     const STATUS_TERMINATED = 'terminated';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getPlayBeepAllowableValues()
+    {
+        return [
+            self::PLAY_BEEP_ALWAYS,
+            self::PLAY_BEEP_NEVER,
+            self::PLAY_BEEP_ENTRY_ONLY,
+            self::PLAY_BEEP_EXIT_ONLY,
+        ];
+    }
 
     /**
      * Gets allowable values of the enum
@@ -184,7 +203,7 @@ class UpdateConferenceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS__EMPTY,
+            self::STATUS_EMPTY,
             self::STATUS_TERMINATED,
         ];
     }
@@ -217,6 +236,15 @@ class UpdateConferenceRequest implements ModelInterface, ArrayAccess, \JsonSeria
     public function listInvalidProperties()
     {
         $invalidProperties = [];
+
+        $allowedValues = $this->getPlayBeepAllowableValues();
+        if (!is_null($this->container['play_beep']) && !in_array($this->container['play_beep'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'play_beep', must be one of '%s'",
+                $this->container['play_beep'],
+                implode("', '", $allowedValues)
+            );
+        }
 
         $allowedValues = $this->getStatusAllowableValues();
         if (!is_null($this->container['status']) && !in_array($this->container['status'], $allowedValues, true)) {
@@ -285,6 +313,16 @@ class UpdateConferenceRequest implements ModelInterface, ArrayAccess, \JsonSeria
      */
     public function setPlayBeep($play_beep)
     {
+        $allowedValues = $this->getPlayBeepAllowableValues();
+        if (!is_null($play_beep) && !in_array($play_beep, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'play_beep', must be one of '%s'",
+                    $play_beep,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['play_beep'] = $play_beep;
 
         return $this;
