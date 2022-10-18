@@ -61,6 +61,17 @@ class AvailableNumberTest extends TestCase
         $this->assertIsObject($this->AvailableNumber->getCapabilities());
     }
     /**
+     * Test attribute "campaign_id"
+     */
+    public function testPropertyCampaignId()
+    {
+        $this->AvailableNumber->setCampaignId('TEST_STRING');
+        $this->assertStringContainsString($this->AvailableNumber->getCampaignId(), 'TEST_STRING');
+        $this->assertIsString($this->AvailableNumber->getCampaignId());
+        
+
+    }
+    /**
      * Test attribute "phone_number"
      */
     public function testPropertyPhoneNumber()

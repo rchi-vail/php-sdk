@@ -61,6 +61,17 @@ class IncomingNumberResultAllOfTest extends TestCase
         $this->assertIsObject($this->IncomingNumberResultAllOf->getCapabilities());
     }
     /**
+     * Test attribute "campaign_id"
+     */
+    public function testPropertyCampaignId()
+    {
+        $this->IncomingNumberResultAllOf->setCampaignId('TEST_STRING');
+        $this->assertStringContainsString($this->IncomingNumberResultAllOf->getCampaignId(), 'TEST_STRING');
+        $this->assertIsString($this->IncomingNumberResultAllOf->getCampaignId());
+        
+
+    }
+    /**
      * Test attribute "phone_number_id"
      */
     public function testPropertyPhoneNumberId()

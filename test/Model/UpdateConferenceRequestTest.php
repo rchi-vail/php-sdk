@@ -68,10 +68,10 @@ class UpdateConferenceRequestTest extends TestCase
      */
     public function testPropertyPlayBeep()
     {
-        $this->UpdateConferenceRequest->setPlayBeep('TEST_STRING');
-        $this->assertStringContainsString($this->UpdateConferenceRequest->getPlayBeep(), 'TEST_STRING');
-        $this->assertIsString($this->UpdateConferenceRequest->getPlayBeep());
         
+        $this->UpdateConferenceRequest->setPlayBeep('always');
+        $this->assertStringContainsString($this->UpdateConferenceRequest->getPlayBeep(), 'always');
+        $this->assertIsString($this->UpdateConferenceRequest->getPlayBeep());
 
     }
     /**

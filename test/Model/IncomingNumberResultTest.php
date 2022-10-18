@@ -103,6 +103,17 @@ class IncomingNumberResultTest extends TestCase
         $this->assertIsObject($this->IncomingNumberResult->getCapabilities());
     }
     /**
+     * Test attribute "campaign_id"
+     */
+    public function testPropertyCampaignId()
+    {
+        $this->IncomingNumberResult->setCampaignId('TEST_STRING');
+        $this->assertStringContainsString($this->IncomingNumberResult->getCampaignId(), 'TEST_STRING');
+        $this->assertIsString($this->IncomingNumberResult->getCampaignId());
+        
+
+    }
+    /**
      * Test attribute "phone_number_id"
      */
     public function testPropertyPhoneNumberId()

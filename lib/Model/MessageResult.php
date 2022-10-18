@@ -218,7 +218,7 @@ class MessageResult implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
-    const STATUS__NEW = 'new';
+    const STATUS_NEW = 'new';
     const STATUS_QUEUED = 'queued';
     const STATUS_REJECTED = 'rejected';
     const STATUS_SENDING = 'sending';
@@ -238,7 +238,7 @@ class MessageResult implements ModelInterface, ArrayAccess, \JsonSerializable
     public function getStatusAllowableValues()
     {
         return [
-            self::STATUS__NEW,
+            self::STATUS_NEW,
             self::STATUS_QUEUED,
             self::STATUS_REJECTED,
             self::STATUS_SENDING,
