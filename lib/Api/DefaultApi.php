@@ -9378,14 +9378,16 @@ class DefaultApi
 
      * @param  bool $capabilities_short_code capabilities_short_code (optional)
 
+     * @param  bool $offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \FreeClimb\Api\Model\IncomingNumberList
      */
-    public function listIncomingNumbers($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbers($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null, $offnet = null)
     {
-        list($response) = $this->listIncomingNumbersWithHttpInfo($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
+        list($response) = $this->listIncomingNumbersWithHttpInfo($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code, $offnet);
         return $response;
     }
 
@@ -9421,14 +9423,16 @@ class DefaultApi
 
      * @param  bool $capabilities_short_code (optional)
 
+     * @param  bool $offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. (optional)
+
      *
      * @throws \FreeClimb\Api\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \FreeClimb\Api\Model\IncomingNumberList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function listIncomingNumbersWithHttpInfo($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbersWithHttpInfo($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null, $offnet = null)
     {
-        $request = $this->listIncomingNumbersRequest($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
+        $request = $this->listIncomingNumbersRequest($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code, $offnet);
 
         try {
             $options = $this->createHttpClientOption();
@@ -9540,13 +9544,15 @@ class DefaultApi
 
      * @param  bool $capabilities_short_code (optional)
 
+     * @param  bool $offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listIncomingNumbersAsync($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbersAsync($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null, $offnet = null)
     {
-        return $this->listIncomingNumbersAsyncWithHttpInfo($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code)
+        return $this->listIncomingNumbersAsyncWithHttpInfo($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code, $offnet)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -9586,14 +9592,16 @@ class DefaultApi
 
      * @param  bool $capabilities_short_code (optional)
 
+     * @param  bool $offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function listIncomingNumbersAsyncWithHttpInfo($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbersAsyncWithHttpInfo($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null, $offnet = null)
     {
         $returnType = '\FreeClimb\Api\Model\IncomingNumberList';
-        $request = $this->listIncomingNumbersRequest($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
+        $request = $this->listIncomingNumbersRequest($phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code, $offnet);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -9658,11 +9666,13 @@ class DefaultApi
 
      * @param  bool $capabilities_short_code (optional)
 
+     * @param  bool $offnet Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. (optional)
+
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function listIncomingNumbersRequest($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null)
+    public function listIncomingNumbersRequest($phone_number = null, $alias = null, $region = null, $country = null, $application_id = null, $has_application = false, $voice_enabled = true, $sms_enabled = true, $capabilities_voice = null, $capabilities_sms = null, $capabilities_toll_free = null, $capabilities_ten_dlc = null, $capabilities_short_code = null, $offnet = null)
     { 
         $account_id = $this->config->getUsername();
         // verify the required parameter 'account_id' is set
@@ -9820,6 +9830,17 @@ class DefaultApi
             }
             else {
                 $queryParams['capabilities.shortCode'] = $capabilities_short_code;
+            }
+        }
+        // query params
+        if ($offnet !== null) {
+            if('form' === 'form' && is_array($offnet)) {
+                foreach($offnet as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['offnet'] = $offnet;
             }
         }
 

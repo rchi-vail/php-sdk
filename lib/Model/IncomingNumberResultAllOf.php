@@ -70,7 +70,8 @@ class IncomingNumberResultAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'region' => 'string',
         'country' => 'string',
         'voice_enabled' => 'bool',
-        'sms_enabled' => 'bool'
+        'sms_enabled' => 'bool',
+        'offnet' => 'bool'
     ];
 
     /**
@@ -91,7 +92,8 @@ class IncomingNumberResultAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'region' => null,
         'country' => null,
         'voice_enabled' => null,
-        'sms_enabled' => null
+        'sms_enabled' => null,
+        'offnet' => null
     ];
 
     /**
@@ -131,7 +133,8 @@ class IncomingNumberResultAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'region' => 'region',
         'country' => 'country',
         'voice_enabled' => 'voiceEnabled',
-        'sms_enabled' => 'smsEnabled'
+        'sms_enabled' => 'smsEnabled',
+        'offnet' => 'offnet'
     ];
 
     /**
@@ -150,7 +153,8 @@ class IncomingNumberResultAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'region' => 'setRegion',
         'country' => 'setCountry',
         'voice_enabled' => 'setVoiceEnabled',
-        'sms_enabled' => 'setSmsEnabled'
+        'sms_enabled' => 'setSmsEnabled',
+        'offnet' => 'setOffnet'
     ];
 
     /**
@@ -169,7 +173,8 @@ class IncomingNumberResultAllOf implements ModelInterface, ArrayAccess, \JsonSer
         'region' => 'getRegion',
         'country' => 'getCountry',
         'voice_enabled' => 'getVoiceEnabled',
-        'sms_enabled' => 'getSmsEnabled'
+        'sms_enabled' => 'getSmsEnabled',
+        'offnet' => 'getOffnet'
     ];
 
     /**
@@ -240,6 +245,7 @@ class IncomingNumberResultAllOf implements ModelInterface, ArrayAccess, \JsonSer
         $this->container['country'] = $data['country'] ?? null;
         $this->container['voice_enabled'] = $data['voice_enabled'] ?? null;
         $this->container['sms_enabled'] = $data['sms_enabled'] ?? null;
+        $this->container['offnet'] = $data['offnet'] ?? null;
     }
 
     /**
@@ -530,6 +536,30 @@ class IncomingNumberResultAllOf implements ModelInterface, ArrayAccess, \JsonSer
     public function setSmsEnabled($sms_enabled)
     {
         $this->container['sms_enabled'] = $sms_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets offnet
+     *
+     * @return bool|null
+     */
+    public function getOffnet()
+    {
+        return $this->container['offnet'];
+    }
+
+    /**
+     * Sets offnet
+     *
+     * @param bool|null $offnet The offnet field is a boolean representing whether the number is offnet registered or not. This field will be rendered only for requests to the IncomingPhone number resource.
+     *
+     * @return self
+     */
+    public function setOffnet($offnet)
+    {
+        $this->container['offnet'] = $offnet;
 
         return $this;
     }
