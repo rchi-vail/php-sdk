@@ -1950,7 +1950,7 @@ Name | Type | Description  | Notes
 ## `listIncomingNumbers()`
 
 ```php
-listIncomingNumbers($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code): \FreeClimb\Api\Model\IncomingNumberList
+listIncomingNumbers($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code, $offnet): \FreeClimb\Api\Model\IncomingNumberList
 ```
 
 List Incoming Numbers
@@ -1988,9 +1988,10 @@ $capabilities_sms = True; // bool
 $capabilities_toll_free = True; // bool
 $capabilities_ten_dlc = True; // bool
 $capabilities_short_code = True; // bool
+$offnet = True; // bool | Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource.
 
 try {
-    $result = $apiInstance->listIncomingNumbers($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code);
+    $result = $apiInstance->listIncomingNumbers($account_id, $phone_number, $alias, $region, $country, $application_id, $has_application, $voice_enabled, $sms_enabled, $capabilities_voice, $capabilities_sms, $capabilities_toll_free, $capabilities_ten_dlc, $capabilities_short_code, $offnet);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DefaultApi->listIncomingNumbers: ', $e->getMessage(), PHP_EOL;
@@ -2015,6 +2016,7 @@ Name | Type | Description  | Notes
  **capabilities_toll_free** | **bool**|  | [optional]
  **capabilities_ten_dlc** | **bool**|  | [optional]
  **capabilities_short_code** | **bool**|  | [optional]
+ **offnet** | **bool**| Indication of whether the phone number was registered as an offnet number. This field will be rendered only for requests to the IncomingPhone number resource. | [optional]
 
 ### Return type
 
