@@ -68,8 +68,8 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'queue_id' => 'string',
         'alias' => 'string',
         'max_size' => 'int',
-        'current_size' => 'string',
-        'average_wait_time' => 'string',
+        'current_size' => 'int',
+        'average_queue_removal_time' => 'int',
         'subresource_uris' => 'object'
     ];
 
@@ -90,7 +90,7 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'alias' => null,
         'max_size' => null,
         'current_size' => null,
-        'average_wait_time' => null,
+        'average_queue_removal_time' => null,
         'subresource_uris' => null
     ];
 
@@ -130,7 +130,7 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'alias' => 'alias',
         'max_size' => 'maxSize',
         'current_size' => 'currentSize',
-        'average_wait_time' => 'averageWaitTime',
+        'average_queue_removal_time' => 'averageQueueRemovalTime',
         'subresource_uris' => 'subresourceUris'
     ];
 
@@ -149,7 +149,7 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'alias' => 'setAlias',
         'max_size' => 'setMaxSize',
         'current_size' => 'setCurrentSize',
-        'average_wait_time' => 'setAverageWaitTime',
+        'average_queue_removal_time' => 'setAverageQueueRemovalTime',
         'subresource_uris' => 'setSubresourceUris'
     ];
 
@@ -168,7 +168,7 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
         'alias' => 'getAlias',
         'max_size' => 'getMaxSize',
         'current_size' => 'getCurrentSize',
-        'average_wait_time' => 'getAverageWaitTime',
+        'average_queue_removal_time' => 'getAverageQueueRemovalTime',
         'subresource_uris' => 'getSubresourceUris'
     ];
 
@@ -238,7 +238,7 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['alias'] = $data['alias'] ?? null;
         $this->container['max_size'] = $data['max_size'] ?? null;
         $this->container['current_size'] = $data['current_size'] ?? null;
-        $this->container['average_wait_time'] = $data['average_wait_time'] ?? null;
+        $this->container['average_queue_removal_time'] = $data['average_queue_removal_time'] ?? null;
         $this->container['subresource_uris'] = $data['subresource_uris'] ?? null;
     }
 
@@ -461,7 +461,7 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets current_size
      *
-     * @return string|null
+     * @return int|null
      */
     public function getCurrentSize()
     {
@@ -471,7 +471,7 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets current_size
      *
-     * @param string|null $current_size Count of Calls currently in the Queue.
+     * @param int|null $current_size Count of Calls currently in the Queue.
      *
      * @return self
      */
@@ -483,25 +483,25 @@ class QueueResult implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets average_wait_time
+     * Gets average_queue_removal_time
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getAverageWaitTime()
+    public function getAverageQueueRemovalTime()
     {
-        return $this->container['average_wait_time'];
+        return $this->container['average_queue_removal_time'];
     }
 
     /**
-     * Sets average_wait_time
+     * Sets average_queue_removal_time
      *
-     * @param string|null $average_wait_time Average wait time (in seconds) of all Calls in the Queue.
+     * @param int|null $average_queue_removal_time The average amount of time (in seconds) for a call to be removed from the queue.
      *
      * @return self
      */
-    public function setAverageWaitTime($average_wait_time)
+    public function setAverageQueueRemovalTime($average_queue_removal_time)
     {
-        $this->container['average_wait_time'] = $average_wait_time;
+        $this->container['average_queue_removal_time'] = $average_queue_removal_time;
 
         return $this;
     }

@@ -141,22 +141,18 @@ class QueueResultTest extends TestCase
      */
     public function testPropertyCurrentSize()
     {
-        $this->QueueResult->setCurrentSize('TEST_STRING');
-        $this->assertStringContainsString($this->QueueResult->getCurrentSize(), 'TEST_STRING');
-        $this->assertIsString($this->QueueResult->getCurrentSize());
-        
-
+        $this->QueueResult->setCurrentSize(12345);
+        $this->assertEquals($this->QueueResult->getCurrentSize(), 12345);
+        $this->assertIsInt($this->QueueResult->getCurrentSize());
     }
     /**
-     * Test attribute "average_wait_time"
+     * Test attribute "average_queue_removal_time"
      */
-    public function testPropertyAverageWaitTime()
+    public function testPropertyAverageQueueRemovalTime()
     {
-        $this->QueueResult->setAverageWaitTime('TEST_STRING');
-        $this->assertStringContainsString($this->QueueResult->getAverageWaitTime(), 'TEST_STRING');
-        $this->assertIsString($this->QueueResult->getAverageWaitTime());
-        
-
+        $this->QueueResult->setAverageQueueRemovalTime(12345);
+        $this->assertEquals($this->QueueResult->getAverageQueueRemovalTime(), 12345);
+        $this->assertIsInt($this->QueueResult->getAverageQueueRemovalTime());
     }
     /**
      * Test attribute "subresource_uris"
